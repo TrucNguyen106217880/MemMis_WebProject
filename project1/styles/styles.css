@@ -25,39 +25,4 @@ nav ul li a{
 nav ul li a :hover{
     background-color: gray;
     border: 5px solid;
-
-}
-nav ul li {
-  position: relative;
-}
-
-nav ul li .dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #f9f9f9;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  z-index: 1000;
-}
-
-nav ul li:hover .dropdown {
-  display: block;
-}
-
-nav ul li .dropdown li {
-  width: 150px;
-}
-
-nav ul li .dropdown li a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: #333;
-}
-
-nav ul li .dropdown li a:hover {
-  background-color: #eee;
 }
