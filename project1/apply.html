@@ -10,18 +10,20 @@
 	</head>
 	<body>
 		<!-- Form for applicants to enter application information -->
-		 <!-- All IDs are named using the camelCase naming convention -->
+		 <!-- All IDs are named following the camelCase naming convention -->
 		<form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
-			<!-- Drop down list for job reference numbers -->
+			<!-- Drop down list to select job reference numbers -->
 			<label for="jobReferenceNumber">Job reference number
 				</label>
 				<select ID="jobReferenceNumber" name="referencenumber" required>
 					<option value=""> Please select
 			
 					</option>
-					<option>
+					<option>G01
 					</option>
-					<option>
+					<option>G03
+					</option>
+					<option> G07
 					</option>
 				</select>
 			<br>
@@ -119,13 +121,12 @@
             </label>
 			<br>
 			<!-- Large text area to enter other skils -->
-		<label for="otherskills"> Other skills
+		<label for="otherSkills"> Other skills
 		</label>
 		<br>
-		<textarea id="otherSkills" name="Otherskills" rows="4" cols="30">
+		<textarea id="otherSkills" name="Otherskills" rows="4" cols="30" placeholder="Enter other skills here...">
 		</textarea>
 		<br>
-		<input type="submit" value="Submit application"> <input type="reset" value="Clear application">
-		</form>
+		<input type="submit" value="Apply">
 	</body>
 </html>
