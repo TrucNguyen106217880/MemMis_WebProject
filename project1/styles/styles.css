@@ -1,28 +1,73 @@
-*{
+/* 
+    filename:
+    
+    author:
+
+    date created:
+
+    date modified:
+
+    description:
+*/
+
+* {
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-nav{
-    background-color: black;
-    padding: 1rem;
-}
-nav ul{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-}
-nav ul li{
+
+/* Header (Logo & Menu) */
+#logo {
     display: inline;
+    width: 100px;
 }
-nav ul li a{
-    color: white;
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    background-color: #eee;
+    padding: 0.5em;
+}
+.menu a {
+    padding: 0.5em;
+    color: #444;
+    font-weight: bold;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+}
+.menu a:hover {
+    background-color: #aaa;
+    color: green;
+    font-weight: bold;
+}
+.active {
+    background-color: #aaa;
+    border: none;
+    color: green !important;
+}
+.menu li {
+    position: relative;
+}
+.joblist {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    background-color: #eee;
+    min-width: 15em;
+    z-index: 1;
+}
+.joblist a {
     display: block;
 }
-nav ul li a:hover{
-    background-color: gray;
-    border: 5px solid;
+.menu li:hover .joblist {
+    display: block;
 }
+
+/* index.html */
+
+/* jobs.html */
+
+/* apply.html */
+
+/* about.html */
+
+/* Footer */

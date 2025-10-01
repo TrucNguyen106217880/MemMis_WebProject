@@ -1,133 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<title>job application</title>
-	</head>
-	<body>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<link rel="stylesheet" href="styles/styles.css">
+	<title>job application</title>
+</head>
+
+<body>
+	<header>
+		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
+		<img id="logo" src="images/MemMis Logo.png"
+			 title="Custom Website Design & Development | MemMis"
+			 alt="MemMis logo" loading="lazy">
+		<nav>
+			<ul class="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a href="jobs.html">Descriptions</a>
+					<ul class="joblist">
+						<li><a href="jobs.html#G01">Software Developer</a></li>
+						<li><a href="jobs.html#G04">Cybersecurity Specialist</a></li>
+						<li><a href="jobs.html#G07">AI Engineer</a></li>
+					</ul>
+				</li>
+				<li><a href="apply.html" class="active">Application</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
 		<!-- Form for applicants to enter application information -->
-		 <!-- All IDs are named following the camelCase naming convention -->
+		<!-- All IDs are named following the camelCase naming convention -->
 		<form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
 			<!-- Drop down list to select job reference numbers -->
 			<label for="jobReferenceNumber">Job reference number
-				</label>
-				<select ID="jobReferenceNumber" name="referencenumber" required>
-					<option value=""> Please select
-			
-					</option>
-					<option>G01
-					</option>
-					<option>G03
-					</option>
-					<option> G07
-					</option>
-				</select>
+			</label>
+			<select ID="jobReferenceNumber" name="referencenumber" required>
+				<option value=""> Please select
+
+				</option>
+				<option>G01
+				</option>
+				<option>G03
+				</option>
+				<option> G07
+				</option>
+			</select>
 			<br>
 			<!-- Text input section to enter first name -->
 			<label for="firstName"> First name
-				</label>
-				 <input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{0,20}$"> <!--Max 20 alpha characters-->
+			</label>
+			<input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{0,20}$">
+			<!--Max 20 alpha characters-->
 			<br>
 			<!-- Text input section to enter last name -->
 			<label for="lastName"> Last name
-				</label>
-				 <input type="text" id="lastName" name="lastname" required pattern="^[a-zA-Z]{0,20}$"> <!--Max 20 alpha characters-->
+			</label>
+			<input type="text" id="lastName" name="lastname" required pattern="^[a-zA-Z]{0,20}$">
+			<!--Max 20 alpha characters-->
 			<br>
 			<!-- Text input section to enter birth date -->
-			<label for="dateOfBirth"> Date of birth 
-				</label>
-				 <input type="text" id="dateOfBirth" name="dateofbirth" required pattern="^^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->
+			<label for="dateOfBirth"> Date of birth
+			</label>
+			<input type="text" id="dateOfBirth" name="dateofbirth" required
+				   pattern="^^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy">
+			<!--Number 0-9 only, must follow dd/mm/yyyy format-->
 			<!-- field to group gender selection section -->
-			 <fieldset>
+			<fieldset>
 				<legend>Gender
 				</legend>
 				<!-- Radio button section to choose gender -->
-        <label for="male"> Male
-		</label>
-         <input type="radio" id="male" name="Gender" value="Male" required="required">
-		  <label for="feMale"> Female
-		</label>
-         <input type="radio" id="feMale" name="Gender" value="Female">
+				<label for="male"> Male
+				</label>
+				<input type="radio" id="male" name="Gender" value="Male" required="required">
+				<label for="feMale"> Female
+				</label>
+				<input type="radio" id="feMale" name="Gender" value="Female">
 			</fieldset>
 			<!--Text input section to enter street address  -->
 			<label for="streetAddress"> Street address
-				</label>
-				 <input type="text" id="streetAddress" name="Streetaddress" required pattern="^{0,40}$"> <!--Max 40 any characters-->
+			</label>
+			<input type="text" id="streetAddress" name="Streetaddress" required pattern="^{0,40}$">
+			<!--Max 40 any characters-->
 			<br>
 			<label for="suburb/Town"> Suburb/town
-				</label>
-				 <input type="text" id="suburb/Town" name="Suburb/town" required pattern="^{0,40}$"> <!--Max 40 any characters-->
+			</label>
+			<input type="text" id="suburb/Town" name="Suburb/town" required pattern="^{0,40}$">
+			<!--Max 40 any characters-->
 			<br>
 			<!-- Dropdown list to choose a State -->
-				<label for="state">State
-				</label>
-				<select ID="state" name="State" required>
-					<option value=""> <!--This option only prompts the user to select a State and is not counted as a real option-->
-						Please select a State
-					</option>
-					<option value="VIC">VIC
-					</option>
-					<option value="NSW">NSW
-					</option>
-					<option value="QLD">QLD
-					</option>
-						<option value="NT">NT
-					</option>
-					<option value="WA">WA
-					</option>
-					<option value="SA">SA
-					</option>
-						<option value="TAS">TAS
-					</option>
-					<option value="ACT">ACT
-					</option>
-				</select>
+			<label for="state">State
+			</label>
+			<select ID="state" name="State" required>
+				<option value="">
+					<!--This option only prompts the user to select a State and is not counted as a real option-->
+					Please select a State
+				</option>
+				<option value="VIC">VIC
+				</option>
+				<option value="NSW">NSW
+				</option>
+				<option value="QLD">QLD
+				</option>
+				<option value="NT">NT
+				</option>
+				<option value="WA">WA
+				</option>
+				<option value="SA">SA
+				</option>
+				<option value="TAS">TAS
+				</option>
+				<option value="ACT">ACT
+				</option>
+			</select>
 
-				<br>
-				<!-- Text input section to enter post code -->
-				<label for="post"> Post
-				</label>
-				 <input type="text" id="post" name="Post" required pattern="^[0-9]{4}$">
+			<br>
+			<!-- Text input section to enter post code -->
+			<label for="post"> Post
+			</label>
+			<input type="text" id="post" name="Post" required pattern="^[0-9]{4}$">
 			<br>
 			<!-- Input for email -->
-			<label for ="eMail">
+			<label for="eMail">
 				Email
 			</label>
-			<input type ="email" id="eMail" name="Email" required>  <!--Automatically validate email format without pattern attribute-->
+			<input type="email" id="eMail" name="Email" required>
+			<!--Automatically validate email format without pattern attribute-->
 			<!-- Text input section to enter phone number -->
 			<label for="phoneNumber"> Phone number
-				</label>
-				 <input type="text" id="phoneNumber" name="Phonenumber" required pattern="^[\d\s]{8,12}$"> <!--Between 8 to 12 space or digits-->
+			</label>
+			<input type="text" id="phoneNumber" name="Phonenumber" required pattern="^[\d\s]{8,12}$">
+			<!--Between 8 to 12 space or digits-->
 			<br>
-		<!-- checkbox section to select one or more required technical skills -->
-		<input type="checkbox" id="requiredTechnicalSkill0" name="Required technical skill[]" value="Required technical skill 0" required>
-        <label for="requiredTechnicalSkill0">Required technical skill 0
-        </label>
-         <input type="checkbox" id="requiredTechnicalSkill1" name="Required technical skill[]" value="Required technical skill 1" required>
-        <label for="requiredTechnicalSkill1">Required technical skill 1
-            </label>
-             <input type="checkbox" id="requiredTechnicalSkill2" name="Required techincal skill[]" value="Required technical skill 2" required>
-        <label for="requiredTechnicalSkill2">Required technical skill 2
-        </label>
-         <input type="checkbox" id="requiredTechnicalSkill3" name="Required techincal skill[]" value="Required technical skill 3" required>
-        <label for="requiredTechnicalSkill3">Required technical skill 3
-        </label>
-         <input type="checkbox" id="requiredTechnicalSkill4" name="Required techincal skill[]" value="Required technical skill 4" required>
-        <label for="requiredTechnicalSkill4">Required technical skill 4
-            </label>
+			<!-- checkbox section to select one or more required technical skills -->
+			<input type="checkbox" id="requiredTechnicalSkill0" name="Required technical skill[]"
+				   value="Required technical skill 0" required>
+			<label for="requiredTechnicalSkill0">Required technical skill 0
+			</label>
+			<input type="checkbox" id="requiredTechnicalSkill1" name="Required technical skill[]"
+				   value="Required technical skill 1" required>
+			<label for="requiredTechnicalSkill1">Required technical skill 1
+			</label>
+			<input type="checkbox" id="requiredTechnicalSkill2" name="Required techincal skill[]"
+				   value="Required technical skill 2" required>
+			<label for="requiredTechnicalSkill2">Required technical skill 2
+			</label>
+			<input type="checkbox" id="requiredTechnicalSkill3" name="Required techincal skill[]"
+				   value="Required technical skill 3" required>
+			<label for="requiredTechnicalSkill3">Required technical skill 3
+			</label>
+			<input type="checkbox" id="requiredTechnicalSkill4" name="Required techincal skill[]"
+				   value="Required technical skill 4" required>
+			<label for="requiredTechnicalSkill4">Required technical skill 4
+			</label>
 			<br>
 			<!-- Large text area to enter other skils -->
-		<label for="otherSkills"> Other skills
-		</label>
-		<br>
-		<textarea id="otherSkills" name="Otherskills" rows="4" cols="30" placeholder="Enter other skills here...">
-		</textarea>
-		<br>
-		<input type="submit" value="Apply">
+			<label for="otherSkills"> Other skills
+			</label>
+			<br>
+			<textarea id="otherSkills" name="Otherskills" rows="4" cols="30" placeholder="Enter other skills here...">
+			</textarea>
+			<br>
+			<input type="submit" value="Apply">
 		</form>
-	</body>
+	</main>
+
+	<footer>
+		<p>&copy; 2025 MemMis. All rights reserved.</p>
+
+		<br>
+		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34?atlOrigin=eyJpIjoiODE4YmJlYmU5NjFkNGViZWFjY2ZjODUxN2U2ZTFjMGYiLCJwIjoiaiJ9"
+		   target="_blank">Jira Project for MemMis website</a>
+	</footer>
+</body>
+
 </html>

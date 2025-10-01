@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description"
-		content="We build custom websites for businesses. Our team provides end-to-end development, scalable solutions with user-friendly design; helping you turn your idea into a successful website.">
+		  content="We build custom websites for businesses. Our team provides end-to-end development, scalable solutions with user-friendly design; helping you turn your idea into a successful website.">
 	<meta name="keywords" content="custom website, website development, end-to-end website development">
 	<meta name="author" content="Truc Nguyen 106217880">
 	<link rel="stylesheet" href="styles/styles.css">
@@ -13,22 +13,26 @@
 </head>
 
 <body>
-	<!--The current menu bar-->
-	<nav>
-		<ul>
-			<li><a href="about.html">About Us</a></li>
-			<li><a href="#position-des">Descriptions</a></li>
-			<li><a href="index.html">Home</a></li>
-			<li><a href="apply.html">Application</a></li>
-			<li><a href="mailto:info@MemMis.com.au">info@MemMis.com.au</a></li>
-		</ul>
-	</nav>
 	<header>
 		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
-
-		<!-- CSS: Change size of this!!! -->
-		<img src="images/MemMis Logo.png" title="Custom Website Design & Development | MemMis" alt="MemMis logo"
-			loading="lazy">
+		<img id="logo" src="images/MemMis Logo.png"
+			 title="Custom Website Design & Development | MemMis"
+			 alt="MemMis logo" loading="lazy">
+		<nav>
+			<ul class="menu">
+				<li><a href="index.html" class="active">Home</a></li>
+				<li><a href="jobs.html">Descriptions</a>
+					<ul class="joblist">
+						<li><a href="jobs.html#G01">Software Developer</a></li>
+						<li><a href="jobs.html#G04">Cybersecurity Specialist</a></li>
+						<li><a href="jobs.html#G07">AI Engineer</a></li>
+					</ul>
+				</li>
+				<li><a href="apply.html">Application</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
+			</ul>
+		</nav>
 	</header>
 
 	<main>
@@ -108,8 +112,10 @@
 
 	<footer>
 		<p>&copy; 2025 MemMis. All rights reserved.</p>
+
+		<br>
 		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34?atlOrigin=eyJpIjoiODE4YmJlYmU5NjFkNGViZWFjY2ZjODUxN2U2ZTFjMGYiLCJwIjoiaiJ9"
-			target="_blank">Jira Project for MemMis website</a>
+		   target="_blank">Jira Project for MemMis website</a>
 	</footer>
 </body>
 
