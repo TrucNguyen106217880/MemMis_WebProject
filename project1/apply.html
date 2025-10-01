@@ -5,8 +5,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="">
 		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<title>job application</title>
+		<meta name="author" content="V.D">
+		<title>Job application | MemMis</title>
 	</head>
 	<body>
 		<!-- Form for applicants to enter application information -->
@@ -19,49 +19,62 @@
 					<option value=""> Please select
 			
 					</option>
-					<option>G01
+					<option>SO145
 					</option>
-					<option>G03
+					<option>AI313
 					</option>
-					<option> G07
+					<option> CY296
 					</option>
 				</select>
+
 			<br>
+
 			<!-- Text input section to enter first name -->
 			<label for="firstName"> First name
 				</label>
-				 <input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{0,20}$"> <!--Max 20 alpha characters-->
+				 <input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{0,20}$" title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
+			
 			<br>
+
 			<!-- Text input section to enter last name -->
 			<label for="lastName"> Last name
 				</label>
 				 <input type="text" id="lastName" name="lastname" required pattern="^[a-zA-Z]{0,20}$"> <!--Max 20 alpha characters-->
+			
 			<br>
+			
 			<!-- Text input section to enter birth date -->
 			<label for="dateOfBirth"> Date of birth 
 				</label>
 				 <input type="text" id="dateOfBirth" name="dateofbirth" required pattern="^^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->
+
 			<!-- field to group gender selection section -->
 			 <fieldset>
 				<legend>Gender
 				</legend>
-				<!-- Radio button section to choose gender -->
+
+		<!-- Radio button section to choose gender -->
         <label for="male"> Male
 		</label>
          <input type="radio" id="male" name="Gender" value="Male" required="required">
+
 		  <label for="feMale"> Female
 		</label>
          <input type="radio" id="feMale" name="Gender" value="Female">
 			</fieldset>
+
 			<!--Text input section to enter street address  -->
 			<label for="streetAddress"> Street address
 				</label>
 				 <input type="text" id="streetAddress" name="Streetaddress" required pattern="^{0,40}$"> <!--Max 40 any characters-->
+				 
 			<br>
 			<label for="suburb/Town"> Suburb/town
 				</label>
 				 <input type="text" id="suburb/Town" name="Suburb/town" required pattern="^{0,40}$"> <!--Max 40 any characters-->
+
 			<br>
+
 			<!-- Dropdown list to choose a State -->
 				<label for="state">State
 				</label>
@@ -88,38 +101,95 @@
 				</select>
 
 				<br>
+				
 				<!-- Text input section to enter post code -->
-				<label for="post"> Post
+				<label for="postCode"> Postcode
 				</label>
-				 <input type="text" id="post" name="Post" required pattern="^[0-9]{4}$">
+				 <input type="text" id="postCode" name="Postcode" required pattern="0?[2-9][0-9]{2}|[1-9][0-9]{3}" maxlength="4">
+
 			<br>
+
 			<!-- Input for email -->
 			<label for ="eMail">
 				Email
 			</label>
 			<input type ="email" id="eMail" name="Email" required>  <!--Automatically validate email format without pattern attribute-->
+
 			<!-- Text input section to enter phone number -->
 			<label for="phoneNumber"> Phone number
 				</label>
 				 <input type="text" id="phoneNumber" name="Phonenumber" required pattern="^[\d\s]{8,12}$"> <!--Between 8 to 12 space or digits-->
+
 			<br>
-		<!-- checkbox section to select one or more required technical skills -->
-		<input type="checkbox" id="requiredTechnicalSkill0" name="Required technical skill[]" value="Required technical skill 0" required>
-        <label for="requiredTechnicalSkill0">Required technical skill 0
+		
+			<!-- checkbox section to select one or more required technical skills -->
+		<fieldset>
+			<legend>
+				Required technical skills (Only pick skills belonging to your selected job)
+			</legend>
+			<fieldset>
+			<legend>
+				SO415
+			</legend>
+		<input type="checkbox" id="skill1" name="skill1[]" value="skill 1" checked="checked">
+		<label for="skill1">skill 1
         </label>
-         <input type="checkbox" id="requiredTechnicalSkill1" name="Required technical skill[]" value="Required technical skill 1" required>
-        <label for="requiredTechnicalSkill1">Required technical skill 1
+         <input type="checkbox" id="skill2" name="skill1[]" value="skill 2" >
+        <label for="skill2">skill 2
             </label>
-             <input type="checkbox" id="requiredTechnicalSkill2" name="Required techincal skill[]" value="Required technical skill 2" required>
-        <label for="requiredTechnicalSkill2">Required technical skill 2
+        <input type="checkbox" id="skill3" name="skill1[]" value="skill 3" >
+        <label for="skill3">skill 3
+		</label>
+         <input type="checkbox" id="skill4" name="skill1[]" value="skill 4" >
+        <label for="skill4">skill 4
         </label>
-         <input type="checkbox" id="requiredTechnicalSkill3" name="Required techincal skill[]" value="Required technical skill 3" required>
-        <label for="requiredTechnicalSkill3">Required technical skill 3
-        </label>
-         <input type="checkbox" id="requiredTechnicalSkill4" name="Required techincal skill[]" value="Required technical skill 4" required>
-        <label for="requiredTechnicalSkill4">Required technical skill 4
+         <input type="checkbox" id="skill5" name="skill1[]" value="skill 5" >
+        <label for="skill5">skill 5
             </label>
+			</fieldset>
+				<fieldset>
+			<legend>
+				AI313
+			</legend>
+		<input type="checkbox" id="skill6" name="skill2[]" value="skill6" checked="checked">
+		<label for="skill1">skill 6
+        </label>
+         <input type="checkbox" id="skill7" name="skill2[]" value="skill 7" >
+        <label for="skill2">skill 7
+            </label>
+        <input type="checkbox" id="skill8" name="skill2[]" value="skill 8" >
+        <label for="skill3">skill 8
+		</label>
+         <input type="checkbox" id="skill9" name="skill2[]" value="skill 9" >
+        <label for="skill4">skill 9
+        </label>
+         <input type="checkbox" id="skill10" name="skill2[]" value="skill 10" >
+        <label for="skill5">skill 10
+            </label>
+			</fieldset>
+				<fieldset>
+			<legend>
+				CY296
+			</legend>
+		<input type="checkbox" id="skill11" name="skill3[]" value="skill 11" checked="checked">
+		<label for="skill11">skill 11
+        </label>
+         <input type="checkbox" id="skill12" name="skill3[]" value="skill 12" >
+        <label for="skill12">skill 12
+            </label>
+        <input type="checkbox" id="skill13" name="skill3[]" value="skill 13" >
+        <label for="skill13">skill 13
+		</label>
+         <input type="checkbox" id="skill14" name="skill3[]" value="skill 14" >
+        <label for="skill14">skill 14
+        </label>
+         <input type="checkbox" id="skill15" name="skill3[]" value="skill 15" >
+        <label for="skill15">skill 15
+            </label>
+			</fieldset>
+			</fieldset>
 			<br>
+
 			<!-- Large text area to enter other skils -->
 		<label for="otherSkills"> Other skills
 		</label>
