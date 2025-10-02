@@ -16,8 +16,6 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.5;
 }
-
-
 /* Header (Logo & Menu) */
 #logo {
     display: inline;
@@ -67,6 +65,14 @@
 /* index.html */
 p{
     text-align: justify;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#welcome{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
 }
 #welcome h1{
     text-align: center;
@@ -75,7 +81,7 @@ p{
     text-align: center;
 }
 #welcome a {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
+ background: linear-gradient(to right, #00c6ff, #0072ff);
   color: white;
   padding: 10px 12px;
   border: none;
@@ -83,10 +89,34 @@ p{
   font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s ease;
 }
-#welcome a:hover {
-  transform: scale(1.05);
+#welcome a:hover{
+    color: yellow;
+}
+#differentiators{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#information{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#projects{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#services{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#hiring{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
 }
 #hiring a {
   background: linear-gradient(to right, #00c6ff, #0072ff);
@@ -96,11 +126,15 @@ p{
   border-radius: 6px;
   font-size: 12px;
   font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease;
+  cursor: pointer;       
 }
-#hiring a:hover {
-  transform: scale(1.05);
+#hiring a:hover{
+    color: yellow;
+}
+#contact{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
 }
 /* jobs.html */
 
