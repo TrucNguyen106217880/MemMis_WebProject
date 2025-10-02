@@ -116,6 +116,7 @@
     margin: 0 auto;       
     padding: 20px;
 }
+/* The CTA buttons */
 #welcome a,
 #information a,
 #projects a,
@@ -138,9 +139,6 @@
 /* apply.html */
 
 /* about.html */
-#header_1_About_Us{
-    text-align: center;
-}
 #header_2_About_Us img {
   width: 45px;
   height: auto;
