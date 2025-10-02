@@ -63,12 +63,6 @@
 }
 
 /* index.html */
-p{
-    text-align: justify;
-    max-width: 700px;    
-    margin: 0 auto;       
-    padding: 20px;
-}
 #welcome{
     max-width: 700px;    
     margin: 0 auto;       
@@ -79,16 +73,6 @@ p{
 }
 #welcome h2{
     text-align: center;
-}
-#welcome a {
- background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
 }
 #welcome a:hover{
     color: yellow;
@@ -103,10 +87,16 @@ p{
     margin: 0 auto;       
     padding: 20px;
 }
+#information a:hover{
+    color: yellow;
+}
 #projects{
     max-width: 700px;    
     margin: 0 auto;       
     padding: 20px;
+}
+#projects a:hover{
+    color: yellow;
 }
 #services{
     max-width: 700px;    
@@ -118,16 +108,6 @@ p{
     margin: 0 auto;       
     padding: 20px;
 }
-#hiring a {
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  color: white;
-  padding: 10px 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;       
-}
 #hiring a:hover{
     color: yellow;
 }
@@ -136,6 +116,23 @@ p{
     margin: 0 auto;       
     padding: 20px;
 }
+#welcome a,
+#information a,
+#projects a,
+#hiring a{
+  display: inline-block;
+  margin-top: 1em;
+  text-decoration: none;
+  color: white;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;   
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+
 /* jobs.html */
 
 /* apply.html */
@@ -149,3 +146,12 @@ p{
   height: auto;
 }
 /* Footer */
+footer{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+    text-align: center;
+}
+footer p{
+    text-align: center;
+}
