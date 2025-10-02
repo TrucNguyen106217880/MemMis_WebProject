@@ -6,7 +6,7 @@
 		<meta name="description" content="Group Project">
 		<meta name="keywords" content="MemMis, GroupProject, About us, About Us">
 		<meta name="author" content="Hoang Trong Toan, Toan Hoang">
-		<title>"About us | MemMis"</title>
+		<title>About us | MemMis</title>
 	</head>
 
 		<h1 id="header_1_About_Us">About us Page</h1> <!--In the center-->
@@ -14,15 +14,15 @@
 		<div>
 			<h2 id="header_2_About_Us">Team: MemMis <img src="images/MemMis Logo.png" alt="memmislogo" title="MemMisLogo"></h2><!-- img width~15%, height auto -->
 		</div>
-<section></section>
+<section>
 		<!-- I reread the requirement, and i think this article section should be left alone only a nested list with name, ids and lecturer, of course i'll still put Mr.Wilson pic in. -->
-		<article>
-			<!-- List -->
+	<article>
+<!-- List -->
 		<ul class="About_MemMis">
 			<div>
 			<li>Class: COS100026</li>
 			<li>Class Time: Tuesday 9AM - 11AM on odd weeks; 9AM - 11AM, 1PM - 4PM on even weeks</li>
-			<li class="About_Us_Lists"> MemMis Team Member:
+			<li class="Don't_touch"> MemMis Team Member:
 				<ul>
 					<li>Name: Truc Nguyen
 						<ul>
@@ -52,98 +52,101 @@
             	</ul>
         	</li>
 			</div>
-
-			<div>
-			<!-- Mr.Wilson -->
-			<li>Lecturer:
-				<ul>
-					<li>Name: MR. Wilson</li>
-					<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
-					<li>Occupation: Lecturer at Swinburne Vietnam</li>
-				</ul>
-			</li>
-			</div>
+		</ul>	
+<!-- List end -->
+<!-- Mr.Wilson -->
+	<div>
+		<aside>		 
+			<ul>Lecturer:
+				<li>
+					<ul>Name: MR. Wilson
+						<li>Occupation: Lecturer at Swinburne Vietnam</li>
+						<figure><figcaption>Mr. Wilson</figcaption><img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson"></figure>
+					</ul>
+				</li>
+			</ul>
+		</aside>
+	</div>
 			
-    	</ul>	
-		<!-- List end -->
-		</article>
+
+</article>
 </section>
 <section>
-		<!-- Contribution Description list -->
-		<fieldset>
-			<legacy>Details</legacy>
+
+<!-- Contribution Description list -->
 <!-- I want to make each div dt border shadow effects like the one we did in the lab 5 so it's like each dt is in it's own box to read easier -->
-			<div>
-				<dl>
-					<div>
-					<dt>Truc</dt> <!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
-						<figure><figcaption>Truc</figcaption><img src="Truc.img" alt="Truc" class="Inline_Imgs" title="Team Lead"></figure>
-						<dd>CSS support, Git support, HTML support, Team lead
-							<ul>
-								<li>Male</li>
-								<li>Birthday: 02/04/2007</li>
-								<li>Home town: Châu Đốc Ward (old Châu Đốc City), An Giang Province, Vietnam. Famous for its spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother of the Realm ).</li>
-							</ul>
-						</dd>
-					</div>
-
-					<div>
-					<dt>Duy</dt>
-						<figure><figcaption>Duy</figcaption><img src="images/Duy.jpg" alt="Duy" class="" title="Second Member" style="width: 15%; height: auto;"> </figure>
-						<dd>Job description design
-							<ul>
-								<li>Male</li>
-								<li>Birthday: 1/1/2007</li>
-								<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the Western Metropolis ) with a history spanning over 270 years. This lovely city is famous for its people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển, etc.)</li>
-							</ul>
-						</dd>
-					</div>
-
-					<div>
-					<dt>Viet</dt>
-						<figure><img src="mycat.jpg" alt="Viet" class="" title="Third Member"></figure>
-						<dd>Job application design
-							<ul>
-								<li>Male</li>
-								<li>Birthday: 28/10/2007</li>
-								<li>Home town: Can Tho is the fourth-largest city in Vietnam, and one of six Municipalities. Can Tho is known for its kind and modest people, and being a large city with less hustle and bustle compared to cities like Ho Chi Minh or Ha Noi.</li>
-							</ul>
-						</dd>
-					</div>
-
-					<div>
-					<dt>Khang</dt>
-						<figure><img src="mycat.jpg" alt="Khang" class="" title="Fourth Member"></figure>
-						<dd>CSS design
-							<ul>
-
-							</ul>
-						</dd>
-					</div>
-
-					<div>
-					<dt>Toan</dt>
-						<figure><figcaption>Toan</figcaption><img src="images/Toan.jpg" alt="Toan" class="" title="Fifth Member"></figure> 
-						<dd>About us page design
-							<ul>
-								<li>Male</li>
-								<li>Birthday: 14/02/2007</li>
-								<li>Home town: Can Tho City, the major supplier of rice in Viet Nam, the heart of Mekong Delta. Famous for being the centre of culture, economic of the West with some unique attraction such as rice paper making village and floating market.</li>
-							</ul>
-						</dd>
-					</div>
-
-				</dl>
+	<div>
+		<dl>
+			<div class="ShadowyBox">
+			<dt>Truc</dt> <!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
+				<figure><img src="Truc.img" alt="Truc" class="Inline_Imgs" title="Team Lead" id="Truc_Img"><figcaption class="Figcap_Centre">Truc</figcaption></figure>
+				<dd>Git support, CSS support, HTML support, Team lead
+					<ul>
+						<li>Male</li>
+						<li>Birthday: 02/04/2007</li>
+						<li>Home town: Châu Đốc Ward (old Châu Đốc City), An Giang Province, Vietnam. Famous for its spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother of the Realm ).</li>
+					</ul>
+				</dd>
 			</div>
-			<!-- Description list end -->
-		</fieldset>
+
+			<div class="ShadowyBox">
+			<dt>Duy</dt>
+				<figure><img src="images/Duy.jpg" alt="Duy" class="Float_Right_Img" title="Second Member" id="Duy_Img"><figcaption class="Figcap_Centre">Duy</figcaption></figure>
+				<dd>Job description Page design
+					<ul>
+						<li>Male</li>
+						<li>Birthday: 1/1/2007</li>
+						<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the Western Metropolis ) with a history spanning over 270 years. This lovely city is famous for its people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển, etc.)</li>
+					</ul>
+				</dd>
+			</div>
+
+			<div class="ShadowyBox">
+			<dt>Viet</dt>
+				<figure><img src="images/Viet.jpg" alt="Viet" class="Float_Right_Img" title="Third Member" id="Viet_Img"><figcaption class="Figcap_Centre">Viet</figcaption></figure>
+				<dd>Job application Page design
+					<ul>
+						<li>Male</li>
+						<li>Birthday: 28/10/2007</li>
+						<li>Home town: Can Tho is the fourth-largest city in Vietnam, and one of six Municipalities. Can Tho is known for its kind and modest people, and being a large city with less hustle and bustle compared to cities like Ho Chi Minh or Ha Noi.</li>
+					</ul>
+				</dd>
+			</div>
+
+			<div class="ShadowyBox">
+			<dt>Khang</dt>
+				<figure><img src="images/Khang.png" alt="Khang" class="Float_Right_Img" title="Fourth Member" id="Khang_Img"><figcaption class="Figcap_Centre">Khang</figcaption></figure>
+				<dd>CSS <style></style> design
+					<ul>
+						<li>Male</li>
+						<li>Birthday:8/02/2007</li>
+						<li>Home town: Vinh Long, </li>
+					</ul>
+				</dd>
+			</div>
+
+			<div class="ShadowyBox">
+			<dt>Toan</dt>
+				<figure><img src="images/Toan.jpg" alt="Toan" class="Float_Right_Img" title="Fifth Member" id="Toan_Img"><figcaption class="Figcap_Centre">Toan</figcaption></figure> 
+				<dd>About us Page design
+					<ul>
+						<li>Male</li>
+						<li>Birthday: 14/02/2007</li>
+						<li>Home town: Can Tho City, the major supplier of rice in Viet Nam, the heart of Mekong Delta. Famous for being the centre of culture, economic of the West with some unique attraction such as rice paper making village and floating market.</li>
+					</ul>
+				</dd>
+			</div>
+
+		</dl>
+	</div>
+<!-- Description list end -->
 <div>
 	<figure><figcaption>MemMis Team</figcaption><img src="teamimg" alt="MemMis_Team_Picture"></figure>
 </div>
 </section>
 <section>
 <!-- Interests Table -->
-	<table>	
+	<table border="1" class="Interest_Table">	
 	<caption>Member's Interest</caption>
 	<div>
 		<thead>
@@ -186,7 +189,7 @@
 			<tr>
 				<td>Khang</td>
 				<td>106217893</td>
-				<td>blah</td>
+				<td>Gaming, Music making, Artist, Athlete</td>
 			</tr>
 		</div>
 	
