@@ -5,87 +5,147 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Group Project">
 		<meta name="keywords" content="MemMis, GroupProject, About us, About Us">
-		<meta name="author" content="MemMis">
-		<title>About us</title>
+		<meta name="author" content="Hoang Trong Toan, Toan Hoang">
+		<title>"About us | MemMis"</title>
 	</head>
-	<body>
+
 		<h1 id="header_1_About_Us">About us Page</h1> <!--In the center-->
 		
 		<div>
-			<h2 id="header_2_About_Us">Team: <img src="images/MemMis Logo.png" alt="memmislogo"></h2><!-- img width~45px, height auto -->
+			<h2 id="header_2_About_Us">Team: MemMis <img src="images/MemMis Logo.png" alt="memmislogo" title="MemMisLogo"></h2><!-- img width~15%, height auto -->
 		</div>
-		
-			<!-- I'll put Truc on the left top and the next on the right with the pic first -->
-			<!-- And when you hover over the list, it can enlarge both the text and image -->
+<section></section>
+		<!-- I reread the requirement, and i think this article section should be left alone only a nested list with name, ids and lecturer, of course i'll still put Mr.Wilson pic in. -->
+		<article>
+			<!-- List -->
 		<ul class="About_MemMis">
-			<li class="About_Us_Lists, Left_Img_As"> <!--Left-->
+			<div>
+			<li>Class: COS100026</li>
+			<li>Class Time: Tuesday 9AM - 11AM on odd weeks; 9AM - 11AM, 1PM - 4PM on even weeks</li>
+			<li class="About_Us_Lists"> MemMis Team Member:
 				<ul>
-					<img src="Truc.img" alt="Truc" class="Inline_Imgs" title="Team Lead">
-					<li>Name: Truc</li>
-					<li>ID</li>
-				</ul>
-			</li>
-			<!-- I'm gonna need pics for each of our team member, width~200px height: auto -->
-
-			
-        	<li class="About_Us_Lists, Right_Img_As">
-            	<img src="mycat.jpg" alt="Duy" class="Inline_Imgs" title="Second Member">
-            	<ul class="Mem_name_id_w, Left_Img_As">
-                	<li>Name: Duy</li>
-                	<li>ID: SWC_id</li>
+					<li>Name: Truc Nguyen
+						<ul>
+							<li>Id: 106217880</li>
+						</ul>
+					</li>
+                	<li>Name: Duy Tran
+                		<ul>
+							<li>Id: 106216081</li>
+						</ul>
+					</li>
+              		<li>Name: Viet Do
+                		<ul>
+							<li>Id: 106217932</li>
+						</ul>
+					</li>
+                	<li>Name: Khang Mai
+                		<ul>
+							<li>Id: 106217893</li>
+						</ul>
+					</li>
+                	<li>Name: Toan Hoang
+                		<ul>
+							<li>Id: 106217877</li>
+						</ul>
+					</li>
             	</ul>
         	</li>
+			</div>
 
-        	<li class="About_Us_Lists, Left_Img_As,">
-            	<img src="mycat.jpg" alt="Viet" class="Inline_Imgs" title="Third Member">
-            	<ul class="Mem_name_id_w, Left_Img_As">
-                	<li>Name: Viet</li>
-                	<li>ID: SWC_id</li>
-            	</ul>
-        	</li>
-
-			<li class="About_Us_Lists, Left_Img_As,">
-            	<img src="mycat.jpg" alt="Khang" class="Inline_Imgs" title="Fourth Member">
-            	<ul class="Mem_name_id_w, Left_Img_As">
-                	<li>Name: Khang</li>
-                	<li>ID: SWC_1</li>
-            	</ul>
-        	</li>
-
-			<li class="About_Us_Lists, Left_Img_As,">
-            	<img src="mycat.jpg" alt="Toan" class="Inline_Imgs" title="My cat">
-            	<ul class="Mem_name_id_w, Left_Img_As">
-                	<li>Name: Toan</li>
-                	<li>ID: SWC_2</li>
-            	</ul>
-        	</li>
-
-			<li>
-				<img src="" alt="" class="" title="Mr.Wilson">
-				<ul class="">
+			<div>
+			<!-- Mr.Wilson -->
+			<li>Lecturer:
+				<ul>
 					<li>Name: MR. Wilson</li>
-					<li>Occupation: Lecturer</li>
+					<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
+					<li>Occupation: Lecturer at Swinburne Vietnam</li>
 				</ul>
 			</li>
-			<!-- Mr.Wilson can be at the last in the middle of the page, also ask him to take a pic with us -->
-    	</ul>
+			</div>
+			
+    	</ul>	
+		<!-- List end -->
+		</article>
+</section>
+<section>
+		<!-- Contribution Description list -->
 		<fieldset>
-			<legacy>Contribution</legacy>
-			<dl>
-				<dt>Truc</dt>
-				<dd>CSS design, Team lead</dd>
-				<dt>Duy</dt>
-				<dd>Job description design</dd>
-				<dt>Viet</dt>
-				<dd>Job application design</dd>
-				<dt>Khang</dt>
-				<dd>CSS design</dd>
-				<dt>Toan</dt>
-				<dd>About us page design</dd>
-			</dl>
+			<legacy>Details</legacy>
+<!-- I want to make each div dt border shadow effects like the one we did in the lab 5 so it's like each dt is in it's own box to read easier -->
+			<div>
+				<dl>
+					<div>
+					<dt>Truc</dt> <!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
+						<figure><figcaption>Truc</figcaption><img src="Truc.img" alt="Truc" class="Inline_Imgs" title="Team Lead"></figure>
+						<dd>CSS support, Git support, HTML support, Team lead
+							<ul>
+								<li>Male</li>
+								<li>Birthday: 02/04/2007</li>
+								<li>Home town: Châu Đốc Ward (old Châu Đốc City), An Giang Province, Vietnam. Famous for its spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother of the Realm ).</li>
+							</ul>
+						</dd>
+					</div>
+
+					<div>
+					<dt>Duy</dt>
+						<figure><figcaption>Duy</figcaption><img src="images/Duy.jpg" alt="Duy" class="" title="Second Member" style="width: 15%; height: auto;"> </figure>
+						<dd>Job description design
+							<ul>
+								<li>Male</li>
+								<li>Birthday: 1/1/2007</li>
+								<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the Western Metropolis ) with a history spanning over 270 years. This lovely city is famous for its people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển, etc.)</li>
+							</ul>
+						</dd>
+					</div>
+
+					<div>
+					<dt>Viet</dt>
+						<figure><img src="mycat.jpg" alt="Viet" class="" title="Third Member"></figure>
+						<dd>Job application design
+							<ul>
+								<li>Male</li>
+								<li>Birthday: 28/10/2007</li>
+								<li>Home town: Can Tho is the fourth-largest city in Vietnam, and one of six Municipalities. Can Tho is known for its kind and modest people, and being a large city with less hustle and bustle compared to cities like Ho Chi Minh or Ha Noi.</li>
+							</ul>
+						</dd>
+					</div>
+
+					<div>
+					<dt>Khang</dt>
+						<figure><img src="mycat.jpg" alt="Khang" class="" title="Fourth Member"></figure>
+						<dd>CSS design
+							<ul>
+
+							</ul>
+						</dd>
+					</div>
+
+					<div>
+					<dt>Toan</dt>
+						<figure><figcaption>Toan</figcaption><img src="images/Toan.jpg" alt="Toan" class="" title="Fifth Member"></figure> 
+						<dd>About us page design
+							<ul>
+								<li>Male</li>
+								<li>Birthday: 14/02/2007</li>
+								<li>Home town: Can Tho City, the major supplier of rice in Viet Nam, the heart of Mekong Delta. Famous for being the centre of culture, economic of the West with some unique attraction such as rice paper making village and floating market.</li>
+							</ul>
+						</dd>
+					</div>
+
+				</dl>
+			</div>
+			<!-- Description list end -->
 		</fieldset>
-	<img src="teamimg"> <!--background for the table if possible-->
-	<table>
+<div>
+	<figure><figcaption>MemMis Team</figcaption><img src="teamimg" alt="MemMis_Team_Picture"></figure>
+</div>
+</section>
+<section>
+<!-- Interests Table -->
+	<table>	
+	<caption>Member's Interest</caption>
+	<div>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -93,40 +153,60 @@
 				<th>Interest</th>
 			</tr>
 		</thead>
+	</div>
+	<!--  -->
+	<div>
 		<tbody>
+
+		<div>
 			<tr>
 				<td>Truc</td>
-				<td>ID_SWC</td>
-				<td>blah</td>
+				<td>106217880</td>
+				<td>Pop music; Anime; Rhythm/Turn-based games; Fantasy/Sci-fi novels.</td>
 			</tr>
+		</div>
+
+		<div>
 			<tr>
 				<td>Duy</td>
-				<td>ID_SWC</td>
-				<td>blah</td>
+				<td>106216081</td>
+				<td>Gaming (Valorant specifically, and Minecraft), taking photographs and stay busy (not too busy).</td>
 			</tr>
+		</div>
+	
+		<div>
 			<tr>
 				<td>Viet</td>
-				<td>ID_SWC</td>
-				<td>blah</td>
+				<td>106217932</td>
+				<td>Art, music, coffee, travelling, figure skating</td>
 			</tr>
+		</div>
+	
+		<div>
 			<tr>
 				<td>Khang</td>
-				<td>ID_SWC</td>
+				<td>106217893</td>
 				<td>blah</td>
 			</tr>
+		</div>
+	
+		<div>
 			<tr>
 				<td>Toan</td>
-				<td>ID_SWC</td>
-				<td>blah</td>
+				<td>106217877</td>
+				<td>Pop music, Sci-fi movies, Gaming (mostly League of Legend and simulator games), Manhwa, Manga.</td>
 			</tr>
+		</div>
+
 		</tbody>
-	</table>		
-	<hr>
+	</div>
+	</table>
+<!-- Table end -->
+</section>	
+
 	<footer>
-		<img src="images\MemMis Logo.png" alt="memmislogo" style="width: 50px; height: auto;"> <!-- width~50px, height:auto-->
-		<p>Contact us if you encounter a problem:<a href="mailto:example@swin.edu.au">example@swin.edu.au</a></p>
-		<p>&amp; 2025 MemMis. All rights reserve.</p>
-		
+		<p>&copy; 2025 MemMis. All rights reserved.</p>
+		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34atlOrigin=eyJpIjoiODE4YmJlYmU5NjFkNGiZWFjY2ZjODUxN2U2ZTFjMGYiLCJwIjoiaiJ9" target="_blank">Jira Project for MemMis website</a>
 	</footer>
 
 	</body>
