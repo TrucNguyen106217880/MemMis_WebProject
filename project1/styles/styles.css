@@ -63,11 +63,57 @@
 }
 
 /* index.html */
-
+*{
+    line-height: 1.5;
+}
+p{
+    text-align: justify;
+}
+#welcome h1{
+    text-align: center;
+}
+#welcome h2{
+    text-align: center;
+}
+#welcome a {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#welcome a:hover {
+  transform: scale(1.05);
+}
+#hiring a {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+#hiring a:hover {
+  transform: scale(1.05);
+}
 /* jobs.html */
 
 /* apply.html */
 
 /* about.html */
+#header_1_About_Us{
+    text-align: center;
+}
+#header_2_About_Us img {
+  width: 45px;
+  height: auto;
+}
 
 /* Footer */
