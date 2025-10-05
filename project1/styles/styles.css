@@ -13,7 +13,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     line-height: 1.5;
 }
 /* Header (Logo & Menu) */
@@ -118,8 +118,6 @@
 }
 /* The CTA buttons */
 #welcome a,
-#information a,
-#projects a,
 #hiring a{
   display: inline-block;
   margin-top: 1em;
@@ -135,7 +133,62 @@
 }
 
 /* jobs.html */
-
+    /* Headers */
+#G01, 
+#G07, 
+#G04{
+    font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin-top: 40px;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+.smol-h{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+    /* Headers' aside */
+#G01 aside{
+    width: 25%;
+    float: right;
+    border: 2px solid #0077aa;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+    background-color: #eef6fb;
+    
+}
+#G07 aside{
+    width: 25%;
+    float: right;
+    border: 2px solid #0077aa;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+    background-color: #eef6fb;
+}
+#G07 aside{
+    width: 25%;
+    float: right;
+    border: 2px solid #0077aa;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+    background-color: #eef6fb;
+}
+    /* Lists */
+ul, ol{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+    /* Descs */
+.desc{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
 /* apply.html */
 
 /* about.html */
@@ -149,6 +202,8 @@ footer{
     margin: 0 auto;       
     padding: 20px;
     text-align: center;
+    background-color: #eee;
+    border-radius: 10px;
 }
 footer p{
     text-align: center;
