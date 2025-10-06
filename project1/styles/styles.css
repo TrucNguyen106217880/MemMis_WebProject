@@ -24,96 +24,114 @@
 .menu {
     display: flex;
     justify-content: space-evenly;
-    list-style-type: none;
+    align-items: center;
+
     background-color: #eee;
-    padding: 0.5em;
+
+    list-style-type: none;
 }
 .menu a {
-    padding: 0.5em;
-    color: #444;
+    display: flex;
+    flex-wrap: wrap;
+
+    padding-inline: 0.5rem;
+
+    line-height: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
     font-weight: bold;
+    text-align: center;
     text-decoration: none;
+    color: #444;
 }
 .menu a:hover {
-    background-color: #aaa;
-    color: green;
+    background-color: #bbb;
+
     font-weight: bold;
+    color: green;
 }
 .active {
-    background-color: #aaa;
     border: none;
+
+    background-color: #bbb;
+
     color: green !important;
 }
 .menu li {
     position: relative;
 }
 .joblist {
-    list-style-type: none;
     display: none;
     position: absolute;
-    background-color: #eee;
-    min-width: 15em;
     z-index: 1;
+
+    background-color: #eee;
+
+    list-style-type: none;
 }
 .joblist a {
     display: block;
+
+    min-width: max-content;
+
+    line-height: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
 }
 .menu li:hover .joblist {
     display: block;
 }
 
 /* index.html */
-#welcome{
-    max-width: 700px;    
-    margin: 0 auto;       
+#welcome {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#welcome h1{
+#welcome h1 {
     text-align: center;
 }
-#welcome h2{
+#welcome h2 {
     text-align: center;
 }
-#welcome a:hover{
+#welcome a:hover {
     color: yellow;
 }
-#differentiators{
-    max-width: 700px;    
-    margin: 0 auto;       
+#differentiators {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#information{
-    max-width: 700px;    
-    margin: 0 auto;       
+#information {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#information a:hover{
+#information a:hover {
     color: yellow;
 }
-#projects{
-    max-width: 700px;    
-    margin: 0 auto;       
+#projects {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#projects a:hover{
+#projects a:hover {
     color: yellow;
 }
-#services{
-    max-width: 700px;    
-    margin: 0 auto;       
+#services {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#hiring{
-    max-width: 700px;    
-    margin: 0 auto;       
+#hiring {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
-#hiring a:hover{
+#hiring a:hover {
     color: yellow;
 }
-#contact{
-    max-width: 700px;    
-    margin: 0 auto;       
+#contact {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
 }
 /* The CTA buttons */
@@ -300,8 +318,8 @@ input[type="submit"]:hover {
 }
 /* about.html */
 #header_2_About_Us img {
-  width: 45px;
-  height: auto;
+    width: 45px;
+    height: auto;
 }
 .Interest_Table{
     margin-left: auto;
@@ -309,14 +327,14 @@ input[type="submit"]:hover {
     margin-top: 20px;
 }
 /* Footer */
-footer{
-    max-width: 700px;    
-    margin: 0 auto;       
+footer {
+    max-width: 700px;
+    margin: 0 auto;
     padding: 20px;
     text-align: center;
     background-color: #eee;
     border-radius: 10px;
 }
-footer p{
+footer p {
     text-align: center;
 }
