@@ -101,9 +101,7 @@
 .menu a {
     display: flex;
     flex-wrap: wrap;
-
     padding-inline: 0.5rem;
-
     line-height: clamp(1.2rem, 4vw, 2rem);
     font-size: clamp(0.875rem, 2vw, 1.125rem);
     font-weight: bold;
@@ -111,43 +109,35 @@
     text-decoration: none;
     color: #444;
 }
-.menu a:hover {
+.menu a:hover{
     background-color: #bbb;
-
     font-weight: bold;
     color: green;
 }
 .active {
     border: none;
-
     background-color: #bbb;
-
     color: green !important;
 }
-.menu li {
+.menu li{
     position: relative;
 }
-.joblist {
+.joblist{
     display: none;
     position: absolute;
     z-index: 1;
-
     background-color: #eee;
-
     list-style-type: none;
 }
-.joblist a {
+.joblist a{
     display: block;
-
     min-width: max-content;
-
     line-height: clamp(1.2rem, 4vw, 2rem);
     font-size: clamp(0.875rem, 2vw, 1.125rem);
 }
-.menu li:hover .joblist {
+.menu li:hover .joblist{
     display: block;
 }
-
 /* index.html */
 #welcome {
     max-width: 700px;
@@ -217,7 +207,6 @@
   cursor: pointer;   
   background: linear-gradient(to right, #00c6ff, #0072ff);
 }
-
 /* jobs.html */
     /* Headers */
 #SO145, 
@@ -310,9 +299,20 @@ input[type="submit"]:hover {
   background-color: #005fa3;
 }
 /* about.html */
+#header_1_About_Us,
+#header_2_About_Us{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
 #header_2_About_Us img {
     width: 45px;
     height: auto;
+}
+.About_MemMis{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
 }
 .Dont_touch ul li ul li{
   float: right;
