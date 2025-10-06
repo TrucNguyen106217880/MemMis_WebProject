@@ -191,6 +191,8 @@
 }
 /* apply.html */
 form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
+  /* flex-direction: column;
+  display: flex; */
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
@@ -221,6 +223,62 @@ label{
   padding: 8px;
   margin-top: 5px;
   box-sizing: border-box;
+}
+    /* align label to checkbox */
+input[name="requiredtechnicalSkill0"],
+input[name="requiredtechnicalSkill0"]{
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+label[for^="requiredtechnicalSkill0"] {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+input[name="requiredtechnicalSkill1"],
+input[name="requiredtechnicalSkill1"]{
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+label[for^="requiredtechnicalSkill1"] {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+input[name="requiredtechnicalSkill2"],
+input[name="requiredtechnicalSkill2"]{
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+label[for^="requiredtechnicalSkill2"] {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+input[name="requiredtechnicalSkill3"],
+input[name="requiredtechnicalSkill3"]{
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+label[for^="requiredtechnicalSkill3"] {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
+}
+input[name="requiredtechnicalSkill4"],
+input[name="requiredtechnicalSkill4"]{
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
+label[for^="requiredtechnicalSkill4"] {
+  display: inline-block;
+  margin-right: 20px;
+  vertical-align: middle;
 }
     /* checkboxes and radio buttons */
 input[type="checkbox"],
