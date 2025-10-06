@@ -314,10 +314,19 @@ input[type="submit"]:hover {
     margin: 0 auto;       
     padding: 20px;
 }
-.Dont_touch ul li ul li{
+div aside{
+  clear: both;
+}
+.Dont_touch ul{
+  font-weight: bold;
+  margin-left: 20px;
+}
+.About_Ids{
   float: right;
   font-weight: bold;
   margin-left: 20px;
+  clear: left;
+  max-width: 200px;
 }
 .ShadowyBox{
     max-width: 700px;    
@@ -327,12 +336,12 @@ input[type="submit"]:hover {
 figure{
   float: right;
   margin: 20px;
-  clear: both;
 }
 figure img{
   border: 3px solid #0077aa;
   width: 150px;
   height: auto;
+  display: block;
 }
 .Interest_Table{
   margin-left: auto;
