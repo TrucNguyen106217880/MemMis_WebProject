@@ -1,1 +1,378 @@
+/* 
+    filename: styles.css
+    
+    author: Khang Mai 106217893 (main), Truc Nguyen 106217880 (sub)
 
+    date created: September 21st, 2025
+
+    date modified: October 1st, 2025
+
+    description: CSS stylesheet for MemMis website
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    line-height: 1.5;
+}
+@media screen and (max-width: 768px) {
+  #welcome,
+  #differentiators,
+  #information,
+  #projects,
+  #services,
+  #hiring,
+  #contact,
+  #SO145,
+  #AI313,
+  #CY296,
+  .smol_h,
+  .as_right,
+  .le_list,
+  .desc,
+  footer{
+    padding: 10px;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+  /* form layout */
+  form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
+    padding: 10px;
+    max-width: 95%;
+    margin: 20px auto;
+  }
+  label{
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  #jobReferenceNumber,
+  #firstName,
+  #lastName,
+  #dateOfBirth,
+  #streetAddress,
+  #suburb\/Town,
+  #state,
+  #post,
+  #eMail,
+  #phoneNumber,
+  #otherSkills{
+    font-size: 14px;
+    padding: 6px;
+  }
+  input[type="submit"]{
+    width: 100%;
+    font-size: 16px;
+  }
+  .menu{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .menu a{
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .joblist {
+    position: static;
+    width: 100%;
+  }
+  /* CTA buttons */
+  #welcome a,
+  #hiring a{
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+/* Header (Logo & Menu) */
+#logo {
+    display: inline;
+    width: 100px;
+}
+.menu {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: #eee;
+
+    list-style-type: none;
+}
+.menu a {
+    display: flex;
+    flex-wrap: wrap;
+    padding-inline: 0.5rem;
+    line-height: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #444;
+}
+.menu a:hover{
+    background-color: #bbb;
+    font-weight: bold;
+    color: green;
+}
+.active {
+    border: none;
+    background-color: #bbb;
+    color: green !important;
+}
+.menu li{
+    position: relative;
+}
+.joblist{
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #eee;
+    list-style-type: none;
+}
+.joblist a{
+    display: block;
+    min-width: max-content;
+    line-height: clamp(1.2rem, 4vw, 2rem);
+    font-size: clamp(0.875rem, 2vw, 1.125rem);
+}
+.menu li:hover .joblist{
+    display: block;
+}
+/* index.html */
+#welcome {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#welcome h1 {
+    text-align: center;
+}
+#welcome h2 {
+    text-align: center;
+}
+#welcome a:hover {
+    color: yellow;
+}
+#differentiators {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#information {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#information a:hover {
+    color: yellow;
+}
+#projects {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#projects a:hover {
+    color: yellow;
+}
+#services {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#hiring {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+#hiring a:hover {
+    color: yellow;
+}
+#contact {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+}
+/* The CTA buttons */
+#welcome a,
+#hiring a{
+  display: inline-block;
+  margin-top: 1em;
+  text-decoration: none;
+  color: white;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;   
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+}
+/* jobs.html */
+    /* Headers */
+#SO145, 
+#AI313, 
+#CY296{
+    font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
+    margin-top: 40px;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+.smol_h{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+    /* Headers' aside */
+.as_right{
+    width: 25%;
+    float: right;
+    border: 2px solid #0077aa;
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+    background-color: #eef6fb;
+}
+    /* Lists */
+.le_list{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+    /* Descs */
+.desc{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+/* apply.html */
+form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
+  /* flex-direction: column;
+  display: flex; */
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+    /* labels */
+label{
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+    /* inputs, selects, and textarea */
+#jobReferenceNumber,
+#firstName,
+#lastName,
+#dateOfBirth,
+#streetAddress,
+#suburb\/Town,
+#state,
+#post,
+#eMail,
+#phoneNumber,
+#otherSkills{
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+    /* checkboxes and radio buttons */
+input[type="checkbox"],
+input[type="radio"] {
+  margin-right: 8px;
+}
+    /* submit button */
+input[type="submit"] {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type="submit"]:hover {
+  background-color: #005fa3;
+}
+/* about.html */
+#header_1_About_Us,
+#header_2_About_Us{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+#header_2_About_Us img {
+    width: 45px;
+    height: auto;
+}
+.About_MemMis{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+div aside{
+  clear: both;
+}
+.Dont_touch ul{
+  font-weight: bold;
+  margin-left: 20px;
+}
+.About_Ids{
+  float: right;
+  font-weight: bold;
+  margin-left: 20px;
+  clear: left;
+  max-width: 200px;
+}
+.ShadowyBox{
+    max-width: 700px;    
+    margin: 0 auto;       
+    padding: 20px;
+}
+figure{
+  float: right;
+  margin: 20px;
+}
+figure img{
+  border: 3px solid #0077aa;
+  width: 150px;
+  height: auto;
+  display: block;
+}
+.Interest_Table{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+  width: 80%;
+}
+.Interest_Table th{
+  font-weight: bold;
+  background-color: #e0f7fa; 
+  padding: 10px;
+}
+.Interest_Table td{
+  background-color: #f0fcff; 
+  padding: 10px;
+  text-align: center;
+}
+.Interest_Table td:hover{
+  background-color: #cceeff;
+}
+/* Footer */
+footer {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 10px;
+}
+footer p {
+    text-align: center;
+}
