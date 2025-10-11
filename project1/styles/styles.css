@@ -149,7 +149,7 @@
 #welcome{
   margin: 0 auto;
   padding: 20px;
-  background-image: url(styles\images\Banner.png);
+  background-image: url(images/Banner.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
