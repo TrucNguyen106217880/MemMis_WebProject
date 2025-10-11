@@ -215,10 +215,7 @@
 #AI313, 
 #CY296{
     font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
-    margin-top: 40px;   
-    padding: 20px;
-}
-.smol_h{
+    margin-top: 20px;   
     padding: 20px;
 }
     /* Headers' aside */
@@ -232,7 +229,7 @@
 }
 .desc,
 .le_list,
-.smol_h {
+.smol_h{
   max-width: 65%;
   padding: 20px;
 }
