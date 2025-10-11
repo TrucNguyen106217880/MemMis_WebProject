@@ -215,32 +215,26 @@
 #AI313, 
 #CY296{
     font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
-    margin-top: 40px;    
-    margin: 0 auto;       
+    margin-top: 40px;   
     padding: 20px;
 }
-.smol_h{   
-    margin: 0 auto;       
+.smol_h{
     padding: 20px;
 }
     /* Headers' aside */
-.as_right{
-    width: 25%;
-    float: right;
-    border: 2px solid #0077aa;  
-    margin-right: 175px;
-    padding: 12px;
-    background-color: #eef6fb;
+ .as_right{
+  float: right;
+  width: 25%;
+  margin: 0 20px 20px 20px;
+  padding: 12px;
+  border: 2px solid #0077aa;
+  background-color: #eef6fb;
 }
-    /* Lists */
-.le_list{
-    margin: 0 auto;       
-    padding: 20px;
-}
-    /* Descs */
-.desc{    
-    margin: 0 auto;       
-    padding: 20px;
+.desc,
+.le_list,
+.smol_h {
+  max-width: 65%;
+  padding: 20px;
 }
 /* apply.html */
 form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
