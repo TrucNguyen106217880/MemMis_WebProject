@@ -36,6 +36,60 @@
     max-width: 95%;
     margin: 0 auto;
   }
+  #jobReferenceNumber,
+  #firstName,
+  #lastName,
+  #dateOfBirth,
+  #streetAddress,
+  #suburb\/Town,
+  #state,
+  #post,
+  #eMail,
+  #phoneNumber,
+  #otherSkills{
+    font-size: 14px;
+    padding: 6px;
+  }
+  input[type="submit"]{
+    width: 100%;
+    font-size: 16px;
+  }
+  #welcome{
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+  }
+  #welcome h1,
+  #welcome h2{
+    font-size: 1.5rem;
+  }
+  #welcome p{
+    font-size: 0.95rem;
+    margin-top: 10px;
+  }
+  .menu{
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  }
+  .menu li{
+  width: 100%;
+  text-align: center;
+  }
+  .menu a{
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border-bottom: 1px solid #ccc;
+  }
+  .joblist{
+    position: static;
+    width: 100%;
+    padding: 8px;
+    font-size: 0.95rem;
+  }
   .ShadowyBox{
     flex-direction: column;
     align-items: center;
@@ -55,42 +109,19 @@
     font-size: 14px;
     margin-top: 10px;
   }
-  #jobReferenceNumber,
-  #firstName,
-  #lastName,
-  #dateOfBirth,
-  #streetAddress,
-  #suburb\/Town,
-  #state,
-  #post,
-  #eMail,
-  #phoneNumber,
-  #otherSkills{
-    font-size: 14px;
-    padding: 6px;
-  }
-  input[type="submit"]{
-    width: 100%;
-    font-size: 16px;
-  }
-  .menu{
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .menu a{
-    padding: 10px;
-    font-size: 1rem;
-  }
-  .joblist{
-    position: static;
-    width: 100%;
-  }
   /* CTA buttons */
   #welcome a,
   #hiring a{
     width: 100%;
     text-align: center;
     font-size: 14px;
+  }
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+  body{
+    overflow-x: hidden;
   }
 }
 /* Header (Logo & Menu) */
@@ -147,18 +178,28 @@
 }
 /* index.html */
 #welcome{
-  margin: 0 auto;
-  padding: 20px;
+margin: 0 auto;
+  text-align: justify;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20%;
+  padding-left: 35%;
+  /* Asked Copilot for these two lines */
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+#welcome{
   background-image: url(images/Banner.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
-#welcome h1{
-  text-align: center;
-}
+#welcome h1,
 #welcome h2{
   text-align: center;
+  /* These two also */
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 #welcome a:hover{
   color: yellow;
