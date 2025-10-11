@@ -16,7 +16,7 @@
   font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
   line-height: 1.5;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px){
   #welcome,
   #differentiators,
   #information,
@@ -31,27 +31,27 @@
   .as_right,
   .le_list,
   .desc,
-  footer {
+  footer{
     padding: 10px;
     max-width: 95%;
     margin: 0 auto;
   }
-  .ShadowyBox {
+  .ShadowyBox{
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
   .ShadowyBox figure,
-  .ShadowyBox dd {
+  .ShadowyBox dd{
     width: 100%;
   }
   /* form layout */
-  form[action="https://mercury.swin.edu.au/it000000/formtest.php"] {
+  form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
     padding: 10px;
     max-width: 95%;
     margin: 20px auto;
   }
-  label {
+  label{
     font-size: 14px;
     margin-top: 10px;
   }
@@ -65,49 +65,47 @@
   #post,
   #eMail,
   #phoneNumber,
-  #otherSkills {
+  #otherSkills{
     font-size: 14px;
     padding: 6px;
   }
-  input[type="submit"] {
+  input[type="submit"]{
     width: 100%;
     font-size: 16px;
   }
-  .menu {
+  .menu{
     flex-direction: column;
     align-items: stretch;
   }
-  .menu a {
+  .menu a{
     padding: 10px;
     font-size: 1rem;
   }
-  .joblist {
+  .joblist{
     position: static;
     width: 100%;
   }
   /* CTA buttons */
   #welcome a,
-  #hiring a {
+  #hiring a{
     width: 100%;
     text-align: center;
     font-size: 14px;
   }
 }
 /* Header (Logo & Menu) */
-#logo {
+#logo{
   display: inline;
   width: 100px;
 }
-.menu {
+.menu{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-
   background-color: #eee;
-
   list-style-type: none;
 }
-.menu a {
+.menu a{
   display: flex;
   flex-wrap: wrap;
   padding-inline: 0.5rem;
@@ -118,85 +116,89 @@
   text-decoration: none;
   color: #444;
 }
-.menu a:hover {
+.menu a:hover{
   background-color: #bbb;
   font-weight: bold;
   color: green;
 }
-.active {
+.active{
   border: none;
   background-color: #bbb;
   color: green !important;
 }
-.menu li {
+.menu li{
   position: relative;
 }
-.joblist {
+.joblist{
   display: none;
   position: absolute;
   z-index: 1;
   background-color: #eee;
   list-style-type: none;
 }
-.joblist a {
+.joblist a{
   display: block;
   min-width: max-content;
   line-height: clamp(1.2rem, 4vw, 2rem);
   font-size: clamp(0.875rem, 2vw, 1.125rem);
 }
-.menu li:hover .joblist {
+.menu li:hover .joblist{
   display: block;
 }
 /* index.html */
-#welcome {
+#welcome{
   margin: 0 auto;
   padding: 20px;
+  background-image: url(styles\images\Banner.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-#welcome h1 {
+#welcome h1{
   text-align: center;
 }
-#welcome h2 {
+#welcome h2{
   text-align: center;
 }
-#welcome a:hover {
+#welcome a:hover{
   color: yellow;
 }
-#differentiators {
+#differentiators{
   margin: 0 auto;
   padding: 20px;
 }
-#information {
+#information{
   margin: 0 auto;
   padding: 20px;
 }
-#information a:hover {
+#information a:hover{
   color: yellow;
 }
-#projects {
+#projects{
   margin: 0 auto;
   padding: 20px;
 }
-#projects a:hover {
+#projects a:hover{
   color: yellow;
 }
-#service {
+#service{
   margin: 0 auto;
   padding: 20px;
 }
-#hiring {
+#hiring{
   margin: 0 auto;
   padding: 20px;
 }
-#hiring a:hover {
+#hiring a:hover{
   color: yellow;
 }
-#contact {
+#contact{
   margin: 0 auto;
   padding: 20px;
 }
 /* The CTA buttons */
 #welcome a,
-#hiring a {
+#hiring a{
   display: inline-block;
   margin-top: 1em;
   text-decoration: none;
@@ -234,9 +236,10 @@
   padding: 20px;
 }
 /* apply.html */
-form[action="https://mercury.swin.edu.au/it000000/formtest.php"] {
-  /* flex-direction: column;
-  display: flex; */
+form[action="https://mercury.swin.edu.au/it000000/formtest.php"]{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
@@ -246,7 +249,7 @@ form[action="https://mercury.swin.edu.au/it000000/formtest.php"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 /* labels */
-label {
+label{
   display: block;
   margin-top: 15px;
   font-weight: bold;
@@ -262,7 +265,7 @@ label {
 #post,
 #eMail,
 #phoneNumber,
-#otherSkills {
+#otherSkills{
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -270,11 +273,11 @@ label {
 }
 /* checkboxes and radio buttons */
 input[type="checkbox"],
-input[type="radio"] {
+input[type="radio"]{
   margin-right: 8px;
 }
 /* submit button */
-input[type="submit"] {
+input[type="submit"]{
   margin-top: 20px;
   padding: 10px 20px;
   background-color: #0077cc;
@@ -283,40 +286,40 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
-input[type="submit"]:hover {
+input[type="submit"]:hover{
   background-color: #005fa3;
 }
 /* about.html */
 #header_1_About_Us,
-#header_2_About_Us {
+#header_2_About_Us{
 
   margin: 0 auto;
   padding: 20px;
 }
-#header_2_About_Us img {
+#header_2_About_Us img{
   width: 45px;
   height: auto;
 }
-.About_MemMis {
+.About_MemMis{
 
   margin: 0 auto;
   padding: 20px;
 }
-div aside {
+div aside{
   clear: both;
 }
-.Dont_touch ul {
+.Dont_touch ul{
   font-weight: bold;
   margin-left: 20px;
 }
-.About_Ids {
+.About_Ids{
   float: right;
   font-weight: bold;
   margin-left: 20px;
   clear: left;
   max-width: 200px;
 }
-.ShadowyBox {
+.ShadowyBox{
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
@@ -328,37 +331,27 @@ div aside {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-.ShadowyBox figure {
+.ShadowyBox figure{
   margin: 0;
   flex: 0 0 150px;
 }
-.ShadowyBox figure img {
+.ShadowyBox figure img{
   width: 150px;
   height: auto;
   border: 3px solid #0077aa;
   display: block;
 }
-.ShadowyBox dt {
+.ShadowyBox dt{
   width: 100%;
   font-size: 1.2em;
   font-weight: bold;
   margin-bottom: 10px;
 }
-.ShadowyBox dd {
+.ShadowyBox dd{
   flex: 1;
   margin: 0;
 }
-/* figure{
-  float: right;
-  margin: 20px;
-}
-figure img{
-  border: 3px solid #0077aa;
-  width: 150px;
-  height: auto;
-  display: block;
-} */
-.Interest_Table {
+.Interest_Table{
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
@@ -366,21 +359,21 @@ figure img{
   border-collapse: collapse;
   width: 80%;
 }
-.Interest_Table th {
+.Interest_Table th{
   font-weight: bold;
   background-color: #e0f7fa;
   padding: 10px;
 }
-.Interest_Table td {
+.Interest_Table td{
   background-color: #f0fcff;
   padding: 10px;
   text-align: center;
 }
-.Interest_Table td:hover {
+.Interest_Table td:hover{
   background-color: #cceeff;
 }
 /* Footer */
-footer {
+footer{
 
   margin: 0 auto;
   padding: 20px;
@@ -388,6 +381,6 @@ footer {
   background-color: #eee;
   border-radius: 10px;
 }
-footer p {
+footer p{
   text-align: center;
 }
