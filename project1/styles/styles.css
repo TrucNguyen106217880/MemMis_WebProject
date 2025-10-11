@@ -140,7 +140,6 @@
 }
 /* index.html */
 #welcome {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -154,12 +153,10 @@
     color: yellow;
 }
 #differentiators {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
 #information {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -167,7 +164,6 @@
     color: yellow;
 }
 #projects {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -175,12 +171,10 @@
     color: yellow;
 }
 #services {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
 #hiring {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -188,7 +182,6 @@
     color: yellow;
 }
 #contact {
-    max-width: 700px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -213,13 +206,11 @@
 #AI313, 
 #CY296{
     font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
-    margin-top: 40px;
-    max-width: 700px;    
+    margin-top: 40px;    
     margin: 0 auto;       
     padding: 20px;
 }
-.smol_h{
-    max-width: 700px;    
+.smol_h{   
     margin: 0 auto;       
     padding: 20px;
 }
@@ -227,21 +218,18 @@
 .as_right{
     width: 25%;
     float: right;
-    border: 2px solid #0077aa;
-    max-width: 700px;    
+    border: 2px solid #0077aa;  
     margin: 0 auto;       
     padding: 20px;
     background-color: #eef6fb;
 }
     /* Lists */
 .le_list{
-    max-width: 700px;    
     margin: 0 auto;       
     padding: 20px;
 }
     /* Descs */
-.desc{
-    max-width: 700px;    
+.desc{    
     margin: 0 auto;       
     padding: 20px;
 }
@@ -301,7 +289,7 @@ input[type="submit"]:hover {
 /* about.html */
 #header_1_About_Us,
 #header_2_About_Us{
-    max-width: 700px;    
+        
     margin: 0 auto;       
     padding: 20px;
 }
@@ -310,7 +298,7 @@ input[type="submit"]:hover {
     height: auto;
 }
 .About_MemMis{
-    max-width: 700px;    
+        
     margin: 0 auto;       
     padding: 20px;
 }
@@ -329,7 +317,7 @@ div aside{
   max-width: 200px;
 }
 .ShadowyBox{
-    max-width: 700px;    
+        
     margin: 0 auto;       
     padding: 20px;
 }
@@ -366,7 +354,7 @@ figure img{
 }
 /* Footer */
 footer {
-    max-width: 700px;
+    
     margin: 0 auto;
     padding: 20px;
     text-align: center;
