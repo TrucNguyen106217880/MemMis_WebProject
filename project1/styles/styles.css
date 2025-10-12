@@ -332,18 +332,15 @@ input[type="submit"]:hover{
   background-color: #005fa3;
 }
 /* about.html */
-#header_1_About_Us,
-#header_2_About_Us{
-
+#header_About_Us{
   margin: 0 auto;
   padding: 20px;
 }
-#header_2_About_Us img{
+#header_About_Us img{
   width: 45px;
   height: auto;
 }
 .About_MemMis{
-
   margin: 0 auto;
   padding: 20px;
 }
@@ -371,7 +368,6 @@ div aside{
 }
 .ShadowyBox figure{
   margin: 0;
-  flex: 0 0 150px;
 }
 .ShadowyBox figure img{
   width: 150px;
