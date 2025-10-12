@@ -187,7 +187,6 @@ margin: 0 auto;
   padding-bottom: 20px;
   padding-right: 20%;
   padding-left: 35%;
-  /* Asked Copilot for these two lines */
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
 }
@@ -200,9 +199,8 @@ margin: 0 auto;
 #welcome h1,
 #welcome h2{
   text-align: center;
-  /* These two also */
   color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 3px black;
 }
 #welcome a:hover{
   color: yellow;
@@ -364,10 +362,6 @@ div aside{
   max-width: 200px;
 }
 .ShadowyBox{
-  display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  align-items: flex-start;
   margin: 20px auto;
   padding: 20px;
   border: 1px solid #ccc;
