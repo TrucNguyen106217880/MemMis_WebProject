@@ -202,39 +202,18 @@ margin: 0 auto;
   color: white;
   text-shadow: 1px 1px 3px black;
 }
-#welcome a:hover{
-  color: yellow;
-}
-#differentiators{
-  margin: 0 auto;
-  padding: 20px;
-}
-#information{
-  margin: 0 auto;
-  padding: 20px;
-}
+#welcome a:hover,
+#hiring a:hover,
+#projects a:hover,
 #information a:hover{
   color: yellow;
 }
-#projects{
-  margin: 0 auto;
-  padding: 20px;
-}
-#projects a:hover{
-  color: yellow;
-}
-#service{
-  margin: 0 auto;
-  padding: 20px;
-}
-#hiring{
-  margin: 0 auto;
-  padding: 20px;
-}
-#hiring a:hover{
-  color: yellow;
-}
-#contact{
+#information,
+#projects,
+#service,
+#hiring,
+#contact,
+#differentiators{
   margin: 0 auto;
   padding: 20px;
 }
