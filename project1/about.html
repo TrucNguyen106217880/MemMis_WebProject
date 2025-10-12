@@ -33,10 +33,8 @@
 			</ul>
 		</nav>
 	</header>
-	<h1 id="header_1_About_Us">About us Page</h1> <!--In the center-->
-
 	<div>
-		<h2 id="header_2_About_Us">Team: MemMis</h2><!-- img width~15%, height auto -->
+		<h1 id="header_About_Us">Team: MemMis</h1><!-- img width~15%, height auto -->
 	</div>
 	<section>
 		<!-- I reread the requirement, and i think this article section should be left alone only a nested list with name, ids and lecturer, of course i'll still put Mr.Wilson pic in. -->
@@ -48,27 +46,27 @@
 				<li class="Don't_touch"> MemMis Team Member:
 					<ul>
 						<li>Name: Truc Nguyen
-							<ul>
+							<ul class="About_Ids">
 								<li>Id: 106217880</li>
 							</ul>
 						</li>
 						<li>Name: Duy Tran
-							<ul>
+							<ul class="About_Ids">
 								<li>Id: 106216081</li>
 							</ul>
 						</li>
 						<li>Name: Viet Do
-							<ul>
+							<ul class="About_Ids">
 								<li>Id: 106217932</li>
 							</ul>
 						</li>
 						<li>Name: Khang Mai
-							<ul>
+							<ul class="About_Ids">
 								<li>Id: 106217893</li>
 							</ul>
 						</li>
 						<li>Name: Toan Hoang
-							<ul>
+							<ul class="About_Ids">
 								<li>Id: 106217877</li>
 							</ul>
 						</li>
@@ -83,10 +81,7 @@
 						<li>
 							<ul>Name: MR. Wilson
 								<li>Occupation: Lecturer at Swinburne Vietnam</li>
-								<figure>
-									<figcaption>Mr. Wilson</figcaption><img src="images/ThS-Doan-Tan-Trung.jpg"
-										 alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
-								</figure>
+								<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
 							</ul>
 						</li>
 					</ul>
@@ -100,13 +95,11 @@
 
 		<!-- Contribution Description list -->
 		<!-- I want to make each div dt border shadow effects like the one we did in the lab 5 so it's like each dt is in it's own box to read easier -->
-		<div>
-			<dl class="ShadowyBox">
+		<div class="ShadowyBox">
+			<dl>
 				<dt>Truc</dt>
 				<!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
-				<figure><img src="images/Truc.jpg" alt="Truc" class="Inline_Imgs" title="Team Lead" id="Truc_Img">
-					<figcaption class="Figcap_Centre">Truc</figcaption>
-				</figure>
+				
 				<dd>Git support, CSS support, HTML support, Team lead
 					<ul>
 						<li>Male</li>
@@ -117,11 +110,13 @@
 					</ul>
 				</dd>
 			</dl>
-			<dl class="ShadowyBox">
+			<figure><img src="images/Truc.jpg" alt="Truc_pfp" class="Inline_Imgs" title="Team Lead" id="Truc_Img">
+					<figcaption class="Figcap_Centre">Truc</figcaption>
+			</figure>
+		</div>
+		<div class="ShadowyBox">
+			<dl>
 				<dt>Duy</dt>
-				<figure><img src="images/Duy.jpg" alt="Duy" class="Float_Right_Img" title="Second Member" id="Duy_Img">
-					<figcaption class="Figcap_Centre">Duy</figcaption>
-				</figure>
 				<dd>Job description Page design
 					<ul>
 						<li>Male</li>
@@ -133,12 +128,13 @@
 					</ul>
 				</dd>
 			</dl>
-			<dl class="ShadowyBox">
+			<figure><img src="images/Duy.jpg" alt="Duy_pfp" class="Float_Right_Img" title="Second Member" id="Duy_Img">
+					<figcaption class="Figcap_Centre">Duy</figcaption>
+			</figure>
+		</div>
+		<div class="ShadowyBox">
+			<dl>
 				<dt>Viet</dt>
-				<figure><img src="images/Viet.jpg" alt="Viet" class="Float_Right_Img" title="Third Member"
-						 id="Viet_Img">
-					<figcaption class="Figcap_Centre">Viet</figcaption>
-				</figure>
 				<dd>Job application Page design
 					<ul>
 						<li>Male</li>
@@ -149,28 +145,30 @@
 					</ul>
 				</dd>
 			</dl>
-			<dl class="ShadowyBox">
-				<div>
-					<dt>Khang</dt>
-					<figure><img src="images/Khang.png" alt="Khang" class="Float_Right_Img" title="Fourth Member"
-							 id="Khang_Img">
-						<figcaption class="Figcap_Centre">Khang</figcaption>
-					</figure>
-					<dd>CSS design
-						<ul>
-							<li>Male</li>
-							<li>Birthday:8/02/2007</li>
-							<li>Home town: Vinh Long, rich in alluvial soil and lots of waterway/river/canal networks.
-								“Miệt vườn” style tourism (orchard gardens, floating markets). </li>
-						</ul>
-					</dd>
+			<figure><img src="images/Viet.jpg" alt="Viet_pfp" class="Float_Right_Img" title="Third Member" id="Viet_Img">
+					<figcaption class="Figcap_Centre">Viet</figcaption>
+			</figure>
+		</div>
+		<div class="ShadowyBox">
+			<dl>
+				<dt>Khang</dt>
+				<dd>CSS design
+					<ul>
+						<li>Male</li>
+						<li>Birthday:8/02/2007</li>
+						<li>Home town: Vinh Long, rich in alluvial soil and lots of waterway/river/canal networks.
+							“Miệt vườn” style tourism (orchard gardens, floating markets). Some famous locations:An 
+							Bình island & Bình Hòa Phước island, Van Thanh Temple, Van Xuong Shrine,...</li>
+					</ul>
+				</dd>
 			</dl>
-			<dl class="ShadowyBox">
+			<figure><img src="images/Khang.png" alt="Khang_pfp" class="Float_Right_Img" title="Fourth Member" id="Khang_Img">
+					<figcaption class="Figcap_Centre">Khang</figcaption>
+			</figure>
+		</div>
+		<div class="ShadowyBox">
+			<dl>
 				<dt>Toan</dt>
-				<figure><img src="images/Toan.jpg" alt="Toan" class="Float_Right_Img" title="Fifth Member"
-						 id="Toan_Img">
-					<figcaption class="Figcap_Centre">Toan</figcaption>
-				</figure>
 				<dd>About us Page design
 					<ul>
 						<li>Male</li>
@@ -181,6 +179,9 @@
 					</ul>
 				</dd>
 			</dl>
+			<figure><img src="images/Toan.jpg" alt="Toan_pfp" class="Float_Right_Img" title="Fifth Member" id="Toan_Img">
+					<figcaption class="Figcap_Centre">Toan</figcaption>
+			</figure>
 		</div>
 		<!-- Description list end -->
 		<div>
