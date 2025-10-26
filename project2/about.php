@@ -103,7 +103,8 @@
 					<dt>Truc</dt>
 					<!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
 					
-					<dd>Git support, CSS support, HTML support, Team lead
+					<dd>Git support, CSS support, HTML support, Team lead	<!-- project 1 -->
+						, HTML to PHP, Setting page design, enhancements	<!-- project 2 -->
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 02/04/2007</li>
@@ -121,6 +122,7 @@
 				<dl>
 					<dt>Duy</dt>
 					<dd>Job description Page design
+						, Database design <!-- I don't know what jobs description in database is so i'll just put this here and comeback later if there's any changes-->
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 1/1/2007</li>
@@ -139,6 +141,7 @@
 				<dl>
 					<dt>Viet</dt>
 					<dd>Job application Page design
+						, Expression of Interest process
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 28/10/2007</li>
@@ -156,6 +159,7 @@
 				<dl>
 					<dt>Khang</dt>
 					<dd>CSS design
+						, Expression of Interest Table
 						<ul>
 							<li>Male</li>
 							<li>Birthday:8/02/2007</li>
@@ -172,7 +176,8 @@
 			<div class="ShadowyBox">
 				<dl>
 					<dt>Toan</dt>
-					<dd>About us Page design
+					<dd>About us Page design, update
+						, Management.php design
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 14/02/2007</li>
