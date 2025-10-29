@@ -8,7 +8,7 @@
 	<meta name="keywords" content="MemMis, GroupProject, About us, About Us">
 	<meta name="author" content="Hoang Trong Toan, Toan Hoang">
 	<link rel="stylesheet" href="styles/styles.css">
-	<title>About us | MemMis</title>
+	<title>About Us | MemMis</title>
 </head>
 
 <body>
@@ -19,16 +19,16 @@
 			 alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="jobs.php">Job Positions</a>
 					<ul class="joblist">
-						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
-						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
-						<li><a href="jobs.html#CY296">Cybersecurity Specialist - CY296</a></li>
+						<li><a href="jobs.php#SO145">Software Developer - SO145</a></li>
+						<li><a href="jobs.php#AI313">AI Engineer - AI313</a></li>
+						<li><a href="jobs.php#CY296">Cybersecurity Specialist - CY296</a></li>
 					</ul>
 				</li>
-				<li><a href="apply.html">Application</a></li>
-				<li><a href="about.html" class="active">About Us</a></li>
+				<li><a href="apply.php">Application</a></li>
+				<li><a href="about.php" class="active">About Us</a></li>
 				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
 			</ul>
 		</nav>

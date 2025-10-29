@@ -20,16 +20,16 @@
 			 alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html" class="active">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
+				<li><a href="index.php" class="active">Home</a></li>
+				<li><a href="jobs.php">Job Positions</a>
 					<ul class="joblist">
-						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
-						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
-						<li><a href="jobs.html#CY296">Cybersecurity Specialist - CY296</a></li>
+						<li><a href="jobs.php#SO145">Software Developer - SO145</a></li>
+						<li><a href="jobs.php#AI313">AI Engineer - AI313</a></li>
+						<li><a href="jobs.php#CY296">Cybersecurity Specialist - CY296</a></li>
 					</ul>
 				</li>
-				<li><a href="apply.html">Application</a></li>
-				<li><a href="about.html">About Us</a></li>
+				<li><a href="apply.php">Application</a></li>
+				<li><a href="about.php">About Us</a></li>
 				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
 			</ul>
 		</nav>
@@ -66,7 +66,7 @@
 			<h3>Built by People Who Care</h3>
 			<p>MemMis was founded by a team who share a love for great design, clean code, and solving real problems.
 				We are agile, collaborative, and obsessed with quality.</p>
-			<a href="about.html">Know more about us!</a>
+			<a href="about.php">Know more about us!</a>
 		</section>
 
 		<section id="projects">
@@ -100,7 +100,7 @@
 			<p>We're growing — and we're looking for passionate developers, designers, and creative thinkers to join us.
 				If you're excited about building meaningful digital experiences, we'd love to hear from you.</p>
 			<!-- Call to action -->
-			<a href="jobs.html">See Open Positions</a>
+			<a href="jobs.php">See Open Positions</a>
 		</section>
 
 		<section id="contact">
