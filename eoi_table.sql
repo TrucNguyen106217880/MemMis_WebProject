@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `EOInumber` int(11) NOT NULL,
+  `EOInumber` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `JobReferenceNumber` varchar(20) NOT NULL,
   `FirstName` varchar(50) NOT NULL,
   `LastName` varchar(50) NOT NULL,
