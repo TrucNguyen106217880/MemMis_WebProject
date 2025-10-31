@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<header><?php include 'header.inc'; $current_page='jobs.php'; include 'menu.inc'; ?></header>
+	<?php include 'header.inc'; $current_page='jobs.php'; include 'menu.inc'; ?>
 
 	<main>
 		<h1 id="SO145">Software Developer - SO145</h1>
