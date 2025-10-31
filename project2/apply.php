@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<header><?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?></header>
+	<?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?>
 
 	<main>
 		<h1 id="header_Application">Application</h1>

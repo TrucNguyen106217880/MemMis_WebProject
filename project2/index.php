@@ -13,7 +13,7 @@
 </head>
 
 <body>
-	<header><?php include 'header.inc'; $current_page='index.php'; include 'menu.inc'; ?></header>
+	<?php include 'header.inc'; $current_page='index.php'; include 'menu.inc'; ?>
 
 	<main>
 		<!-- CSS: Call to action button, visual banner -->
@@ -29,7 +29,7 @@
 				architecture, and user-friendly interfaces that grow with you.
 			</p>
 			<!-- Call to action -->
-			<a href="#contact">Start your project now!</a>
+			<button onclick="window.location.href='#contact'">Start your project now!</button>
 		</section>
 
 		<section id="differentiators">
@@ -46,18 +46,18 @@
 			<h3>Built by People Who Care</h3>
 			<p>MemMis was founded by a team who share a love for great design, clean code, and solving real problems.
 				We are agile, collaborative, and obsessed with quality.</p>
-			<a href="about.php">Know more about us!</a>
+			<a href="about.php">Know more about us! →</a>
 		</section>
 
 		<section id="projects">
 			<h3>Our proud creations</h3>
-			<a href="https://talkforeco.clearlyfake.com">TalkForEco</a>
+			<a href="https://talkforeco.clearlyfake.com">TalkForEco ↗</a>
 			<p>A place environmentalists gather for a greater cause. The website helps them gather volunteers, raise
 				funds, discover spectacular ideas from minds alike for a greener future.</p>
 			<p>"MemMis transformed our online presence. It was incredible working with them!&mdash;Leaf Erikson, Founder
 				of TalkForEco"</p>
 
-			<a href="https://bettersaveelec.fakeproject.com">BetterSaveElec</a>
+			<a href="https://bettersaveelec.fakeproject.com">BetterSaveElec ↗</a>
 			<p>Tired of wasted watts and unpredictable surges? BetterSaveElec uses AI-powered forecasting to optimize
 				energy distribution. Clean and efficient</p>
 			<p>"Fast, crative, reliable. Working with MemMis was the best decision we made ever!"&mdash;Solarina Spark,
@@ -80,13 +80,13 @@
 			<p>We're growing — and we're looking for passionate developers, designers, and creative thinkers to join us.
 				If you're excited about building meaningful digital experiences, we'd love to hear from you.</p>
 			<!-- Call to action -->
-			<a href="jobs.php">See Open Positions</a>
+			<button onclick="window.location.href='jobs.php'">See open positions</button>
 		</section>
 
 		<section id="contact">
 			<h3>Let’s Build Something Great</h3>
 			<p>Ready to turn your ideas into reality? Reach out and let’s talk.</p>
-			<a href="mailto:info@MemMis.com.au">Email us</a>
+			<a href="mailto:info@MemMis.com.au">Email us ↗</a>
 		</section>
 	</main>
 
