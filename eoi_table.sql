@@ -28,22 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `EOInumber` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `JobReferenceNumber` varchar(20) NOT NULL,
-  `FirstName` varchar(50) NOT NULL,
-  `LastName` varchar(50) NOT NULL,
-  `StreetAddress` varchar(100) NOT NULL,
-  `SuburbTown` varchar(50) NOT NULL,
-  `State` varchar(3) NOT NULL,
-  `Postcode` varchar(10) NOT NULL,
-  `EmailAddress` varchar(100) NOT NULL,
-  `PhoneNumber` varchar(20) NOT NULL,
-  `Skill1` varchar(50) DEFAULT NULL,
-  `Skill2` varchar(50) DEFAULT NULL,
-  `Skill3` varchar(50) DEFAULT NULL,
-  `Skill4` varchar(50) DEFAULT NULL,
-  `OtherSkills` text DEFAULT NULL,
-  `Status` enum('New','Current','Final') DEFAULT 'New'
+  `eoi_number` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `job_reference_number` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `street_address` varchar(100) NOT NULL,
+  `suburb_town` varchar(50) NOT NULL,
+  `state` varchar(3) NOT NULL,
+  `postcode` varchar(10) NOT NULL,
+  `email_address` varchar(100) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `skill_1` varchar(50) DEFAULT NULL,
+  `skill_2` varchar(50) DEFAULT NULL,
+  `skill_3` varchar(50) DEFAULT NULL,
+  `skill_4` varchar(50) DEFAULT NULL,
+  `other_skills` text DEFAULT NULL,
+  `status` enum('New','Current','Final') DEFAULT 'New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
