@@ -8,31 +8,11 @@
 	<meta name="keywords" content="">
 	<meta name="author" content="Viet Do">
 	<link rel="stylesheet" href="styles/styles.css">
-	<title>Job application | MemMis</title>
+	<title>Job Application | MemMis</title>
 </head>
 
 <body>
-	<header>
-		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
-		<img id="logo" src="images/MemMis_Logo.png"
-			 title="Custom Website Design & Development | MemMis"
-			 alt="MemMis logo" loading="lazy">
-		<nav>
-			<ul class="menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
-					<ul class="joblist">
-						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
-						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
-						<li><a href="jobs.html#CY296">Cybersecurity Specialist - CY296</a></li>
-					</ul>
-				</li>
-				<li><a href="apply.html" class="active">Application</a></li>
-				<li><a href="about.html">About Us</a></li>
-				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
-			</ul>
-		</nav>
-	</header>
+	<?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?>
 
 	<main>
 		<h1 id="header_Application">Application</h1>
@@ -296,17 +276,7 @@
 		</form>
 	</main>
 
-	<footer>
-		<p>&copy; 2025 MemMis. All rights reserved.</p>
-
-		<br>
-		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34/backlog?atlOrigin=eyJpIjoiMzZiMzAwYmI1OTYyNDNjNDhlZDc2ZDk5OTI2NTFiYTgiLCJwIjoiaiJ9"
-		   target="_blank">Jira Project for MemMis website</a>
-
-		<br><br>
-		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject"
-		   target="_blank">GitHub Repository</a>
-	</footer>
+	<footer><?php include 'footer.inc'; ?></footer>
 </body>
 
 </html>

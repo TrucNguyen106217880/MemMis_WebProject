@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<title></title>
-	</head>
-	<body>
-	</body>
-</html>
+<?php
+$host="localhost";
+$user="root";
+$pwd="";
+$sql_db=""; //Add name later
+
+$conn=mysqli_connect($host, $user, $pwd, $sql_db);
+if (!$conn) {
+	exit("Connection failed: " . mysqli_connect_error());
+}
+?>
