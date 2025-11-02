@@ -30,7 +30,7 @@
 						</ul>
 					</li>
 					<li>Lecturer: Mr. Trung Doan (Wilson)</li>
-					<li id="student_id">Members student IDs:
+					<li>Members student IDs:
 						<ul>
 							<li>Truc Nguyen&ndash;106217880</li>
 							<li>Duy Tran&ndash;106216081</li>

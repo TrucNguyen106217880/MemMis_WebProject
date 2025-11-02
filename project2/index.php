@@ -46,18 +46,18 @@
 			<h3>Built by People Who Care</h3>
 			<p>MemMis was founded by a team who share a love for great design, clean code, and solving real problems.
 				We are agile, collaborative, and obsessed with quality.</p>
-			<a href="about.php">Know more about us! →</a>
+			<a href="about.php" class="internal_link">Know more about us!</a>
 		</section>
 
 		<section id="projects">
 			<h3>Our proud creations</h3>
-			<a href="https://talkforeco.clearlyfake.com">TalkForEco ↗</a>
+			<a href="https://talkforeco.clearlyfake.com" class="external_link">TalkForEco</a>
 			<p>A place environmentalists gather for a greater cause. The website helps them gather volunteers, raise
 				funds, discover spectacular ideas from minds alike for a greener future.</p>
 			<p>"MemMis transformed our online presence. It was incredible working with them!&mdash;Leaf Erikson, Founder
 				of TalkForEco"</p>
 
-			<a href="https://bettersaveelec.fakeproject.com">BetterSaveElec ↗</a>
+			<a href="https://bettersaveelec.fakeproject.com" class="external_link">BetterSaveElec</a>
 			<p>Tired of wasted watts and unpredictable surges? BetterSaveElec uses AI-powered forecasting to optimize
 				energy distribution. Clean and efficient</p>
 			<p>"Fast, crative, reliable. Working with MemMis was the best decision we made ever!"&mdash;Solarina Spark,
@@ -86,7 +86,7 @@
 		<section id="contact">
 			<h3>Let’s Build Something Great</h3>
 			<p>Ready to turn your ideas into reality? Reach out and let’s talk.</p>
-			<a href="mailto:info@MemMis.com.au">Email us ↗</a>
+			<a href="mailto:info@MemMis.com.au" class="external_link">Email us</a>
 		</section>
 	</main>
 

@@ -5,7 +5,7 @@
 
     date created: September 21st, 2025
 
-    date modified (project part 2): October 30th, 2025
+    date modified (project part 2): November 2nd, 2025
 	*Highly altered comparing to part 1 project
 
     description: CSS stylesheet for MemMis website
@@ -25,6 +25,13 @@ html {
 a {
 	text-decoration: none;
 	color: #aaa;
+}
+	/* Extra link identification*/
+a.external_link::after {
+	content: " ↗";
+}
+a.internal_link::after {
+	content: " →";
 }
 
 /* Header (Logo & Menu) */
@@ -97,7 +104,7 @@ a {
 		display: flex;
 		flex-wrap: wrap;
 		font-weight: bold;
-		text-align: left; /* Override <header> text-align*/
+		text-align: left; /* Overrides <header> text-align*/
 		color: #fff;
 		padding: 8px 16px;
 		margin: 3.2px 0; /* 16*0.2px = 3.2px */
@@ -162,7 +169,7 @@ a {
 		display: flex;
 		flex-wrap: wrap;
 		font-weight: bold;
-		text-align: left; /* Override <header> text-align*/
+		text-align: left; /* Overrides <header> text-align*/
 		color: #fff;
 		padding: 8px 16px;
 		margin: 3.2px 0; /* 16*0.2px = 3.2px */
@@ -206,6 +213,7 @@ a {
 .menu li {
     position: relative;
 }
+	/* Job positions navigation*/
 .joblist {
 	z-index: 1;
 	display: none;
@@ -230,7 +238,6 @@ a {
     background-size: cover;
 	background-repeat: no-repeat;
     background-position: center right;
-	margin: 0; /* Overrides <main> padding */
 }
 	/* Fading effect */
 #welcome::before {
@@ -268,7 +275,7 @@ a {
     text-align: center;
 }
 #welcome h2 {
-	padding-top: 0px; /* Override the padding set above */
+	padding-top: 0px; /* Overrides the padding set above */
 }
 	/* CTA buttons */
 #welcome button {
@@ -427,7 +434,7 @@ input[type="submit"]:hover {
 #group_photo figcaption{
 	text-align: center;
 }
-@media (max-width: 900px) { /* <=900px width, group info list becomes too stretched */
+@media (max-width: 900px) { /* when width is <=900px, group info list becomes too stretched on 50% */
 	#group_info {
 		width: 100%;
 	}
@@ -437,7 +444,7 @@ input[type="submit"]:hover {
 }
 #contributions_and_demographics {
 	clear: both;
-	width: auto;
+	width: 100%;
 	padding: 0 5%;
 }
 #contributions_and_demographics dl {
@@ -452,6 +459,7 @@ input[type="submit"]:hover {
 	font-size: 20px;
 	padding-bottom: 10px;
 }
+	/* Split the sections into 2 parts: text and image — avatar */
 #contributions_and_demographics .flex_container {
 	display: flex;
 	align-items: flex-start;
@@ -478,7 +486,6 @@ input[type="submit"]:hover {
 	margin: 0 auto;
 	width: 100%;
 	border-collapse: collapse; /* No spaces between table cells*/
-	/* text-wrap: wrap; */
 }
 #members_interests table .member_name {
 	text-align: center;
@@ -489,7 +496,7 @@ input[type="submit"]:hover {
 	padding: 5px 10px;
 }
 #members_interests table th:hover,
-#members_interests table td:hover {
+#members_interests table td:hover { /* Project part 1 requirement */
 	background-color: #445c7a;
 	cursor: default;
 }
