@@ -15,23 +15,23 @@
 		include 'header.inc';
 		require_once('settings.php');
 		//verifying admin
-		$user=$_SESSION(stripslashes(strip_tags('')));
-		$password=$_SESSION(password_verify(''));
-		if ($user == "" && $password == ""){
-			session_start();
-			}
-		else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+		// $user=$_SESSION(stripslashes(strip_tags('')));
+		// $password=$_SESSION(password_verify(''));
+		// if ($user == "" && $password == ""){
+		// 	session_start();
+		// 	}
+		// else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
 	?>
 	<!-- Search bar -->
 	<form method="get" action="<?php echo $_SERVER['PHP_SELF'] ?>">
 		<input type="text" id="search" name="searchq" placeholder="Search...">
 		<input type="submit" value="Search">
 	</form>
-	<form method="get" action="delete_process.php">
+	<form method="get" action="manage_delete.php">
 		<input type="text" name="deleteq" placeholder="Search...">
 		<input type="submit" value="Delete">
 	</form>
-	<form method="get" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+	<form method="post"> <!-- post method -->
 		<label for="SO415">SO415</label>
 		<input type="checkbox" name="SO415" value="SO415 ">
 		<label for="AI313">AI313</label>
@@ -95,8 +95,39 @@
 				echo "<td>" . $row["phone_number"] . "</td>" ;
 				echo "<td>" . $row["skill1"] . ", ". $row["skill2"] . ", ". $row["skill3"] . ", ". $row["skill4"] . "</td>" ;
 				echo "<td>" . $row["other_skill"] . "</td>" ;
-				echo "<td>" . $row["status"] . "</td>"  ;
-  			}
+				if ($row['status']=="New") {
+				echo "<td>
+						<form>
+							<select>
+								<option>New</option>
+								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
+								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
+						</form>
+					  </td>" ;
+				}
+				if ($row['status']=="Current") {
+					echo "<td>
+							<form>
+								<select>
+									<option>Current</option>
+									<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
+									<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
+							</form>
+						</td>" ;
+				} 
+				if ($row['status']=="Final") {
+					echo "<td>
+							<form>
+								<select>
+									<option>Final</option>
+									<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
+									<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
+								</select
+							</form>
+						</td>" ;
+				}
+			}
+
 		} else {
 	    	echo "<td colspan='10'>0 results</td>";
 		}
