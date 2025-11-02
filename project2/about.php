@@ -15,75 +15,50 @@
 	<?php include 'header.inc'; $current_page='about.php'; include 'menu.inc'; ?>
 
 	<main>
-		<div>
-			<h1 id="header_About_Us">Team: MemMis</h1><!-- img width~15%, height auto -->
-		</div>
-		<section>
-			<!-- I reread the requirement, and i think this article section should be left alone only a nested list with name, ids and lecturer, of course i'll still put Mr.Wilson pic in. -->
-			<article>
-				<!-- List -->
-				<ul class="About_MemMis">
-					<li>Class: COS100026</li>
-					<li>Class Time: Tuesday 9AM - 11AM on odd weeks; 9AM - 11AM, 1PM - 4PM on even weeks</li>
-					<li class="Don't_touch"> MemMis Team Member:
+		<h1 id="about_h1">About Our Team</h1>
+
+		<section id="group_info">
+			<h2>Group Information</h2>
+			<div id="divider">
+				<ul>
+					<li>Team: MemMis</li>
+					<li>Class: COS10026 - Can Tho campus</li>
+					<li>Schedule:
 						<ul>
-							<li>Name: Truc Nguyen
-								<ul class="About_Ids">
-									<li>Id: 106217880</li>
-								</ul>
-							</li>
-							<li>Name: Duy Tran
-								<ul class="About_Ids">
-									<li>Id: 106216081</li>
-								</ul>
-							</li>
-							<li>Name: Viet Do
-								<ul class="About_Ids">
-									<li>Id: 106217932</li>
-								</ul>
-							</li>
-							<li>Name: Khang Mai
-								<ul class="About_Ids">
-									<li>Id: 106217893</li>
-								</ul>
-							</li>
-							<li>Name: Toan Hoang
-								<ul class="About_Ids">
-									<li>Id: 106217877</li>
-								</ul>
-							</li>
+							<li>Tuesday, 9:00&ndash;11:00 (every week)</li>
+							<li>13:00&ndash;15:00 (odd weeks only)</li>
 						</ul>
 					</li>
-				</ul>
-				<!-- List end -->
-				<!-- Mr.Wilson -->
-				<div>
-					<aside>
+					<li>Lecturer: Mr. Trung Doan (Wilson)</li>
+					<li id="student_id">Members student IDs:
 						<ul>
-							<li>Lecturer:
-								<ul>
-									<li>Name: MR. Wilson</li>
-									<li>Occupation: Lecturer at Swinburne Vietnam</li>
-								</ul>
-							</li>
-						</ul>
-						<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
-					</aside>
-				</div>
-
-
-			</article>
+							<li>Truc Nguyen&ndash;106217880</li>
+							<li>Duy Tran&ndash;106216081</li>
+							<li>Viet Do&ndash;106217932</li>
+							<li>Khang Mai&ndash;106217893</li>
+							<li>Toan Hoang&ndash;106217877</li>
+						</ul>	
+					</li>
+				</ul>
+			</div>
 		</section>
-		<section>
 
-			<!-- Contribution Description list -->
-			<!-- I want to make each div dt border shadow effects like the one we did in the lab 5 so it's like each dt is in it's own box to read easier -->
-			<div class="ShadowyBox">
-				<dl>
-					<dt>Truc</dt>
-					<!-- Float these images to the right plz and we need to crop it to the same size for the page to look nice and balanced -->
-					
-					<dd>Git support, CSS support, HTML support, Team lead	<!-- project 1 -->
+		<section id="group_photo">
+			<h2>MemMis Group Photo</h2>
+			<figure>
+				<img src="images/team.jpg"
+						alt="MemMis project team during a lecture on campus">
+				<figcaption>Photo taken on September 30th, 2025</figcaption>
+			</figure>
+		</section>
+
+		<section id="contributions_and_demographics">
+			<h2>Member Contributions and Demographics</h2>
+			<dl>
+				<dt>Truc Nguyen</dt>
+				<dd class="flex_container">
+					<div class="text_containter">
+						Git support, CSS support, HTML support, Team lead	<!-- project 1 -->
 						, HTML to PHP, Setting page design, enhancements	<!-- project 2 -->
 						<ul>
 							<li>Male</li>
@@ -92,35 +67,41 @@
 								spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother of
 								the Realm ).</li>
 						</ul>
-					</dd>
-				</dl>
-				<figure><img src="images/Truc.jpg" alt="Truc_pfp" class="Inline_Imgs" title="Team Lead" id="Truc_Img">
-						<figcaption class="Figcap_Centre">Truc</figcaption>
-				</figure>
-			</div>
-			<div class="ShadowyBox">
-				<dl>
-					<dt>Duy</dt>
-					<dd>Job description Page design
+					</div>	
+					<figure>
+						<img src="images/Truc.jpg" 
+							 alt="Avatar chosen by Truc Nguyen">
+						<figcaption>Truc Nguyen's avatar</figcaption>
+					</figure>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Duy Tran</dt>
+				<dd class="flex_container">
+					<div class="text_containter">
+						Job description Page design
 						, Database design <!-- I don't know what jobs description in database is so i'll just put this here and comeback later if there's any changes-->
 						<ul>
 							<li>Male</li>
-							<li>Birthday: 1/1/2007</li>
+							<li>Birthday: 01/01/2007</li>
 							<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the Western
 								Metropolis ) with a history spanning over 270 years. This lovely city is famous for its
 								people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển, etc.)
 							</li>
 						</ul>
-					</dd>
-				</dl>
-				<figure><img src="images/Duy.jpg" alt="Duy_pfp" class="Float_Right_Img" title="Second Member" id="Duy_Img">
-						<figcaption class="Figcap_Centre">Duy</figcaption>
-				</figure>
-			</div>
-			<div class="ShadowyBox">
-				<dl>
-					<dt>Viet</dt>
-					<dd>Job application Page design
+					</div>	
+					<figure>
+						<img src="images/Duy.jpg" 
+							 alt="Avatar chosen by Duy Tran">
+						<figcaption>Duy Tran's avatar</figcaption>
+					</figure>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Viet Do</dt>
+				<dd class="flex_container">
+					<div class="text_containter">
+						Job application Page design
 						, Expression of Interest process
 						<ul>
 							<li>Male</li>
@@ -129,35 +110,41 @@
 								Tho is known for its kind and modest people, and being a large city with less hustle and
 								bustle compared to cities like Ho Chi Minh or Ha Noi.</li>
 						</ul>
-					</dd>
-				</dl>
-				<figure><img src="images/Viet.jpg" alt="Viet_pfp" class="Float_Right_Img" title="Third Member" id="Viet_Img">
-						<figcaption class="Figcap_Centre">Viet</figcaption>
-				</figure>
-			</div>
-			<div class="ShadowyBox">
-				<dl>
-					<dt>Khang</dt>
-					<dd>CSS design
+					</div>
+					<figure>
+						<img src="images/Viet.jpg" 
+							 alt="Avatar chosen by Viet Do">
+						<figcaption>Viet Do's avatar</figcaption>
+					</figure>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Khang Mai</dt>
+				<dd class="flex_container">
+					<div class="contributions">
+						CSS design
 						, Expression of Interest Table
 						<ul>
 							<li>Male</li>
-							<li>Birthday:8/02/2007</li>
+							<li>Birthday: 08/02/2007</li>
 							<li>Home town: Vinh Long, rich in alluvial soil and lots of waterway/river/canal networks.
 								“Miệt vườn” style tourism (orchard gardens, floating markets). Some famous locations:An 
 								Bình island & Bình Hòa Phước island, Van Thanh Temple, Van Xuong Shrine,...</li>
 						</ul>
-					</dd>
-				</dl>
-				<figure><img src="images/Khang.png" alt="Khang_pfp" class="Float_Right_Img" title="Fourth Member" id="Khang_Img">
-						<figcaption class="Figcap_Centre">Khang</figcaption>
-				</figure>
-			</div>
-			<div class="ShadowyBox">
-				<dl>
-					<dt>Toan</dt>
-					<dd>About us Page design, update
-						, Management.php design
+					</div>	
+					<figure>
+						<img src="images/Khang.png" 
+							 alt="Avatar chosen by Khang Mai">
+						<figcaption>Khang Mai's avatar</figcaption>
+					</figure>
+				</dd>
+			</dl>
+			<dl>
+				<dt>Toan Hoang</dt>
+				<dd class="flex_container">
+					<div class="text_containter">
+						About us Page design 
+						& content update, Manage page design
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 14/02/2007</li>
@@ -165,66 +152,82 @@
 								Famous for being the centre of culture, economic of the West with some unique attraction
 								such as rice paper making village and floating market.</li>
 						</ul>
-					</dd>
-				</dl>
-				<figure><img src="images/Toan.jpg" alt="Toan_pfp" class="Float_Right_Img" title="Fifth Member" id="Toan_Img">
-						<figcaption class="Figcap_Centre">Toan</figcaption>
-				</figure>
-			</div>
-			<!-- Description list end -->
-			<div>
-				<figure>
-					<figcaption>MemMis Team</figcaption><img src="images/team.jpg" alt="MemMis_Team_Picture">
-				</figure>
-			</div>
+					</div>
+					<figure>
+						<img src="images/Toan.jpg" 
+							 alt="Avatar chosen by Toan Hoang">
+						<figcaption>Toan Hoang's avatar</figcaption>
+					</figure>
+				</dd>
+			</dl>
 		</section>
-		<section>
-			<!-- Interests Table -->
-			<table class="Interest_Table">
-				<caption>Member's Interest</caption>
+
+		<section id="members_interests">
+			<h2>What Our Members Enjoy</h2>
+			<table>
+				<caption>Members Interests</caption>
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>ID</th>
-						<th>Interest</th>
+						<th>Categories</th>
+						<th>Details</th>
 					</tr>
 				</thead>
-				<!--  -->
 				<tbody>
+					<!-- The requirements for part 1 asks for multiple rowspan and colspan -->
 					<tr>
-						<td>Truc</td>
-						<td>106217880</td>
-						<td>Pop music; Anime; Rhythm/Turn-based games; Fantasy/Sci-fi novels.</td>
+						<td rowspan="2" class="member_name">Truc Nguyen</td>
+						<td>Music & Media</td>
+						<td>Pop music, Anime, Fantasy/Sci-fi novels</td>
+					</tr>
+					<tr>
+						<td>Gaming</td>
+						<td>Rhythm/Turn-based games</td>
 					</tr>
 
 					<tr>
-						<td>Duy</td>
-						<td>106216081</td>
-						<td>Gaming (Valorant specifically, and Minecraft), taking photographs and stay busy (not too busy).
-						</td>
+						<td rowspan="3" class="member_name">Duy Tran</td>
+						<td colspan="2">Photography</td>
 					</tr>
 					<tr>
-						<td>Viet</td>
-						<td>106217932</td>
-						<td>Art, music, coffee, travelling, figure skating</td>
+						<td>Gaming</td>
+						<td>Valorant and Minecraft</td>
+					</tr>
+					<tr>
+						<td>Lifestyle</td>
+						<td>Likes to stay busy (not too busy though)</td>
 					</tr>
 
 					<tr>
-						<td>Khang</td>
-						<td>106217893</td>
-						<td>Gaming, Music making, Artist, Athlete</td>
+						<td rowspan="2" class="member_name">Viet Do</td>
+						<td>Creative</td>
+						<td>Art, Music, Coffee</td>
+					</tr>
+					<tr>
+						<td>Activities</td>
+						<td>Travelling, Figure skating</td>
 					</tr>
 
 					<tr>
-						<td>Toan</td>
-						<td>106217877</td>
-						<td>Pop music, Sci-fi movies, Gaming (mostly League of Legend and simulator games), Manhwa, Manga.
-						</td>
+						<td rowspan="2" class="member_name">Khang Mai</td>
+						<td>Creative & Sports</td>
+						<td>Music making, Art, Athlete</td>
+					</tr>
+					<tr>
+						<td colspan="2">Gaming in general</td>
 					</tr>
 
+					<tr>
+						<td rowspan="2" class="member_name">Toan Hoang</td>
+						<td>Music & Media</td>
+						<td>Pop music, Sci-fi movies, Manhwa, Manga</td>
+					</tr>
+					<tr>
+						<td>Gaming</td>
+						<td>League of Legend and simulator games</td>
+					</tr>
 				</tbody>
 			</table>
-			<!-- Table end -->
 		</section>
 	</main>
 

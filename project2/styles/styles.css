@@ -28,47 +28,170 @@ a {
 }
 
 /* Header (Logo & Menu) */
-header {
-	background-color: #000f25;
-	position: fixed;
-	justify-items: center;
-	text-align: center; /* Align the menu toggle button */
-	height: 100%;
-	width: 200px;
-	transition: all 0.5s ease;
-}
-main {
-	margin-left: 200px;
-	transition: all 0.5s ease;
-}
-#logo {
-    display: flex;
-    width: 100px;
-	padding: 1rem 0;
-	transition: all 0.5s ease 0.2s;
-}
-.menu {
-    display: flex;
-	flex-direction: column;
-    list-style-type: none;
-	/* For smoother menu transition */
-	opacity: 1;
-	visibility: visible;
-	pointer-events: auto;
-	transition: opacity 0.3s ease 0.5s, visibility 0s linear 0.3s;
-}
-.menu a {
-    display: flex;
-    flex-wrap: wrap;
-    font-weight: bold;
-	text-align: left; /* Replace <header> text-align*/
+#menu_toggle_label {
+	display: inline-block;
 	color: #fff;
-	padding: 0.5rem 1rem;
-	margin: 0.2rem 0;
-	font-size: 1rem;
-	/* For smoother menu transition */
-	width: 200px;
-	transition: width 0s;
+	font-weight: bold;
+	font-size: 12.8px; /* 16*0.8px */
+	cursor: pointer;
+}
+#menu_toggle {
+	z-index: 1;
+	appearance: none;
+	position: fixed;
+	top: 71px;
+	left: 4px;
+	width: 52px;
+	height: 18px;
+	cursor: pointer;
+	transition: top 0.5s ease 0.3s, left 0.5s ease 0.5s;
+}
+#menu_toggle_tip { /* Keyboard users assistance */
+	z-index: 1;
+	position: fixed;
+	opacity: 0;
+	background: #222;	
+	color: #ddd;
+	border: 1px solid #ddd;
+	padding: 4px 8px;
+	font-size: 12px;
+	white-space: nowrap;
+	pointer-events: none;
+}
+@media (min-width: 951px) { /* >950px - large screen/viewport */
+	#menu_toggle_label,
+	#menu_toggle,
+	#menu_toggle_tip {
+		display: none;
+	}
+	header {
+		background-color: #000f25;
+		position: fixed;
+		justify-items: center;
+		text-align: center; /* Align the menu toggle button */
+		height: 100%;
+		width: 200px;
+		transition: all 0.5s ease;
+	}
+	main {
+		margin-left: 200px;
+	}
+	#logo {
+		display: flex;
+		width: 100px;
+		padding: 16px 0;
+		transition: all 0.5s ease 0.2s;
+	}
+	.menu {
+		display: flex;
+		flex-direction: column;
+		margin-top: 36px; /* Makes up place for the menu toggle label */
+		list-style-type: none;
+		/* For smoother menu transition */
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition: opacity 0.3s ease 0.5s, visibility 0s linear 0.3s;
+	}
+	.menu a {
+		display: flex;
+		flex-wrap: wrap;
+		font-weight: bold;
+		text-align: left; /* Override <header> text-align*/
+		color: #fff;
+		padding: 8px 16px;
+		margin: 3.2px 0; /* 16*0.2px = 3.2px */
+		font-size: 16px;
+		/* For smoother menu transition */
+		width: 200px;
+		transition: width 0s;
+	}
+}
+@media (max-width: 950px) { /* <=950px - smaller screen/viewport */
+	#menu_toggle_label {
+		display: inline-block;
+	}
+	#menu_toggle,
+	#menu_toggle_tip {
+		display: block;
+	}
+	header {
+		background-color: #000f25;
+		position: fixed;
+		justify-items: center;
+		text-align: center; /* Align the menu toggle button */
+		height: 100%;
+		width: 60px;
+		transition: all 0.5s ease 0.5s;
+	}
+	#menu_toggle:checked ~ header {
+		width: 200px;
+		transition: all 0.5s ease;
+	}
+	main {
+		margin-left: 60px;
+	}
+	#logo {
+		display: flex;
+		width: 60px;
+		padding: 0 3.2px; /* 16*0.2px = 3.2px */
+		transition: all 0.5s ease 0.3s;
+	}
+	#menu_toggle:checked ~ header > #logo {
+		width: 100px;
+		padding: 16px 0;
+		transition: all 0.5s ease 0.2s;
+	}
+	.menu {
+		display: flex;
+		flex-direction: column;
+		list-style-type: none;
+		/* For smoother menu transition */
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+		transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+	}
+	#menu_toggle:checked ~ header .menu {
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transition: opacity 0.3s ease 0.5s, visibility 0s linear 0.3s;
+	}
+	.menu a {
+		display: flex;
+		flex-wrap: wrap;
+		font-weight: bold;
+		text-align: left; /* Override <header> text-align*/
+		color: #fff;
+		padding: 8px 16px;
+		margin: 3.2px 0; /* 16*0.2px = 3.2px */
+		font-size: 16px;
+		/* For smoother menu transition */
+		width: 60px;
+		transition: width 0s ease 0.3s;
+	}
+	#menu_toggle:checked ~ header .menu a {
+		width: 200px;
+		transition: width 0s;
+	}
+	#menu_toggle:focus-visible + #menu_toggle_tip {
+		opacity: 1;
+		top: 85px;
+		left: 60px;
+		transition: top 0.5s ease 0.3s, left 0.5s ease 0.5s;
+	}
+	#menu_toggle:checked {
+		top: 151px;
+		left: 74px;
+		transition: left 0.5s ease, top 0.5s ease 0.2s;
+	}
+	#menu_toggle:focus-visible:checked + #menu_toggle_tip {
+		opacity: 1;
+		top: 165px;
+		left: 130px;
+		transition: opacity 0s, left 0.5s ease, top 0.5s ease 0.2s;
+	}
 }
 .menu a:hover,
 .menu a:focus-within {
@@ -84,90 +207,20 @@ main {
     position: relative;
 }
 .joblist {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    background-color: #08192e;
-    list-style-type: none;
+	z-index: 1;
+	display: none;
+	position: absolute;
+	background-color: #08192e;
+	list-style-type: none;
 }
 .joblist a {
-    display: block;
-    min-width: max-content;
+	display: block;
+	width: 200px !important;
 }
 .menu li:hover .joblist,
-.menu li:focus-within .joblist {
-    display: block;
-}
-	/* Menu toggle */
-#menu_toggle_text {
-	display: inline-block;
-	color: #fff;
-	font-weight: bold;
-	font-size: 0.8rem;
-	cursor: pointer;
-}
-#menu_toggle {
-	z-index: 1;
-	appearance: none;
-	position: fixed;
-	top: 151px;
-	left: 74px;
-	width: 52px;
-	height: 18px;
-	cursor: pointer;
-	transition: left 0.5s ease, top 0.5s ease 0.2s;
-}
-#menu_toggle_tip { /* Keyboard users assistance */
-	z-index: 1;
-	position: fixed;
-	opacity: 0;
-	background: #222;	
-	color: #ddd;
-	border: 1px solid #ddd;
-	padding: 4px 8px;
-	font-size: 12px;
-	white-space: nowrap;
-	pointer-events: none;
-}
-#menu_toggle:focus-visible + #menu_toggle_tip {
-	top: 165px;
-	left: 130px;
-	opacity: 1;
-	transition: opacity 0s, left 0.5s ease, top 0.5s ease 0.2s;
-}
-#menu_toggle:checked {
-	top: 71px;
-	left: 4px;
-	transition: top 0.5s ease 0.3s, left 0.5s ease 0.5s;
-}
-#menu_toggle:focus-visible:checked + #menu_toggle_tip {
-	top: 85px;
-	left: 60px;
-	opacity: 1;
-	transition: top 0.5s ease 0.3s, left 0.5s ease 0.5s;
-}
-#menu_toggle:checked ~ header {
-	width: 60px;
-	transition: all 0.5s ease 0.5s;
-}
-#menu_toggle:checked ~ main {
-	margin-left: 60px;
-	transition: all 0.5s ease 0.5s;
-}
-#menu_toggle:checked ~ header > #logo {
-	width: 60px;
-	padding: 0 0.2rem;
-	transition: all 0.5s ease 0.3s;
-}
-#menu_toggle:checked ~ header .menu {
-	opacity: 0;
-	visibility: hidden;
-	pointer-events: none;
-	transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-}
-#menu_toggle:checked ~ header .menu a {
-	width: 60px;
-	transition: width 0s ease 0.3s;
+.menu li:focus-within .joblist {	
+	display: inline-flex;
+	flex-direction: column;
 }
 
 /* index.html */
@@ -177,6 +230,7 @@ main {
     background-size: cover;
 	background-repeat: no-repeat;
     background-position: center right;
+	margin: 0; /* Overrides <main> padding */
 }
 	/* Fading effect */
 #welcome::before {
@@ -214,20 +268,21 @@ main {
     text-align: center;
 }
 #welcome h2 {
-	padding-top: 0px;
+	padding-top: 0px; /* Override the padding set above */
 }
 	/* CTA buttons */
 #welcome button {
 	display: block;
 	background-color: #00f7ff;
     color: #001f3f;
-	margin-left: calc(30% + (65% / 2) - (270.156px / 2));
+	/* 30% is the welcome section's left padding and 65% is the text width; 274.156px is the button width */
+	margin-left: calc(30% + (65% / 2) - (274.156px / 2));
 	margin-top: 30px;
 	margin-bottom: 70px;
 	padding: 15px 30px;
 	border-radius: 8px;
 	font-weight: bold;
-	font-size: 1.2rem;
+	font-size: 19.2px; /* 16*1.2px */
 	transition: all 0.5s ease;
 }
 #hiring button {
@@ -238,7 +293,7 @@ main {
 	padding: 15px 30px;
 	border-radius: 8px;
 	font-weight: bold;
-	font-size: 1.2rem;
+	font-size: 19.2px; /* 16*1.2px */
 	transition: all 0.5s ease;
 }
 #welcome button:hover,
@@ -334,80 +389,109 @@ input[type="submit"]:hover {
 }
 
 /* about.html */
-#header_About_Us {
-    margin: 0 auto;
-    padding: 20px;
+#about_h1,
+#group_info h2,
+#contributions_and_demographics h2,
+#group_photo h2,
+#members_interests h2 {
+	padding-top: 20px;
+	text-align: center;
 }
-.About_MemMis {
-    margin: 0 auto;
-    padding: 20px;
+#group_info {
+	float: right;
+	padding: 0 5%;
+	width: 50%;
 }
-div aside {
-    clear: both;
+#group_info li li {
+	margin-left: 16px;
 }
-.Dont_touch ul {
-    font-weight: bold;
-    margin-left: 20px;
+#group_info #divider > ul {
+	column-count: 2;
+	column-gap: 60px;
 }
-.About_Ids {
-    float: right;
-    font-weight: bold;
-    margin-left: 20px;
-    clear: left;
-    max-width: 200px;
+#group_info #divider ul,
+#group_info #divider li {
+	break-inside: avoid;
 }
-.ShadowyBox {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+#group_photo {
+	float: right; /* Project part 1 requirement... */
+	width: 50%; 
+	padding: 0 5%;
 }
-.ShadowyBox figure {
-    margin: 0;
-    flex: 0 0 150px;
+#group_photo img {
+	display: block;
+	margin: 0 auto;
+	width: 100%;
+	border: 3px solid #0d4080;
 }
-.ShadowyBox figure img {
-    width: 150px;
-    height: auto;
-    border: 3px solid #0077aa;
-    display: block;
+#group_photo figcaption{
+	text-align: center;
 }
-.ShadowyBox dt {
-    width: 100%;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
+@media (max-width: 900px) { /* <=900px width, group info list becomes too stretched */
+	#group_info {
+		width: 100%;
+	}
+	#group_photo {
+		width: 100%;
+	}
 }
-.ShadowyBox dd {
-    flex: 1;
-    margin: 0;
+#contributions_and_demographics {
+	clear: both;
+	width: auto;
+	padding: 0 5%;
 }
-.Interest_Table {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border-collapse: collapse;
-    width: 80%;
+#contributions_and_demographics dl {
+	border: 3px solid #0d4080;
+	border-radius: 20px;
+	margin-top: 20px;
+	padding: 10px;
 }
-.Interest_Table th {
-    font-weight: bold;
-    background-color: #e0f7fa;
-    padding: 10px;
+#contributions_and_demographics dl dt {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	padding-bottom: 10px;
 }
-.Interest_Table td {
-    background-color: #f0fcff;
-    padding: 10px;
-    text-align: center;
+#contributions_and_demographics .flex_container {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: row;
+	gap: 30px;
 }
-.Interest_Table td:hover {
-    background-color: #cceeff;
+#contributions_and_demographics .text_container {
+	flex: 1;
+}
+#contributions_and_demographics li {
+	margin-left: 16px;
+}
+#contributions_and_demographics img {
+	width: auto; max-width: 150px;
+}
+#contributions_and_demographics figure {
+	text-align: center;
+}
+#members_interests {
+	clear: both;
+	padding: 0 5%;
+}
+#members_interests table {
+	margin: 0 auto;
+	width: 100%;
+	border-collapse: collapse; /* No spaces between table cells*/
+	/* text-wrap: wrap; */
+}
+#members_interests table .member_name {
+	text-align: center;
+}
+#members_interests table th,
+#members_interests table td {
+	border: 3px solid #0d4080;
+	padding: 5px 10px;
+}
+#members_interests table th:hover,
+#members_interests table td:hover {
+	background-color: #445c7a;
+	cursor: default;
 }
 
 /* Footer */
@@ -416,5 +500,5 @@ footer {
     background-color: #030d30;
 	padding: 20px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 12.8px; /* 16*0.8px */
 }
