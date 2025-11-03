@@ -18,7 +18,7 @@
 		<h1 id="header_Application">Application</h1>
 		<!-- Form for applicants to enter application information -->
 		<!-- All IDs are named following the camelCase naming convention -->
-		<form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+		<form action="process_eoi.php" method="post">
 			<!-- Drop down list to select job reference numbers -->
 			<label for="jobReferenceNumber">Job reference number
 			</label>
