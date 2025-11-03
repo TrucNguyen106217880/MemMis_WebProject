@@ -47,7 +47,7 @@
 			<h2>MemMis Group Photo</h2>
 			<figure>
 				<img src="images/team.jpg"
-						alt="MemMis project team during a lecture on campus">
+					 alt="MemMis project team during a lecture on campus">
 				<figcaption>Photo taken on September 30th, 2025</figcaption>
 			</figure>
 		</section>

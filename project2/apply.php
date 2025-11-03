@@ -15,14 +15,13 @@
 	<?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?>
 
 	<main>
-		<h1 id="header_Application">Application</h1>
+		<h1 id="apply_h1">Application</h1>
 		<!-- Form for applicants to enter application information -->
-		<!-- All IDs are named following the camelCase naming convention -->
-		<form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+		<form action="process_eoi.php" method="post">
 			<!-- Drop down list to select job reference numbers -->
-			<label for="jobReferenceNumber">Job reference number
+			<label for="reference_number">Job reference number
 			</label>
-			<select id="jobReferenceNumber" name="referencenumber" required>
+			<select id="reference_number" name="reference_number" required>
 				<option value=""> Please select
 					<!--This option only prompts the user to select and is not counted as a real option due to its empty string-->
 				</option>
@@ -30,33 +29,36 @@
 				</option>
 				<option>AI313
 				</option>
-				<option> CY296
+				<option>CY296
 				</option>
 			</select>
 
 			<br>
 
 			<!-- Text input section to enter first name -->
-			<label for="firstName"> First name
+			<label for="first_name"> First name
 			</label>
-			<input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{1,20}$"
+			<input type="text" id="first_name" name="first_name" required
+				   pattern="^[a-zA-Z]{1,20}$"
 				   title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
 
 			<br>
 
 			<!-- Text input section to enter last name -->
-			<label for="lastName"> Last name
+			<label for="last_name"> Last name
 			</label>
-			<input type="text" id="lastName" name="lastname" required pattern="^[a-zA-Z]{1,20}$"
+			<input type="text" id="last_name" name="last_name" required 
+				   pattern="^[a-zA-Z]{1,20}$"
 				   title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
 
 			<br>
 
 			<!-- Text input section to enter birth date -->
-			<label for="dateOfBirth"> Date of birth
+			<label for="date_of_birth"> Date of birth
 			</label>
-			<input type="text" id="dateOfBirth" name="dateofbirth" required
-				   pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy"
+			<input type="text" id="date_of_birth" name="date_of_birth" required
+				   pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" 
+				   placeholder="dd/mm/yyyy"
 				   title="Please follow the dd/mm/yyyy format"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->
 
 			<!-- field to group gender selection section -->
@@ -67,26 +69,26 @@
 				<!-- Radio button section to choose gender -->
 				<label for="male"> Male
 				</label>
-				<input type="radio" id="male" name="Gender" value="Male" required="required">
+				<input type="radio" id="male" name="gender" value="male" required="required">
 
-				<label for="feMale"> Female
+				<label for="female"> Female
 				</label>
-				<input type="radio" id="feMale" name="Gender" value="Female">
+				<input type="radio" id="female" name="gender" value="female">
 			</fieldset>
 
 			<!--Text input section to enter street address  -->
-			<label for="streetAddress"> Street address
+			<label for="street_address"> Street address
 			</label>
-			<input type="text" id="streetAddress" name="Streetaddress" required pattern="^.{1,40}$"
+			<input type="text" id="street_address" name="street_address" required pattern="^.{1,40}$"
 				   title="Max 40 characters">
 			<!--Max 40 any characters, I'm using ". because an address *may* contain special characters-->
 
 			<br>
 
 			<!-- "/" redacted from ID to avoid server-side processing issues -->
-			<label for="suburbTown"> Suburb/town
+			<label for="suburb_town"> Suburb/town
 			</label>
-			<input type="text" id="suburbTown" name="Suburb/town" required pattern="^.{1,40}$"
+			<input type="text" id="suburb_town" name="suburb_town" required pattern="^.{1,40}$"
 				   title="Max 40 characters"> <!--Max 40 any characters-->
 
 			<br>
@@ -94,7 +96,7 @@
 			<!-- Dropdown list to choose a State -->
 			<label for="state">State
 			</label>
-			<select id="state" name="State" required>
+			<select id="state" name="state" required>
 				<option value="">
 					<!--This option only prompts the user to select a State and is not counted as a real option due to its empty string-->
 					Please select a State
@@ -120,24 +122,24 @@
 			<br>
 
 			<!-- Text input section to enter post code -->
-			<label for="postCode"> Postcode
+			<label for="post_code"> Postcode
 			</label>
-			<input type="text" id="postCode" name="Postcode" required pattern="^0[2-9][0-9]{2}|[1-9][0-9]{3}$"
+			<input type="text" id="post_code" name="post_code" required pattern="^0[2-9][0-9]{2}|[1-9][0-9]{3}$"
 				   maxlength="4" placeholder="0200-9999" title="Please choose within the range 0200-9999">
 
 			<br>
 
 			<!-- Input for email -->
-			<label for="eMail">
+			<label for="email">
 				Email
 			</label>
-			<input type="email" id="eMail" name="Email" required>
+			<input type="email" id="email" name="email" required>
 			<!--Automatically validate email format without pattern attribute-->
 
 			<!-- Text input section to enter phone number -->
-			<label for="phoneNumber"> Phone number
+			<label for="phone_number"> Phone number
 			</label>
-			<input type="text" id="phoneNumber" name="Phonenumber" required pattern="^[\d\s]{8,12}$"
+			<input type="text" id="phone_number" name="phone_number" required pattern="^[\d\s]{8,12}$"
 				   title="8 to 12 space or digits only"> <!--Between 8 to 12 space or digits-->
 
 			<br>
@@ -264,11 +266,11 @@
 			<br>
 
 			<!-- Large text area to enter other skils -->
-			<label for="otherSkills"> Other skills
-			</label>
+			<label for="other_skills">Other skills</label>
 			<br>
-			<textarea id="otherSkills" name="Otherskills" rows="4" cols="30" placeholder="Enter other skills here...">
-		</textarea>
+			<textarea id="other_skills" name="other_skills" rows="4" cols="30" 
+					  placeholder="Enter other skills here...">
+			</textarea>
 
 			<br>
 
