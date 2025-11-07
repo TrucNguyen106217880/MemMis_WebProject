@@ -12,7 +12,7 @@
 </head>
 
 <body>
-	<header><?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?></header>
+	<?php include 'header.inc'; $current_page='apply.php'; include 'menu.inc'; ?>
 
 	<main>
 		<h1 id="header_Application">Application</h1>
@@ -73,7 +73,6 @@
 				</label>
 				<input type="radio" id="feMale" name="Gender" value="Female">
 			</fieldset>
-
 			<!--Text input section to enter street address  -->
 			<label for="streetAddress"> Street address
 			</label>

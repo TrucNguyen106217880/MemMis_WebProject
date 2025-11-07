@@ -1,4 +1,5 @@
 		<nav>
+			<label for="menu_toggle" id="menu_toggle_label" title="Toggle menu">☰ Menu</label>
 			<ul class="menu">
 				<li><a href="index.php"<?php echo ($current_page=='index.php')?' class="active"':''?>>Home</a></li>
 				<li><a href="jobs.php"<?php echo ($current_page=='jobs.php')?' class="active"':''?>>Job Positions</a>
@@ -13,3 +14,4 @@
 				<li><a href="mailto:info@MemMis.com.au">Email: info@MemMis.com.au</a></li>
 			</ul>
 		</nav>
+	</header>
