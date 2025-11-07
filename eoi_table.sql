@@ -11,11 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+ /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+ /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+ /*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `jobs`
@@ -28,45 +27,29 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `eoi` (
-  `eoi_number` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `job_reference_number` varchar(20) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `street_address` varchar(100) NOT NULL,
-  `suburb_town` varchar(50) NOT NULL,
-  `state` varchar(3) NOT NULL,
-  `postcode` varchar(10) NOT NULL,
-  `email_address` varchar(100) NOT NULL,
-  `phone_number` varchar(20) NOT NULL,
-  `skill_1` varchar(50) DEFAULT NULL,
-  `skill_2` varchar(50) DEFAULT NULL,
-  `skill_3` varchar(50) DEFAULT NULL,
-  `skill_4` varchar(50) DEFAULT NULL,
-  `other_skills` text DEFAULT NULL,
-  `status` enum('New','Current','Final') DEFAULT 'New'
+  `eoi_number` INT NOT NULL AUTO_INCREMENT,
+  `job_reference_number` VARCHAR(20) NOT NULL,
+  `first_name` VARCHAR(50) NOT NULL,
+  `last_name` VARCHAR(50) NOT NULL,
+  `gender` ENUM('Male','Female','Other') NOT NULL,
+  `birth_date` DATE NOT NULL,
+  `street_address` VARCHAR(100) NOT NULL,
+  `suburb_town` VARCHAR(50) NOT NULL,
+  `state` VARCHAR(3) NOT NULL,
+  `postcode` VARCHAR(10) NOT NULL,
+  `email_address` VARCHAR(100) NOT NULL,
+  `phone_number` VARCHAR(20) NOT NULL,
+  `skill_1` VARCHAR(50) DEFAULT NULL,
+  `skill_2` VARCHAR(50) DEFAULT NULL,
+  `skill_3` VARCHAR(50) DEFAULT NULL,
+  `skill_4` VARCHAR(50) DEFAULT NULL,
+  `other_skills` TEXT DEFAULT NULL,
+  `status` ENUM('New','Current','Final') DEFAULT 'New',
+  PRIMARY KEY (`eoi_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `eoi`
---
-ALTER TABLE `eoi`
-  ADD PRIMARY KEY (`EOInumber`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `eoi`
---
-ALTER TABLE `eoi`
-  MODIFY `EOInumber` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+ /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
