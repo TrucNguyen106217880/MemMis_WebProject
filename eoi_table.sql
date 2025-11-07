@@ -36,7 +36,7 @@ CREATE TABLE `eoi` (
   `street_address` VARCHAR(100) NOT NULL,
   `suburb_town` VARCHAR(50) NOT NULL,
   `state` VARCHAR(3) NOT NULL,
-  `postcode` VARCHAR(10) NOT NULL,
+  `postcode` VARCHAR(4) NOT NULL,
   `email_address` VARCHAR(100) NOT NULL,
   `phone_number` VARCHAR(20) NOT NULL,
   `skill_1` VARCHAR(50) DEFAULT NULL,
