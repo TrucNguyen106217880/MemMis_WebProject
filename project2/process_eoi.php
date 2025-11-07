@@ -12,7 +12,7 @@
     exit();
 	}
 	// This checks if the page was accessed via POST or not. If not, redirect user to apply.php and ends all script below exit(), using die() is also possible
-     $mysqli = require __DIR__ . "/settings.php";
+     $conn = require __DIR__ . "/settings.php";
 
 	
 	// Trimming to clean "unsanitary" inputs and avoid SQL injection
@@ -40,16 +40,27 @@ $skills = $_POST[$job_reference_number] ?? [];
 
 // Remember, index starts from 0 in coding
 // I'm not sure if this is legit for array collection yet, needs more research
-// $skill_1 = $skills[0] ?? null;
-// $skill_2 = $skills[1] ?? null;
-// $skill_3 = $skills[2] ?? null;
-// $skill_4 = $skills[3] ?? null;
-// $skill_5 = $skills[4] ?? null;
-// $skill_6 = $skills[5] ?? null;
-// $skill_7 = $skills[6] ?? null;
-// $skill_8 = $skills[7] ?? null;
+$skill_1 = $skills[0] ?? null;
+$skill_2 = $skills[1] ?? null;
+$skill_3 = $skills[2] ?? null;
+$skill_4 = $skills[3] ?? null;
+$skill_5 = $skills[4] ?? null;
+$skill_6 = $skills[5] ?? null;
+$skill_7 = $skills[6] ?? null;
+$skill_8 = $skills[7] ?? null;
+// Basically, when job_reference_number is selected
+// it will only select the technical skills with that job reference number name
+// So, if I chose SO415, then only skills from SO415 would show up in the table, even if I did choose skills outside SO415
+// I wonder if there is a shorter way to do this?
 
+// Very basic data insert
 
+$query = "INSERT INTO eoi (job_reference_number, first_name, last_name, gender, date_of_birth, street_address, suburb_town, state, postcode, email_address, phone_number, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, other_skills) VALUES ('$job_reference_number', '$first_name', '$last_name', '$gender', '$date_of_birth', '$street_address', '$suburb_town', '$state', '$postcode', '$email_address', '$phone_number', '$skill_1', '$skill_2', '$skill_3', '$skill_4', '$skill_5', '$skill_6', '$skill_7', '$skill_8', '$other_skills')";
+$result = mysqli_query($conn, $query);
+if (!$result) {
+    die("SQL Error: " . mysqli_error($conn));
+}
+echo "<pre>$query</pre>";
 
     // It is reccomended to still sanitize even radio or dropdown input
 
