@@ -6,135 +6,56 @@
 	<meta name="description" content="Group Project 2">
 	<meta name="keywords" content="Management Site, MemMis, GroupProject">
 	<meta name="author" content="Hoang Trong Toan">
-	<title></title>
+	<title>Management</title>
 </head>
 
 <body>
 	<?php
-		include 'menu.inc';
-		include 'header.inc';
-		require_once('settings.php');
-		//verifying admin
-		// $user=$_SESSION(stripslashes(strip_tags('')));
-		// $password=$_SESSION(password_verify(''));
-		// if ($user == "" && $password == ""){
-		// 	session_start();
-		// 	}
-		// else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
-	?>
-	<!-- Search bar -->
-	<form method="get" action="<?php echo $_SERVER['PHP_SELF'] ?>">
-		<input type="text" id="search" name="searchq" placeholder="Search...">
-		<input type="submit" value="Search">
-	</form>
-	<form method="get" action="manage_delete.php">
-		<input type="text" name="deleteq" placeholder="Search...">
-		<input type="submit" value="Delete">
-	</form>
-	<form method="post"> <!-- post method -->
-		<label for="SO415">SO415</label>
-		<input type="checkbox" name="SO415" value="SO415 ">
-		<label for="AI313">AI313</label>
-		<input type="checkbox" name="AI313" value="AI313 ">
-		<label for="CY296">CY296</label>
-		<input type="checkbox" name="CY296" value="CY296 ">
-	</form>
-	<?php
-	// connection for admin
-		$connection = mysqli_connect("admin1", $user, $password, "eoi_table");
+	require_once 'settings.php';
+	if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
+		session_start();
+		$_SESSION["admin_user"];
+		$host="localhost";
+		$admin_user=$_SESSION(stripslashes(strip_tags('Memmis')));
+		$admin_password=$_SESSION(password_verify('Memmis676905#:3'));
+	}
+	else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+
+	$connection = mysqli_connect($host, $admin_user, $admin_password, "jobs");
 	if (!$connection) {
 		die("Connection failed: " . mysqli_connect_error());
 	}
 
-	$check_box_1 = "";
-	$check_box_2 = "";
-	$check_box_3 = "";
-	if (isset($_POST['SO415'])) $check_box_1='SO415';
-	if (isset($_POST['AI313'])) $check_box_2='AI313';
-	if (isset($_POST['CY296'])) $check_box_3='CY296';
-
-	if (isset($_GET['searchq'] )){
+	$check_box = [];
+	if (isset($_POST['SO415'])) $check_box[]="SO415";
+	if (isset($_POST['AI313'])) $check_box[]="AI313";
+	if (isset($_POST['CY296'])) $check_box[]="CY296";
+	foreach ($check_box as $x) {
+        $check_box_result = mysqli_real_escape_string($connection, $x);
+        $sql_valid_box[] = "'$check_box_result'";
+    }
+	if (!empty($valid_box)) {
+        $checked = implode(', ', $valid_box);
+		$check_sql = "job_reference_number in $checked";
+    } else {
+        $check_sql = "1";
+    }
+	$_SESSION["searchq"] = $_GET["searchq"];
+	$_SESSION["check_sql"] = $check_sql;
+	if (isset($_GET['searchq']) || isset($_POST['SO415']) || isset($_POST['AI313']) || isset($_POST['CY296'])){
 		$search = $_GET['searchq'];
 		$search_result = mysqli_real_escape_string($connection, $search);
-    	$sql3 = "SELECT * FROM eoi WHERE 
+    	$sql3 = "SELECT * FROM eoi WHERE (
 										job_reference_number LIKE '%$search_result%' and 
-										job_reference_number LIKE '%$check_box_1%' and 
-										job_reference_number LIKE '%$check_box_2%' and
-										job_reference_number LIKE '%$check_box_3%') or 
 										firstname LIKE '%$search_result%' or
-										lastname LIKE '%$search_result%'"; 
-    	$result = mysqli_query($connection, $sql3);
-
-		if (mysqli_num_rows($result) > 0) {
-			echo "<table>
-					<thead>
-						<tr>
-							<th>ID</th>
-							<th>Job RefN.</th>
-							<th>Name</th>
-							<th>Address</th>
-							<th>Postcode</th>
-							<th>Email</th>
-							<th>Phone</th>
-							<th>Skills</th>
-							<th>Other</th>
-							<th> </th>
-							
-						</tr>
-					</thead>
-					<tbody>";
-			
-			while($row = mysqli_fetch_assoc($result)) {
-				$applicant_id = $row["id"];
-    			echo "<tr><td>" . $row["id"]. "</td>" ;
-				echo "<td><form method='post'><lable for='selected_job'><input>" .$row["selected_job"] . "</form></td>" ;
-				echo "<td>" . $row["firstname"]. " " . $row["lastname"] . "</td>" ;
-				echo "<td>" . $row["street_address"] . ", " . $row["suburb/town"] . ", " . $row["state"] . "</td>" ;
-				echo "<td>" . $row["post_code"] . "</td>" ;
-				echo "<td>" . $row["email"]. "</td>" ;
-				echo "<td>" . $row["phone_number"] . "</td>" ;
-				echo "<td>" . $row["skill1"] . ", ". $row["skill2"] . ", ". $row["skill3"] . ", ". $row["skill4"] . "</td>" ;
-				echo "<td>" . $row["other_skill"] . "</td>" ;
-				if ($row['status']=="New") {
-				echo "<td>
-						<form>
-							<select>
-								<option>New</option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
-						</form>
-					  </td>" ;
-				}
-				if ($row['status']=="Current") {
-					echo "<td>
-							<form>
-								<select>
-									<option>Current</option>
-									<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
-									<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
-							</form>
-						</td>" ;
-				} 
-				if ($row['status']=="Final") {
-					echo "<td>
-							<form>
-								<select>
-									<option>Final</option>
-									<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
-									<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
-								</select
-							</form>
-						</td>" ;
-				}
-			}
-
-		} else {
-	    	echo "<td colspan='10'>0 results</td>";
-		}
-		echo "</tbody></table>";
+										lastname LIKE '%$search_result%'
+										) and
+										$check_sql
+										ORDER BY firstname"; 
+		$_SESSION['search_sql'] = $sql3;
 		mysqli_close($connection);
-	}
-		include 'footer.inc';
-	?>
+	} else echo header("Location:manage.php")
+?>
+
 </body>
 </html>

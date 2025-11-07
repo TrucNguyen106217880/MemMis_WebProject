@@ -46,7 +46,7 @@
 				<dt>Truc Nguyen</dt>
 				<dd>
 					Git support, CSS support, HTML support, Team lead							<!-- project 1 -->
-					, HTML to PHP, Setting page design, enhancements, feedback incorporation	<!-- project 2 -->
+					, HTML to PHP, Setting page design, enhancements, feedback incorporation.	<!-- project 2 -->
 					<ul>
 						<li>Male</li>
 						<li>Birthday: 02/04/2007</li>
@@ -65,7 +65,7 @@
 				<dt>Duy Tran</dt>
 				<dd>
 					Job description Page design
-					, Job description Database design
+					, Job description Table design.
 					<ul>
 						<li>Male</li>
 						<li>Birthday: 1/1/2007</li>
@@ -85,7 +85,7 @@
 				<dt>Viet Do</dt>
 				<dd>
 					Job application Page design
-					, Application process
+					, Application process.
 					<ul>
 						<li>Male</li>
 						<li>Birthday: 28/10/2007</li>
@@ -104,7 +104,7 @@
 				<dt>Khang Mai</dt>
 				<dd>
 					CSS design
-					, Expression of Interest Table&ndash;Database
+					, Expression of Interest Table design.
 					<ul>
 						<li>Male</li>
 						<li>Birthday:8/02/2007</li>
@@ -123,7 +123,7 @@
 				<dt>Toan Hoang</dt>
 				<dd>
 					About us Page design&ndash;update
-					, Admin's Management Site design
+					, Admin's Management Site design.
 					<ul>
 						<li>Male</li>
 						<li>Birthday: 14/02/2007</li>

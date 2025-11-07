@@ -6,46 +6,47 @@
 	<meta name="description" content="Group Project 2">
 	<meta name="keywords" content="Management Site, MemMis, GroupProject">
 	<meta name="author" content="Hoang Trong Toan">
-	<title></title>
+	<title>Management</title>
 </head>
 
 <body>
 	<?php
 		include 'menu.inc';
 		include 'header.inc';
-		require_once('settings.php');
-		//verifying admin
-		// $user=$_SESSION(stripslashes(strip_tags('')));
-		// $password=$_SESSION(password_verify(''));
-		// if ($user == "" && $password == ""){
-		// 	session_start();
-		// 	}
-		// else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+		require_once 'settings.php';
+		if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
+			session_start();
+			$host="localhost";
+			$admin_user=$_SESSION(stripslashes(strip_tags('Memmis')));
+			$admin_password=$_SESSION(password_verify('Memmis676905#:3'));
+			}
+		else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+		$connection = mysqli_connect($host, $admin_user, $admin_password, "jobs");
+		if (!$connection) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
 	?>
 	<!-- Search bar -->
 	<form method="get" action="manage_search.php">
 		<input type="text" id="search" name="searchq" placeholder="Search...">
 		<input type="submit" value="Search">
 	</form>
-	<form method="get" action="manage_delete.php">
-		<input type="text" name="deleteq" placeholder="Search...">
-		<input type="submit" value="Delete">
-	</form>
 	<form method="post"><!-- post method -->
-		<label for="SO415">SO415</label>
 		<input type="checkbox" name="SO415" value="SO415 ">
-		<label for="AI313">AI313</label>
+		<label for="SO415">SO415</label>
 		<input type="checkbox" name="AI313" value="AI313 ">
-		<label for="CY296">CY296</label>
+		<label for="AI313">AI313</label>
 		<input type="checkbox" name="CY296" value="CY296 ">
+		<label for="CY296">CY296</label>
 	</form>
 	<?php
 	// connection for admin
-	$connection = mysqli_connect("admin1", $user, $password, "eoi_table");
-	if (!$connection) {
-		die("Connection failed: " . mysqli_connect_error());
+	
+	if (isset($_SESSION["search_sql"])){
+		$sql0 = $_SESSION["search_sql"];
+	} else {
+		$sql0 = "SELECT * FROM eoi";
 	}
-    $sql0 = "SELECT * FROM eoi";
 	$result = mysqli_query($connection, $sql0);
 	// display table
 	if (mysqli_num_rows($result) > 0) {
@@ -62,7 +63,6 @@
 						<th>Skills</th>
 						<th>Other</th>
 						<th> </th>
-						
 					</tr>
 				</thead>
 				<tbody>";
@@ -79,45 +79,56 @@
 			echo "<td>" . $row["other_skill"] . "</td>" ;
 			if ($row['status']=="New") {
 				echo "<td>
-						<form>
-							<select>
-								<option>New</option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
+						<form>  
+              				<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
+							<lable for='new_box'><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a> --</lable>
+							<input type='checkbox' name='checkbox_status' id='current_box' disabled>
+							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a> --</lable>
+							<input type='checkbox' name='checkbox_status' id='final_box' disabled>
+							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a> --</lable>			
 						</form>
 					  </td>" ;
 			}
 			if ($row['status']=="Current") {
 				echo "<td>
-						<form>
-							<select>
-								<option>Current</option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
+						<form>  
+							<input type='checkbox' name='checkbox_status' id='new_box' disabled>
+							<lable for='new_box'><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></lable>
+							<input type='checkbox' name='checkbox_status' id='current_box' disabled checked>
+							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></lable>
+							<input type='checkbox' name='checkbox_status' id='final_box' disabled>
+							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></lable>			
 						</form>
-					  </td>" ;
+					</td>" ;
 			} 
 			if ($row['status']=="Final") {
 				echo "<td>
-						<form>
-							<select>
-								<option>Final</option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></option>
-								<option><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></option>
-							</select
+						<form>  
+							<input type='checkbox' name='checkbox_status' id='new_box' disabled>
+							<lable for='new_box><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></lable>
+							<input type='checkbox' name='checkbox_status' id='current_box' disabled>
+							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></lable>
+							<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
+							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></lable>			
 						</form>
-					  </td>" ;
+					</td>" ;
 			}
 		}
 		echo "</tbody>
 		</table>";
 		mysqli_close($connection);
 	} else {
-		echo "<td colspan='10'>0 results</td>";
+		echo "<td colspan='10'>No record</td>";
 		echo "</tbody>
 		</table>";
 		mysqli_close($connection);
 	}
+	?>
+	<form method="post" action="manage_delete.php">
+	<label for="delete_button">Please check all results BEFORE deleting:</label>
+	<input type="submit" id="delete_button" name="delete_button" value="Delete">
+	</form>
+	<?php
 		include 'footer.inc';
 	?>
 </body>
