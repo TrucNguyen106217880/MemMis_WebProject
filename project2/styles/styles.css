@@ -5,7 +5,7 @@
 
     date created: September 21st, 2025
 
-    date modified (project part 2): November 11th, 2025
+    date modified (project part 2): November 8th, 2025
 	*Highly altered comparing to part 1 project
 
     description: CSS stylesheet for MemMis website
@@ -26,10 +26,38 @@ a {
 	text-decoration: none;
 	color: #aaa;
 }
+	/* Extra link indication*/
+a.external_link::after {
+	content: " ↗";
+}
+a.internal_link::after {
+	content: " →";
+}
+	/* Table styling for all pages*/
+table.table_styles {
+	margin: 0 auto;
+	width: 100%;
+	border-collapse: collapse; /* No spaces between table cells*/
+}
+table.table_styles .row_header {
+	width: 15%;
+	text-align: center;
+}
+table.table_styles th,
+table.table_styles td {
+	border: 3px solid #0d4080;
+	padding: 5px 10px;
+}
+table.table_styles th:hover,
+table.table_styles td:hover { /* Project part 1 requirement */
+	background-color: #445c7a;
+	cursor: default;
+}
 
-/* Header (Logo & Menu) */
+/*-------------------- Header (Logo & Menu) --------------------*/
 #menu_toggle_label {
 	display: inline-block;
+	margin-top: 16px;
 	color: #fff;
 	font-weight: bold;
 	font-size: 12.8px; /* 16*0.8px */
@@ -97,7 +125,7 @@ a {
 		display: flex;
 		flex-wrap: wrap;
 		font-weight: bold;
-		text-align: left; /* Override <header> text-align*/
+		text-align: left; /* Overrides <header> text-align*/
 		color: #fff;
 		padding: 8px 16px;
 		margin: 3.2px 0; /* 16*0.2px = 3.2px */
@@ -162,7 +190,7 @@ a {
 		display: flex;
 		flex-wrap: wrap;
 		font-weight: bold;
-		text-align: left; /* Override <header> text-align*/
+		text-align: left; /* Overrides <header> text-align*/
 		color: #fff;
 		padding: 8px 16px;
 		margin: 3.2px 0; /* 16*0.2px = 3.2px */
@@ -206,6 +234,7 @@ a {
 .menu li {
     position: relative;
 }
+	/* Job positions navigation*/
 .joblist {
 	z-index: 1;
 	display: none;
@@ -223,14 +252,13 @@ a {
 	flex-direction: column;
 }
 
-/* index.html */
+/*-------------------- index.php --------------------*/
 #welcome {
 	/* Background created with Copilot assistance */
 	background-image: url(images/background_graphic.png);
     background-size: cover;
 	background-repeat: no-repeat;
     background-position: center right;
-	margin: 0; /* Overrides <main> padding */
 }
 	/* Fading effect */
 #welcome::before {
@@ -268,7 +296,7 @@ a {
     text-align: center;
 }
 #welcome h2 {
-	padding-top: 0px; /* Override the padding set above */
+	padding-top: 0px; /* Overrides the padding set above */
 }
 	/* CTA buttons */
 #welcome button {
@@ -305,90 +333,105 @@ a {
 	cursor: pointer;
 }
 
-/* jobs.html */
-	/* Headers */
-#SO145,
-#AI313,
-#CY296 {
-    font: small-caps bold 2em/1.2 'Segoe UI', Tahoma, Verdana, sans-serif;
+/*-------------------- jobs.php --------------------*/
+
+/*-------------------- apply.php --------------------*/
+#apply_h1 {
+	padding-top: 20px;
+	text-align: center;
+}
+#apply_form {
+	background-color: #0b111a;
+	width: 90%;
+	margin: 20px auto;
 	padding: 20px;
+	border-radius: 20px;
 }
-	/* Headers' aside */
-.as_right {
-    float: right;
-    width: 25%;
-    margin: 0 20px 20px 20px;
-    padding: 12px;
-    border: 2px solid #0077aa;
-    background-color: #eef6fb;
+#apply_form input[type="text"],
+#apply_form input[type="email"],
+#apply_form input[type="submit"],
+#apply_form select,
+#apply_form textarea,
+#apply_form fieldset {
+	background-color: #1a1f2b;
+	margin-bottom: 8px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	color: #fff;
+	font-family: system-ui, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+	line-height: 1.5;
+	transition: border-color 0.3s ease;
 }
-.desc,
-.le_list,
-.smol_h {
-    max-width: 65%;
-    padding: 20px;
+#apply_form input[type="submit"] {
+	width: fit-content; /* Overrides the width set above */
+}
+#apply_form label,
+#apply_form fieldset legend {
+	color: #c0c0c0;
+	font-weight: 500;
+}
+#apply_form label {
+	margin-left: 10px;
+}
+#apply_form input:focus,
+#apply_form select:focus,
+#apply_form textarea:focus {
+	border-color: #00aaff;
+	outline: none;
+}
+#apply_form input[type="checkbox"]:focus,
+#apply_form input[type="radio"]:focus { /* Overrides the :focus set above */
+	outline: 2px solid #00aaff;
+	outline-offset: 2px;
+}
+#apply_form .inputs_group {
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
+	text-wrap: wrap;
+}
+#apply_form .inputs_group span {
+	display: flex;
+	margin-bottom: 8px;
+}
+#apply_form #name_grid,
+#apply_form #dob_gender_grid,
+#apply_form #states_grid {
+	display: grid;
+	gap: 20px;
+}
+#apply_form #name_grid {
+	grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 750px) {
+	#apply_form #name_grid {
+		display: block;
+	}
+}
+#apply_form #dob_gender_grid {
+	grid-template-columns: 3fr 4fr;
+}
+@media (max-width: 460px) {
+	#apply_form #dob_gender_grid {
+		display: block;
+	}
+}
+#apply_form #states_grid {
+	grid-template-columns: 5fr 3fr;
+}
+@media (max-width: 420px) {
+	#apply_form #states_grid {
+		display: block;
+	}
+}
+#apply_form #dob_gender_grid fieldset label {
+	margin-left: 0; /* Overrides the universal label margin-left */
+	margin-right: 10px;
 }
 
-/* apply.html */
-#header_Application {
-    margin: 0 auto;
-    padding: 20px;
-}
-form[action="https://mercury.swin.edu.au/it000000/formtest.php"] {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-}
-	/* labels */
-label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-	/* inputs, selects, and textarea */
-#jobReferenceNumber,
-#firstName,
-#lastName,
-#dateOfBirth,
-#streetAddress,
-#suburb\/Town,
-#state,
-#post,
-#eMail,
-#phoneNumber,
-#otherSkills {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    box-sizing: border-box;
-}
-	/* checkboxes and radio buttons */
-input[type="checkbox"],
-input[type="radio"] {
-    margin-right: 8px;
-}
-	/* submit button */
-input[type="submit"] {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-input[type="submit"]:hover {
-    background-color: #005fa3;
-}
-
-/* about.html */
+/*-------------------- about.php --------------------*/
 #about_h1,
 #group_info h2,
 #contributions_and_demographics h2,
@@ -427,7 +470,7 @@ input[type="submit"]:hover {
 #group_photo figcaption{
 	text-align: center;
 }
-@media (max-width: 900px) { /* <=900px width, group info list becomes too stretched */
+@media (max-width: 900px) { /* when width is <=900px, group info list becomes too stretched on 50% */
 	#group_info {
 		width: 100%;
 	}
@@ -437,7 +480,7 @@ input[type="submit"]:hover {
 }
 #contributions_and_demographics {
 	clear: both;
-	width: auto;
+	width: 100%;
 	padding: 0 5%;
 }
 #contributions_and_demographics dl {
@@ -452,6 +495,7 @@ input[type="submit"]:hover {
 	font-size: 20px;
 	padding-bottom: 10px;
 }
+	/* Split the sections into 2 parts: text and image — avatar */
 #contributions_and_demographics .flex_container {
 	display: flex;
 	align-items: flex-start;
@@ -474,27 +518,8 @@ input[type="submit"]:hover {
 	clear: both;
 	padding: 0 5%;
 }
-#members_interests table {
-	margin: 0 auto;
-	width: 100%;
-	border-collapse: collapse; /* No spaces between table cells*/
-	/* text-wrap: wrap; */
-}
-#members_interests table .member_name {
-	text-align: center;
-}
-#members_interests table th,
-#members_interests table td {
-	border: 3px solid #0d4080;
-	padding: 5px 10px;
-}
-#members_interests table th:hover,
-#members_interests table td:hover {
-	background-color: #445c7a;
-	cursor: default;
-}
 
-/* Footer */
+/*-------------------- Footer --------------------*/
 footer {
 	position: relative;
     background-color: #030d30;
