@@ -11,6 +11,10 @@
     description: CSS stylesheet for MemMis website
 */
 
+/* Truc's note: Almost all of the styling was put in separate ids and classes.
+This ensures only the specific elements corresponding to that page will have those 
+styles, without affecting elements in other pages that may have the same structure */
+
 * {
     margin: 0;
     padding: 0;
@@ -253,12 +257,17 @@ table.table_styles td:hover { /* Project part 1 requirement */
 }
 
 /*-------------------- index.php --------------------*/
+#homepage section h3 {
+	padding-top: 20px;
+	text-align: center;
+}
 #welcome {
 	/* Background created with Copilot assistance */
 	background-image: url(images/background_graphic.png);
     background-size: cover;
 	background-repeat: no-repeat;
     background-position: center right;
+	transition: all 0.5s ease;
 }
 	/* Fading effect */
 #welcome::before {
@@ -298,6 +307,38 @@ table.table_styles td:hover { /* Project part 1 requirement */
 #welcome h2 {
 	padding-top: 0px; /* Overrides the padding set above */
 }
+#service_values_grid,
+#projects_grid,
+#comments_grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+#comments_grid {
+	margin-top: 15px;
+}
+#differentiators ul {
+	margin-left: 30px;
+}
+#projects a {
+	display: block;
+	text-align: center;
+}
+#services,
+#hiring,
+#contact {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+#services {
+	text-align: left; /* Overrides the text-align above */
+}
+#hiring {
+	width: 70%;
+	margin: 0 auto;
+}
 	/* CTA buttons */
 #welcome button {
 	display: block;
@@ -312,6 +353,19 @@ table.table_styles td:hover { /* Project part 1 requirement */
 	font-weight: bold;
 	font-size: 19.2px; /* 16*1.2px */
 	transition: all 0.5s ease;
+}
+@media (max-width: 650px) {
+	#welcome h1,
+	#welcome h2,
+	#welcome p {
+		padding-left: 5%;
+	}
+	#welcome button {
+		margin-left: calc(5% + (90% / 2) - (274.156px / 2));
+	}
+	#welcome {
+		background-position: center;
+	}
 }
 #hiring button {
 	display: block;
