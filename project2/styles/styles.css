@@ -320,6 +320,9 @@ table.table_styles td:hover { /* Project part 1 requirement */
 #differentiators ul {
 	margin-left: 30px;
 }
+#projects {
+	padding: 0 5%;
+}
 #projects a {
 	display: block;
 	text-align: center;
