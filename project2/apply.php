@@ -166,39 +166,39 @@
 				<fieldset class="inputs_group">
 					<legend>SO415</legend>
 					<span>
-						<input type="checkbox" id="skill_1" name="SO415[]" value="skill_1" checked required>
+						<input type="checkbox" id="skill_1" name="SO145[]" value="skill_1" checked required>
 						<label for="skill_1">Bachelor's Degree in Software Engineering or related field.</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_2" name="SO415[]" value="skill_2">
+						<input type="checkbox" id="skill_2" name="SO145[]" value="skill_2">
 						<label for="skill_2">1+ years of software developing experience.</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_3" name="SO415[]" value="skill_3">
+						<input type="checkbox" id="skill_3" name="SO145[]" value="skill_3">
 						<label for="skill_3">Familiarity with Agile development methodology.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_4" name="SO415[]" value="skill_4">
+						<input type="checkbox" id="skill_4" name="SO145[]" value="skill_4">
 						<label for="skill_4">Ability to define and solve logical problems for highly technical applications.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_5" name="SO415[]" value="skill_5">
+						<input type="checkbox" id="skill_5" name="SO145[]" value="skill_5">
 						<label for="skill_5">Proven experience in software development (e.g., internships, projects, or professional roles).</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_6" name="SO415[]" value="skill_6">
+						<input type="checkbox" id="skill_6" name="SO145[]" value="skill_6">
 						<label for="skill_6">Proficiency in one or more programming languages (e.g., Java, Python, C#, JavaScript).</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_7" name="SO415[]" value="skill_7">
+						<input type="checkbox" id="skill_7" name="SO145[]" value="skill_7">
 						<label for="skill_7">Attention to details.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_8" name="SO415[]" value="skill_8">
+						<input type="checkbox" id="skill_8" name="SO145[]" value="skill_8">
 						<label for="skill_8">Excellent communication skill.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_9" name="SO415[]" value="skill_9">
+						<input type="checkbox" id="skill_9" name="SO145[]" value="skill_9">
 						<label for="skill_9">Keep up to date with new technology</label>						
 					</span>
 				</fieldset>
