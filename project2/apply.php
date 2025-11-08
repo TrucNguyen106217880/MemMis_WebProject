@@ -29,32 +29,32 @@
 			<br>
 
 			<div id="name_grid">
-				<span>
+				<div>
 					<!-- Text input section to enter first name -->
 					<label for="first_name">First name</label>
 					<input type="text" id="first_name" name="first_name" required
 						pattern="^[a-zA-Z]{1,20}$"
 						title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
-				</span>
-				<span>
+				</div>
+				<div>
 					<!-- Text input section to enter last name -->
 					<label for="last_name">Last name</label>
 					<input type="text" id="last_name" name="last_name" required 
 						pattern="^[a-zA-Z]{1,20}$"
 						title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
 					<br>					
-				</span>
+				</div>
 			</div>
 			
 			<div id="dob_gender_grid">
-				<span>
+				<div>
 					<!-- Text input section to enter birth date -->
 					<label for="date_of_birth">Date of birth</label>
 					<input type="text" id="date_of_birth" name="date_of_birth" required
 						   pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" 
 						   placeholder="dd/mm/yyyy"
 						   title="Please follow the dd/mm/yyyy format"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->				
-				</span>
+				</div>
 					<!-- Field to group gender selection section -->
 				<fieldset>
 					<legend>Gender</legend>
@@ -81,30 +81,71 @@
 			<br>
 
 			<div id="states_grid">
-				<span>
+				<div>
 					<!-- Dropdown list to choose a State -->
 					<label for="state">State</label>
 					<select id="state" name="state" required>
 						<option value="">Please select a State</option>
-						<option value="VIC">VIC</option>
 						<option value="NSW">NSW</option>
-						<option value="QLD">QLD</option>
-						<option value="NT">NT</option>
-						<option value="WA">WA</option>
-						<option value="SA">SA</option>
-						<option value="TAS">TAS</option>
 						<option value="ACT">ACT</option>
-					</select>					
-				</span>
-				<span>
-					<!-- Text input section to enter post code -->
-					<label for="post_code">Postcode</label>
-					<input type="text" id="post_code" name="post_code" required 
+						<option value="VIC">VIC</option>
+						<option value="QLD">QLD</option>
+						<option value="SA">SA</option>
+						<option value="WA">WA</option>
+						<option value="TAS">TAS</option>
+						<option value="NT">NT</option>
+					</select>
+				</div>
+				<div>
+					<!-- Text input section to enter postcode -->
+					<label for="postcode">Postcode</label>
+					<input type="text" id="postcode" name="postcode" required 
 						pattern="^0[2-9][0-9]{2}|[1-9][0-9]{3}$"
 						maxlength="4"
-						title="Please choose within the state range">					
-				</span>
+						title="Please choose within the state range">						
+				</div>
 			</div>
+			<table class="table_styles">
+				<thead>
+					<th>State/Territory abbreviation</th>
+					<th>Postcode range</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="row_header">NSW</td>
+						<td>1000&ndash;1999, 2000&ndash;2599, 2619&ndash;2899, 2921&ndash;2999</td>
+					</tr>
+					<tr>
+						<td class="row_header">ACT</td>
+						<td>0200&ndash;0299, 2600&ndash;2618, 2900&ndash;2920</td>
+					</tr>
+					<tr>
+						<td class="row_header">VIC</td>
+						<td>3000&ndash;3996, 8000&ndash;8999</td>
+					</tr>
+					<tr>
+						<td class="row_header">QLD</td>
+						<td>4000&ndash;4999, 9000&ndash;9999</td>
+					</tr>
+					<tr>
+						<td class="row_header">SA</td>
+						<td>5000&ndash;5799, 5800&ndash;5999</td>
+					</tr>
+					<tr>
+						<td class="row_header">WA</td>
+						<td>6000&ndash;6797, 6800&ndash;6999</td>
+					</tr>
+					<tr>
+						<td class="row_header">TAS</td>
+						<td>7000&ndash;7799, 7800&ndash;7999</td>
+					</tr>
+					<tr>
+						<td class="row_header">NT</td>
+						<td>0800&ndash;0899, 0900&ndash;0999</td>
+					</tr>
+				</tbody>
+			</table>
+			<br>
 
 			<!-- Input for email -->
 			<label for="email">Email</label>

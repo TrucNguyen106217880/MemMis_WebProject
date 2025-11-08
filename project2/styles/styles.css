@@ -5,7 +5,7 @@
 
     date created: September 21st, 2025
 
-    date modified (project part 2): November 4th, 2025
+    date modified (project part 2): November 8th, 2025
 	*Highly altered comparing to part 1 project
 
     description: CSS stylesheet for MemMis website
@@ -32,6 +32,26 @@ a.external_link::after {
 }
 a.internal_link::after {
 	content: " →";
+}
+	/* Table styling for all pages*/
+table.table_styles {
+	margin: 0 auto;
+	width: 100%;
+	border-collapse: collapse; /* No spaces between table cells*/
+}
+table.table_styles .row_header {
+	width: 15%;
+	text-align: center;
+}
+table.table_styles th,
+table.table_styles td {
+	border: 3px solid #0d4080;
+	padding: 5px 10px;
+}
+table.table_styles th:hover,
+table.table_styles td:hover { /* Project part 1 requirement */
+	background-color: #445c7a;
+	cursor: default;
 }
 
 /*-------------------- Header (Logo & Menu) --------------------*/
@@ -497,24 +517,6 @@ a.internal_link::after {
 #members_interests {
 	clear: both;
 	padding: 0 5%;
-}
-#members_interests table {
-	margin: 0 auto;
-	width: 100%;
-	border-collapse: collapse; /* No spaces between table cells*/
-}
-#members_interests table .member_name {
-	text-align: center;
-}
-#members_interests table th,
-#members_interests table td {
-	border: 3px solid #0d4080;
-	padding: 5px 10px;
-}
-#members_interests table th:hover,
-#members_interests table td:hover { /* Project part 1 requirement */
-	background-color: #445c7a;
-	cursor: default;
 }
 
 /*-------------------- Footer --------------------*/
