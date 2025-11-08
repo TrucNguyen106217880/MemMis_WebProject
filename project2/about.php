@@ -14,12 +14,13 @@
 <body>
 	<header>
 		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
-		<img id="logo" src="images/MemMis_Logo.png" title="Custom Website Design & Development | MemMis"
+		<img id="logo" src="images/MemMis_Logo.png"
+			title="Custom Website Design & Development | MemMis"
 			alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="jobs.php">Job Positions</a>
 					<ul class="joblist">
 						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
 						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
@@ -86,8 +87,7 @@
 								</ul>
 							</li>
 						</ul>
-						<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class=""
-							title="Mr.Wilson">
+						<img src="images/ThS-Doan-Tan-Trung.jpg" alt="COS100026 Can Tho's Lecturer" class="" title="Mr.Wilson">
 					</aside>
 				</div>
 
@@ -108,8 +108,7 @@
 							<li>Male</li>
 							<li>Birthday: 02/04/2007</li>
 							<li>Home town: Châu Đốc Ward (old Châu Đốc City), An Giang Province, Vietnam. Famous for its
-								spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother
-								of
+								spiritual landmarks, including the sacred Bà Chúa Xứ Temple (Temple of the Holy Mother of
 								the Realm ).</li>
 						</ul>
 					</dd>
@@ -125,17 +124,14 @@
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 1/1/2007</li>
-							<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the
-								Western
+							<li>Home town: Can Tho City-The largest city in the Mekong Delta, known as "Tây Đô"( the Western
 								Metropolis ) with a history spanning over 270 years. This lovely city is famous for its
-								people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển,
-								etc.)
+								people, food (Bánh xèo củ hủ dừa, bánh cống, vịt nấu chao,lẩu cá linh bông điên điển, etc.)
 							</li>
 						</ul>
 					</dd>
 				</dl>
-				<figure><img src="images/Duy.jpg" alt="Duy_pfp" class="Float_Right_Img" title="Second Member"
-						id="Duy_Img">
+				<figure><img src="images/Duy.jpg" alt="Duy_pfp" class="Float_Right_Img" title="Second Member" id="Duy_Img">
 					<figcaption class="Figcap_Centre">Duy</figcaption>
 				</figure>
 			</div>
@@ -146,15 +142,13 @@
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 28/10/2007</li>
-							<li>Home town: Can Tho is the fourth-largest city in Vietnam, and one of six Municipalities.
-								Can
+							<li>Home town: Can Tho is the fourth-largest city in Vietnam, and one of six Municipalities. Can
 								Tho is known for its kind and modest people, and being a large city with less hustle and
 								bustle compared to cities like Ho Chi Minh or Ha Noi.</li>
 						</ul>
 					</dd>
 				</dl>
-				<figure><img src="images/Viet.jpg" alt="Viet_pfp" class="Float_Right_Img" title="Third Member"
-						id="Viet_Img">
+				<figure><img src="images/Viet.jpg" alt="Viet_pfp" class="Float_Right_Img" title="Third Member" id="Viet_Img">
 					<figcaption class="Figcap_Centre">Viet</figcaption>
 				</figure>
 			</div>
@@ -171,8 +165,7 @@
 						</ul>
 					</dd>
 				</dl>
-				<figure><img src="images/Khang.png" alt="Khang_pfp" class="Float_Right_Img" title="Fourth Member"
-						id="Khang_Img">
+				<figure><img src="images/Khang.png" alt="Khang_pfp" class="Float_Right_Img" title="Fourth Member" id="Khang_Img">
 					<figcaption class="Figcap_Centre">Khang</figcaption>
 				</figure>
 			</div>
@@ -183,15 +176,13 @@
 						<ul>
 							<li>Male</li>
 							<li>Birthday: 14/02/2007</li>
-							<li>Home town: Can Tho City, the major supplier of rice in Viet Nam, the heart of Mekong
-								Delta.
+							<li>Home town: Can Tho City, the major supplier of rice in Viet Nam, the heart of Mekong Delta.
 								Famous for being the centre of culture, economic of the West with some unique attraction
 								such as rice paper making village and floating market.</li>
 						</ul>
 					</dd>
 				</dl>
-				<figure><img src="images/Toan.jpg" alt="Toan_pfp" class="Float_Right_Img" title="Fifth Member"
-						id="Toan_Img">
+				<figure><img src="images/Toan.jpg" alt="Toan_pfp" class="Float_Right_Img" title="Fifth Member" id="Toan_Img">
 					<figcaption class="Figcap_Centre">Toan</figcaption>
 				</figure>
 			</div>
@@ -224,8 +215,7 @@
 					<tr>
 						<td>Duy</td>
 						<td>106216081</td>
-						<td>Gaming (Valorant specifically, and Minecraft), taking photographs and stay busy (not too
-							busy).
+						<td>Gaming (Valorant specifically, and Minecraft), taking photographs and stay busy (not too busy).
 						</td>
 					</tr>
 					<tr>
@@ -243,8 +233,7 @@
 					<tr>
 						<td>Toan</td>
 						<td>106217877</td>
-						<td>Pop music, Sci-fi movies, Gaming (mostly League of Legend and simulator games), Manhwa,
-							Manga.
+						<td>Pop music, Sci-fi movies, Gaming (mostly League of Legend and simulator games), Manhwa, Manga.
 						</td>
 					</tr>
 
@@ -262,7 +251,8 @@
 			target="_blank">Jira Project for MemMis website</a>
 
 		<br><br>
-		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject" target="_blank">GitHub Repository</a>
+		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject"
+			target="_blank">GitHub Repository</a>
 	</footer>
 </body>
 

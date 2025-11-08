@@ -6,21 +6,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="keywords" content="">
-	<meta name="author" content="">
+	<meta name="author" content="Viet Do">
 	<link rel="stylesheet" href="styles/styles.css">
-	<title>job application | MemMis</title>
+	<title>Job application | MemMis</title>
 </head>
 
 <body>
 	<header>
 		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
 		<img id="logo" src="images/MemMis_Logo.png"
-			 title="Custom Website Design & Development | MemMis"
-			 alt="MemMis logo" loading="lazy">
+			title="Custom Website Design & Development | MemMis"
+			alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="jobs.php">Job Positions</a>
 					<ul class="joblist">
 						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
 						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
@@ -60,7 +60,7 @@
 			<label for="firstName"> First name
 			</label>
 			<input type="text" id="firstName" name="firstname" required pattern="^[a-zA-Z]{1,20}$"
-				   title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
+				title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
 
 			<br>
 
@@ -68,7 +68,7 @@
 			<label for="lastName"> Last name
 			</label>
 			<input type="text" id="lastName" name="lastname" required pattern="^[a-zA-Z]{1,20}$"
-				   title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
+				title="Max 20 alpha characters only"> <!--Max 20 alpha characters-->
 
 			<br>
 
@@ -76,8 +76,8 @@
 			<label for="dateOfBirth"> Date of birth
 			</label>
 			<input type="text" id="dateOfBirth" name="dateofbirth" required
-				   pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy"
-				   title="Please follow the dd/mm/yyyy format"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->
+				pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[012])/\d{4}$" placeholder="dd/mm/yyyy"
+				title="Please follow the dd/mm/yyyy format"> <!--Number 0-9 only, must follow dd/mm/yyyy format-->
 
 			<!-- field to group gender selection section -->
 			<fieldset>
@@ -98,7 +98,7 @@
 			<label for="streetAddress"> Street address
 			</label>
 			<input type="text" id="streetAddress" name="Streetaddress" required pattern="^.{1,40}$"
-				   title="Max 40 characters">
+				title="Max 40 characters">
 			<!--Max 40 any characters, I'm using ". because an address *may* contain special characters-->
 
 			<br>
@@ -107,7 +107,7 @@
 			<label for="suburbTown"> Suburb/town
 			</label>
 			<input type="text" id="suburbTown" name="Suburb/town" required pattern="^.{1,40}$"
-				   title="Max 40 characters"> <!--Max 40 any characters-->
+				title="Max 40 characters"> <!--Max 40 any characters-->
 
 			<br>
 
@@ -143,7 +143,7 @@
 			<label for="postCode"> Postcode
 			</label>
 			<input type="text" id="postCode" name="Postcode" required pattern="^0[2-9][0-9]{2}|[1-9][0-9]{3}$"
-				   maxlength="4" placeholder="0200-9999" title="Please choose within the range 0200-9999">
+				maxlength="4" placeholder="0200-9999" title="Please choose within the range 0200-9999">
 
 			<br>
 
@@ -158,7 +158,7 @@
 			<label for="phoneNumber"> Phone number
 			</label>
 			<input type="text" id="phoneNumber" name="Phonenumber" required pattern="^[\d\s]{8,12}$"
-				   title="8 to 12 space or digits only"> <!--Between 8 to 12 space or digits-->
+				title="8 to 12 space or digits only"> <!--Between 8 to 12 space or digits-->
 
 			<br>
 
@@ -301,11 +301,11 @@
 
 		<br>
 		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34/backlog?atlOrigin=eyJpIjoiMzZiMzAwYmI1OTYyNDNjNDhlZDc2ZDk5OTI2NTFiYTgiLCJwIjoiaiJ9"
-		   target="_blank">Jira Project for MemMis website</a>
+			target="_blank">Jira Project for MemMis website</a>
 
 		<br><br>
 		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject"
-		   target="_blank">GitHub Repository</a>
+			target="_blank">GitHub Repository</a>
 	</footer>
 </body>
 

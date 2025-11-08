@@ -14,12 +14,13 @@
 <body>
 	<header>
 		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
-		<img id="logo" src="images/MemMis_Logo.png" title="Custom Website Design & Development | MemMis"
+		<img id="logo" src="images/MemMis_Logo.png"
+			title="Custom Website Design & Development | MemMis"
 			alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="jobs.html" class="active">Job Positions</a>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="jobs.php" class="active">Job Positions</a>
 					<ul class="joblist">
 						<li><a href="#SO145">Software Developer - SO145</a></li>
 						<li><a href="#AI313">AI Engineer - AI313</a></li>
@@ -34,10 +35,34 @@
 	</header>
 
 	<main>
-		<h1 id="SO145">Software Developer - SO145</h1>
+		<?php
+		session_start();
+		$host = "localhost";
+		$username = "root";
+		$password = "";
+		$database = "assignment_2";
+
+		$conn = mysqli_connect($host, $username, $password, $database);
+		// $_SESSION['username'] = "$username";
+		$query = "SELECT * from jobs";
+		$result = mysqli_query($conn, $query);
+		// echo "Welcome, " . $_SESSION['username'] . "<br>";
+		if (mysqli_num_rows($result) > 0) {
+			while ($row = mysqli_fetch_assoc($result)) {
+
+				echo "<h2>Position:</h2> " . $row['job_name'] . " - " . $row['position_reference_number'] . "<br>";
+				echo "<h2>About the role:</h2>" . $row['about_the_role'] . "<br>";
+				echo "<h2>Responsibility include:</h2> " . $row['responsibility'] . "<br>";
+				echo "<h2>Required qualifications:</h2>" . $row['required_qualifications'] . "<br>";
+				echo "<h2>Nice to have qialifications:</h2>" . $row['nice_to_have_qualifications'] . "<br>";
+				echo "<h2>Salary and benefits:</h2>" . $row['salary_and_benefits'] . "<br> <br>";
+			}
+		}
+		?>
+		<!-- <h1 id="SO145">Software Developer - SO145</h1>
 		<aside class="as_right">Software is an quite an integral part of life nowasdays. </aside>
-		<section>
-			<h2 class="smol_h">About the role:</h2>
+		<section> -->
+		<!-- <h2 class="smol_h">About the role:</h2>
 			<p class="desc">As a Software Developer, you will be responsible for designing, developing, and maintaining
 				software
 				applications that support business operations, improve user experiences, and drive digital innovation.
@@ -58,18 +83,18 @@
 				share knowledge within the team.
 				Your contributions will directly impact the quality, reliability, and success of the software products
 				delivered to users and stakeholders, making you a key player in the organization's growth and digital
-				transformation.</p>
-			<!-- The prompt message I send to Copilot is: may you write for me the role of a software engineer in my job-description page? (200 words plus ) -->
-		</section>
+				transformation.</p> -->
+		<!-- The prompt message I send to Copilot is: may you write for me the role of a software engineer in my job-description page? (200 words plus ) -->
+		<!-- </section>
 		<section>
 			<h2 class="smol_h">Resposibility include:</h2>
 			<ol class="le_list">
 				<li>Design, develop, and maintain scalable software applications.</li>
 				<li>Contribute to the continuous improvement of development processes and tools.</li>
 				<li>Troubleshoot, debug, and upgrade existing software.</li>
-				<li>Collaborate with cross-functional team members to define and implement new features.</li>
-				<!-- my prompt message for Copilot:could you write me job description for software development? -->
-				<li>Reporting to the Director of Software on activity and results.</li>
+				<li>Collaborate with cross-functional team members to define and implement new features.</li> -->
+		<!-- my prompt message for Copilot:could you write me job description for software development? -->
+		<!-- <li>Reporting to the Director of Software on activity and results.</li>
 			</ol>
 		</section>
 		<section>
@@ -80,9 +105,9 @@
 				<li>Familiarity with Agile development methodology.</li>
 				<li>Ability to define and solve logical problems for highly technical applications. </li>
 				<li>Proven experience in software development (e.g., internships, projects, or professional roles).</li>
-				<li>Proficiency in one or more programming languages (e.g., Java, Python, C#, JavaScript).</li>
-				<!-- my prompt message for Copilot:could you write me job description for software development? -->
-				<li>Attention to details.</li>
+				<li>Proficiency in one or more programming languages (e.g., Java, Python, C#, JavaScript).</li> -->
+		<!-- my prompt message for Copilot:could you write me job description for software development? -->
+		<!-- <li>Attention to details.</li>
 				<li>Excellent communication skill.</li>
 				<li>Keep up to date with new technology.</li>
 			</ul>
@@ -92,9 +117,9 @@
 			<ul class="le_list">
 				<li>Knowledge of databases (SQL and NoSQL).</li>
 				<li>Experience with cloud platforms (e.g., AWS, Azure, Google Cloud).</li>
-				<li>Experience with version control system like Git.</li>
-				<!-- my prompt message for Copilot:could you write me job description for software development? -->
-			</ul>
+				<li>Experience with version control system like Git.</li> -->
+		<!-- my prompt message for Copilot:could you write me job description for software development? -->
+		<!-- </ul>
 		</section>
 		<section>
 			<h2 class="smol_h">Salary and benefits:</h2>
@@ -103,9 +128,9 @@
 				<li>Health and job loss insurance</li>
 				<li>Remote or in-office available</li>
 				<li>3 weeks of pay leave per year</li>
-				<li>Flexible working hours</li>
-				<!-- I did not use AIgen content in this section -->
-			</ul>
+				<li>Flexible working hours</li> -->
+		<!-- I did not use AIgen content in this section -->
+		<!-- </ul>
 		</section>
 
 		<h1 id="AI313">AI Engineer - AI313</h1>
@@ -129,9 +154,9 @@
 				advancements in AI research. You will also be expected to uphold ethical standards in AI development,
 				ensuring transparency, accountability, and responsible use of data.
 				Your contributions will play a vital role in shaping intelligent systems that improve user experiences,
-				streamline operations, and support strategic decision-making.
-				<!-- The prompt message I send to Copilot is: may you write for me the role of a AI engineer in my job-description page? (200 words plus ) -->
-			</p>
+				streamline operations, and support strategic decision-making. -->
+		<!-- The prompt message I send to Copilot is: may you write for me the role of a AI engineer in my job-description page? (200 words plus ) -->
+		<!-- </p>
 		</section>
 		<section>
 			<h2 class="smol_h">Resposibility include:</h2>
@@ -141,9 +166,9 @@
 				<li>Evaluate model performance using appropriate metrics and improve accuracy through tuning and
 					experimentation.</li>
 				<li>Document processes, models, and systems for reproducibility and knowledge sharing.</li>
-				<li>Collaborate with cross-functional team members to define and implement new features.</li>
-				<!-- I use this prompt message for Copilot:AI engineer would be lovely -->
-				<li>Reporting to the AI Manager on activity and results.</li>
+				<li>Collaborate with cross-functional team members to define and implement new features.</li> -->
+		<!-- I use this prompt message for Copilot:AI engineer would be lovely -->
+		<!-- <li>Reporting to the AI Manager on activity and results.</li>
 			</ol>
 		</section>
 		<section>
@@ -168,9 +193,9 @@
 			<ul class="le_list">
 				<li>Experience with NLP, computer vision, or reinforcement learning.</li>
 				<li>Familiarity with MLOps tools and frameworks.</li>
-				<li>Understanding of ethical AI principles and data privacy regulations.</li>
-				<!-- I use this prompt message for Copilot:AI engineer would be lovely -->
-			</ul>
+				<li>Understanding of ethical AI principles and data privacy regulations.</li> -->
+		<!-- I use this prompt message for Copilot:AI engineer would be lovely -->
+		<!-- </ul>
 		</section>
 		<section>]
 			<h2 class="smol_h">Salary and benefits:</h2>
@@ -179,9 +204,9 @@
 				<li>Health and job loss insurance</li>
 				<li>Remote or in-office available</li>
 				<li>3 weeks of pay leave per year</li>
-				<li>Flexible working hours</li>
-				<!-- I did not use AIgen content in this section -->
-			</ul>
+				<li>Flexible working hours</li> -->
+		<!-- I did not use AIgen content in this section -->
+		<!-- </ul>
 		</section>
 
 		<h1 id="CY296">Cybersecurity Specialist - CY296</h1>
@@ -205,9 +230,9 @@
 				stakeholders. You will also contribute to employee training and awareness programs to foster a
 				security-conscious culture.
 				Your work is vital to maintaining operational continuity, protecting customer trust, and defending
-				against evolving cyber threats in a dynamic digital landscape.</p>
-			<!-- The prompt message I send to Copilot is: may you write for me the role of a Cybersecurity specialist in my job-description page? (200 words plus )-->
-		</section>
+				against evolving cyber threats in a dynamic digital landscape.</p> -->
+		<!-- The prompt message I send to Copilot is: may you write for me the role of a Cybersecurity specialist in my job-description page? (200 words plus )-->
+		<!-- </section>
 		<section>
 			<h2 class="smol_h">Resposibility include:</h2>
 			<ol class="le_list">
@@ -216,9 +241,9 @@
 				<li>Implement and maintain firewalls, intrusion detection/prevention systems (IDS/IPS), and endpoint
 					protection.
 				</li>
-				<li>Stay current with emerging cybersecurity trends, threats, and technologies.</li>
-				<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
-				<li>Reporting to the Chief Information Security Officer (CISO) on activity and results.</li>
+				<li>Stay current with emerging cybersecurity trends, threats, and technologies.</li> -->
+		<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
+		<!-- <li>Reporting to the Chief Information Security Officer (CISO) on activity and results.</li>
 			</ol>
 		</section>
 
@@ -228,17 +253,17 @@
 				<li>Bachelor's or Master's degree in cybersecurity or related field.</li>
 				<li>2+ years of experience in cybersecurity or IT security roles.</li>
 				<li>Knowledge of security frameworks and standards (e.g., NIST, ISO 27001, CIS).</li>
-				<li>Strong understanding of network protocols, operating systems, and security tools.</li>
-				<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
-				<li>Able to work both independently and on a team.</li>
+				<li>Strong understanding of network protocols, operating systems, and security tools.</li> -->
+		<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
+		<!-- <li>Able to work both independently and on a team.</li>
 			</ul>
 			<h2 class="smol_h">Nice-to-have qualifications:</h2>
 			<ul class="le_list">
 				<li>Professional certifications such as CISSP, CEH, CompTIA Security+, or CISM.</li>
 				<li>Experience with cloud security (AWS, Azure, GCP).</li>
-				<li>Knowledge of regulatory compliance (e.g., GDPR, HIPAA, PCI-DSS).</li>
-				<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
-			</ul>
+				<li>Knowledge of regulatory compliance (e.g., GDPR, HIPAA, PCI-DSS).</li> -->
+		<!-- I use this prompt message for Copilot:May you write for me job description for cybersecurity specialist? -->
+		<!-- </ul>
 		</section>
 
 		<section>
@@ -247,22 +272,23 @@
 				<li>Salary range: $15,000 to 50,000 per month</li>
 				<li>Health and job loss insurance</li>
 				<li>Remote or in-office available</li>
-				<li>3 weeks of pay leave per year</li>
-				<!-- I did not use AIgen content in this section -->
-			</ul>
+				<li>3 weeks of pay leave per year</li> -->
+		<!-- I did not use AIgen content in this section -->
+		<!-- </ul>
 		</section>
-	</main>
+	</main> -->
 
-	<footer>
-		<p>&copy; 2025 MemMis. All rights reserved.</p>
+		<footer>
+			<p>&copy; 2025 MemMis. All rights reserved.</p>
 
-		<br>
-		<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34/backlog?atlOrigin=eyJpIjoiMzZiMzAwYmI1OTYyNDNjNDhlZDc2ZDk5OTI2NTFiYTgiLCJwIjoiaiJ9"
-			target="_blank">Jira Project for MemMis website</a>
+			<br>
+			<a href="https://trucnttkh.atlassian.net/jira/software/projects/MEMMIS/boards/34/backlog?atlOrigin=eyJpIjoiMzZiMzAwYmI1OTYyNDNjNDhlZDc2ZDk5OTI2NTFiYTgiLCJwIjoiaiJ9"
+				target="_blank">Jira Project for MemMis website</a>
 
-		<br><br>
-		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject" target="_blank">GitHub Repository</a>
-	</footer>
+			<br><br>
+			<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject"
+				target="_blank">GitHub Repository</a>
+		</footer>
 </body>
 
 </html>

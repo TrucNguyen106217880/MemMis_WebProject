@@ -17,12 +17,13 @@
 		<!-- This logo was created using a text-to-image AI tool provided by Canva, with modifications toward quality -->
 
 		<!-- CSS: Change size of this!!! -->
-		<img id="logo" src="images/MemMis_Logo.png" title="Custom Website Design & Development | MemMis"
+		<img id="logo" src="images/MemMis_Logo.png"
+			title="Custom Website Design & Development | MemMis"
 			alt="MemMis logo" loading="lazy">
 		<nav>
 			<ul class="menu">
-				<li><a href="index.html" class="active">Home</a></li>
-				<li><a href="jobs.html">Job Positions</a>
+				<li><a href="index.php" class="active">Home</a></li>
+				<li><a href="jobs.php">Job Positions</a>
 					<ul class="joblist">
 						<li><a href="jobs.html#SO145">Software Developer - SO145</a></li>
 						<li><a href="jobs.html#AI313">AI Engineer - AI313</a></li>
@@ -119,7 +120,8 @@
 			target="_blank">Jira Project for MemMis website</a>
 
 		<br><br>
-		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject" target="_blank">GitHub Repository</a>
+		<a href="https://github.com/TrucNguyen106217880/MemMis_WebProject"
+			target="_blank">GitHub Repository</a>
 	</footer>
 </body>
 
