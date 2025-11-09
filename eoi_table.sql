@@ -41,9 +41,9 @@ CREATE TABLE `jobs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Skills table here:
-CREATE TABLE `skills` (
+CREATE TABLE IF NOT EXISTS `skills` (
   `skills_id` INT NOT NULL AUTO_INCREMENT,
-  `skills` TEXT NOT NULL,
+  `skill_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`skills_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
