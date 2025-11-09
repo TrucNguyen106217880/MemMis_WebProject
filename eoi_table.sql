@@ -72,7 +72,7 @@ CREATE TABLE `eoi` (
   `skill_9` INT DEFAULT NULL,
   `skill_10` INT DEFAULT NULL,
   `other_skills` TEXT DEFAULT NULL,
-  `status` ENUM('New','Current','Final') DEFAULT 'New',
+  `eoi_status` ENUM('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`),
   FOREIGN KEY (`skill_1`) REFERENCES `skills`(`skills_id`),
   FOREIGN KEY (`skill_2`) REFERENCES `skills`(`skills_id`),
