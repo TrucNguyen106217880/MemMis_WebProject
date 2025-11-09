@@ -2,7 +2,7 @@
 $host="localhost";
 $user="root";
 $pwd="";
-$sql_db="jobs"; //Added name
+$sql_db="jobs";
 
 $conn=mysqli_connect($host, $user, $pwd, $sql_db);
 if (!$conn) {
