@@ -81,7 +81,7 @@
 			echo"</td>" ;
 			echo "<td>" . $row["other_skills"] . "</td>" ;
 			echo "<td><form>";
-			if ($row['status']=="New") {
+			if ($row['eoi_status']=="New") {
 				echo "
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
 					<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
@@ -91,7 +91,7 @@
 					<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 					" ;
 			}
-			if ($row['status']=="Current") {
+			if ($row['eoi_status']=="Current") {
 				echo "  
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
 					<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
@@ -101,7 +101,7 @@
 					<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 					" ;
 			} 
-			if ($row['status']=="Final") {
+			if ($row['eoi_status']=="Final") {
 				echo "  
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
 					<label for='new_box><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></lable>
