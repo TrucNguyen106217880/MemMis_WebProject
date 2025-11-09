@@ -48,11 +48,12 @@ CREATE TABLE `jobs` (
 -- --------------------------------------------------------
 
 -- Skills table here:
-CREATE TABLE IF NOT EXISTS `skills` (
-  `skills_id` INT NOT NULL AUTO_INCREMENT,
-  `skill_name` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`skills_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS skills;
+CREATE TABLE IF NOT EXISTS skills (
+  `skills_id` varchar(255) NOT NULL,
+  `skills` text NOT NULL,
+  PRIMARY KEY (skills_id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -70,29 +71,19 @@ CREATE TABLE `eoi` (
   `postcode` VARCHAR(4) NOT NULL,
   `email_address` VARCHAR(100) NOT NULL,
   `phone_number` VARCHAR(20) NOT NULL,
-  `skill_1` INT DEFAULT NULL,
-  `skill_2` INT DEFAULT NULL,
-  `skill_3` INT DEFAULT NULL,
-  `skill_4` INT DEFAULT NULL,
-  `skill_5` INT DEFAULT NULL,
-  `skill_6` INT DEFAULT NULL,
-  `skill_7` INT DEFAULT NULL,
-  `skill_8` INT DEFAULT NULL,
-  `skill_9` INT DEFAULT NULL,
-  `skill_10` INT DEFAULT NULL,
+  `skill_1` VARCHAR(50) DEFAULT NULL,
+  `skill_2` VARCHAR(50) DEFAULT NULL,
+  `skill_3` VARCHAR(50) DEFAULT NULL,
+  `skill_4` VARCHAR(50) DEFAULT NULL,
+  `skill_5` VARCHAR(50) DEFAULT NULL,
+  `skill_6` VARCHAR(50) DEFAULT NULL,
+  `skill_7` VARCHAR(50) DEFAULT NULL,
+  `skill_8` VARCHAR(50) DEFAULT NULL,
+  `skill_9` VARCHAR(50) DEFAULT NULL,
+  `skill_10` VARCHAR(50) DEFAULT NULL,
   `other_skills` TEXT DEFAULT NULL,
   `eoi_status` ENUM('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`),
-  FOREIGN KEY (`skill_1`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_2`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_3`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_4`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_5`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_6`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_7`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_8`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_9`) REFERENCES `skills`(`skills_id`),
-  FOREIGN KEY (`skill_10`) REFERENCES `skills`(`skills_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 COMMIT;
