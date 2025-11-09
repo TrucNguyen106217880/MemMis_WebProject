@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `eoi`
 --
 
+-- --------------------------------------------------------
 
 -- Jobs table here:
 CREATE TABLE `jobs` (
@@ -44,12 +45,16 @@ CREATE TABLE `jobs` (
   PRIMARY KEY (`job_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 -- Skills table here:
 CREATE TABLE IF NOT EXISTS `skills` (
   `skills_id` INT NOT NULL AUTO_INCREMENT,
   `skill_name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`skills_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 -- Eoi table here:
 CREATE TABLE `eoi` (
