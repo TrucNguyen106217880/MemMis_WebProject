@@ -27,11 +27,11 @@
 		<input type="submit" placeholder="Search">
 	</form>
 	<form method="post">
-		<input type="checkbox" name="SO145" value="SO145 ">
+		<input type="checkbox" name="SO145" value="SO145">
 		<label for="SO145">SO145</label>
-		<input type="checkbox" name="AI313" value="AI313 ">
+		<input type="checkbox" name="AI313" value="AI313">
 		<label for="AI313">AI313</label>
-		<input type="checkbox" name="CY296" value="CY296 ">
+		<input type="checkbox" name="CY296" value="CY296">
 		<label for="CY296">CY296</label>
 	</form>
 	<?php
@@ -84,31 +84,31 @@
 			if ($row['status']=="New") {
 				echo "
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
-					<label for='new_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></label>
+					<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
 					<input type='checkbox' name='checkbox_status' id='current_box' disabled>
-					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 					<input type='checkbox' name='checkbox_status' id='final_box' disabled>
-					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 					" ;
 			}
 			if ($row['status']=="Current") {
 				echo "  
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-					<label for='new_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></label>
+					<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
 					<input type='checkbox' name='checkbox_status' id='current_box' disabled checked>
-					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 					<input type='checkbox' name='checkbox_status' id='final_box' disabled>
-					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 					" ;
 			} 
 			if ($row['status']=="Final") {
 				echo "  
 					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-					<label for='new_box><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></lable>
+					<label for='new_box><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></lable>
 					<input type='checkbox' name='checkbox_status' id='current_box' disabled>
-					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 					<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
-					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 					" ;
 			}
 			echo "</form></td>";

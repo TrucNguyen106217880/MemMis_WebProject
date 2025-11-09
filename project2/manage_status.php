@@ -22,11 +22,13 @@
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi
-                    SET status = $status
+                    SET eoi_status = $status
                     WHERE eoi_number = $id
             ";
         }
     }
+    $id=$_GET["id"];
+    $status=$_GET["status"];
     $valid_status=mysqli_real_escape_string($connection,$status);
     $sql2 = status_manage($id,$valid_status);
     mysqli_query($connection,$sql2);

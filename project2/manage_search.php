@@ -12,13 +12,13 @@
 <body>
 	<?php
 	require_once 'settings.php';
-	if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
+	// if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
 		session_start();
 		$connection = mysqli_connect($host, $user, $pwd, "jobs");
 		if (!$connection) {
 			die("Connection failed: " . mysqli_connect_error());
 		}
-	} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM');
+	// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM');
 	$check_box = [];
 	if (isset($_POST['SO145'])) $check_box[]="SO145";
 	if (isset($_POST['AI313'])) $check_box[]="AI313";
@@ -41,7 +41,7 @@
 		$search = $_GET['searchq'];
 		$search_result = mysqli_real_escape_string($connection, $search);
     	$sql3 = "SELECT * FROM eoi WHERE (
-										job_reference_number LIKE '%$search_result%' or 
+										job_reference_number LIKE '$search_result' or 
 										first_name LIKE '%$search_result%' or
 										last_name LIKE '%$search_result%'
 										) and
