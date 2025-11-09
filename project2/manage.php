@@ -16,46 +16,40 @@
 		require_once 'settings.php';
 		if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
 			session_start();
-			$host="localhost";
-			$admin_user=$_SESSION(stripslashes(strip_tags('Memmis')));
-			$admin_password=$_SESSION(password_verify('Memmis676905#:3'));
+			$connection = mysqli_connect($host, $user, $pwd, "jobs");
+			if (!$connection) {
+				die("Connection failed: " . mysqli_connect_error());
 			}
-		else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
-		$connection = mysqli_connect($host, $admin_user, $admin_password, "jobs");
-		if (!$connection) {
-			die("Connection failed: " . mysqli_connect_error());
-		}
+		} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
 	?>
-	<!-- Search bar -->
 	<form method="get" action="manage_search.php">
 		<input type="text" id="search" name="searchq" placeholder="Search...">
-		<input type="submit" value="Search">
+		<input type="submit" placeholder="Search">
 	</form>
-	<form method="post"><!-- post method -->
-		<input type="checkbox" name="SO415" value="SO415 ">
-		<label for="SO415">SO415</label>
+	<form method="post">
+		<input type="checkbox" name="SO145" value="SO145 ">
+		<label for="SO145">SO145</label>
 		<input type="checkbox" name="AI313" value="AI313 ">
 		<label for="AI313">AI313</label>
 		<input type="checkbox" name="CY296" value="CY296 ">
 		<label for="CY296">CY296</label>
 	</form>
 	<?php
-	// connection for admin
-	
-	if (isset($_SESSION["search_sql"])){
-		$sql0 = $_SESSION["search_sql"];
-	} else {
+	if (!isset($_SESSION["search_sql"])){
 		$sql0 = "SELECT * FROM eoi";
+	} else {
+		$sql0 = $_SESSION["search_sql"];
 	}
 	$result = mysqli_query($connection, $sql0);
 	// display table
-	if (mysqli_num_rows($result) > 0) {
-		echo "<table>
+	echo "<table border='1'>
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Job RefN.</th>
 						<th>Name</th>
+						<th>DoB</th>
+						<th>Gender</th>
 						<th>Address</th>
 						<th>Postcode</th>
 						<th>Email</th>
@@ -66,69 +60,77 @@
 					</tr>
 				</thead>
 				<tbody>";
+	if (mysqli_num_rows($result) > 0) {
 		while($row = mysqli_fetch_assoc($result)) {
-			$applicant_id = $row["id"];
-			echo "<tr><td>" . $row["id"]. "</td>" ;
-			echo "<td>" .$row["selected_job"] . "</form></td>" ;
-			echo "<td>" . $row["firstname"]. " " . $row["lastname"] . "</td>" ;
-			echo "<td>" . $row["street_address"] . ", " . $row["suburb/town"] . ", " . $row["state"] . "</td>" ;
-			echo "<td>" . $row["post_code"] . "</td>" ;
-			echo "<td>" . $row["email"]. "</td>" ;
+			echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
+			echo "<td>" . $row["job_reference_number"] . "</td>" ;
+			echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
+			echo "<td>" . $row["date_of_birth"] . "</td>" ;
+			echo "<td>" . $row["gender"] . "</td>" ;
+			echo "<td>" . $row["street_address"] . ", " . $row["suburb_town"] . ", " . $row["state"] . "</td>" ;
+			echo "<td>" . $row["postcode"] . "</td>" ;
+			echo "<td>" . $row["email_address"]. "</td>" ;
 			echo "<td>" . $row["phone_number"] . "</td>" ;
-			echo "<td>" . $row["skill1"] . ", ". $row["skill2"] . ", ". $row["skill3"] . ", ". $row["skill4"] . "</td>" ;
-			echo "<td>" . $row["other_skill"] . "</td>" ;
+			echo "<td>" ;
+			$skill_row = [
+				$row["skill_1"], $row["skill_2"], $row["skill_3"], $row["skill_4"], $row["skill_5"],
+				$row["skill_6"], $row["skill_7"], $row["skill_8"], $row["skill_9"], $row["skill_10"]
+			];
+			$checked_skills = array_filter($skill_row);
+			echo implode(", ", $checked_skills) . ".";
+			echo"</td>" ;
+			echo "<td>" . $row["other_skills"] . "</td>" ;
+			echo "<td><form>";
 			if ($row['status']=="New") {
-				echo "<td>
-						<form>  
-              				<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
-							<lable for='new_box'><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a> --</lable>
-							<input type='checkbox' name='checkbox_status' id='current_box' disabled>
-							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a> --</lable>
-							<input type='checkbox' name='checkbox_status' id='final_box' disabled>
-							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a> --</lable>			
-						</form>
-					  </td>" ;
+				echo "
+					<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
+					<label for='new_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></label>
+					<input type='checkbox' name='checkbox_status' id='current_box' disabled>
+					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<input type='checkbox' name='checkbox_status' id='final_box' disabled>
+					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					" ;
 			}
 			if ($row['status']=="Current") {
-				echo "<td>
-						<form>  
-							<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-							<lable for='new_box'><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></lable>
-							<input type='checkbox' name='checkbox_status' id='current_box' disabled checked>
-							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></lable>
-							<input type='checkbox' name='checkbox_status' id='final_box' disabled>
-							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></lable>			
-						</form>
-					</td>" ;
+				echo "  
+					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
+					<label for='new_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></label>
+					<input type='checkbox' name='checkbox_status' id='current_box' disabled checked>
+					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<input type='checkbox' name='checkbox_status' id='final_box' disabled>
+					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					" ;
 			} 
 			if ($row['status']=="Final") {
-				echo "<td>
-						<form>  
-							<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-							<lable for='new_box><a href='manage_status.php?id={". $row["id"] . "}&status=New'>New</a></lable>
-							<input type='checkbox' name='checkbox_status' id='current_box' disabled>
-							<lable for='current_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Current'>Current</a></lable>
-							<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
-							<lable for='final_box'><a href='manage_status.php?id={". $row["id"] . "}&status=Final'>Final</a></lable>			
-						</form>
-					</td>" ;
+				echo "  
+					<input type='checkbox' name='checkbox_status' id='new_box' disabled>
+					<label for='new_box><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=New'>New</a></lable>
+					<input type='checkbox' name='checkbox_status' id='current_box' disabled>
+					<label for='current_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Current'>Current</a></label>
+					<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
+					<label for='final_box'><a href='manage_status.php?id={". $row["eoi_number"] . "}&status=Final'>Final</a></label>			
+					" ;
 			}
+			echo "</form></td>";
 		}
 		echo "</tbody>
 		</table>";
 		mysqli_close($connection);
 	} else {
-		echo "<td colspan='10'>No record</td>";
+		echo "<td colspan='12'>No record</td>";
 		echo "</tbody>
 		</table>";
 		mysqli_close($connection);
 	}
+	if (isset($_SESSION['searchq'])){
 	?>
+	<!-- I will make a confirmation page for this -->
 	<form method="post" action="manage_delete.php">
 	<label for="delete_button">Please check all results BEFORE deleting:</label>
 	<input type="submit" id="delete_button" name="delete_button" value="Delete">
 	</form>
 	<?php
+	}
 		include 'footer.inc';
 	?>
 </body>

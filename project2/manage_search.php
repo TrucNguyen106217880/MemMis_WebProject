@@ -12,49 +12,48 @@
 <body>
 	<?php
 	require_once 'settings.php';
-	if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
+	if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
 		session_start();
-		$_SESSION["admin_user"];
-		$host="localhost";
-		$admin_user=$_SESSION(stripslashes(strip_tags('Memmis')));
-		$admin_password=$_SESSION(password_verify('Memmis676905#:3'));
-	}
-	else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
-
-	$connection = mysqli_connect($host, $admin_user, $admin_password, "jobs");
-	if (!$connection) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-
+		$connection = mysqli_connect($host, $user, $pwd, "jobs");
+		if (!$connection) {
+			die("Connection failed: " . mysqli_connect_error());
+		}
+	} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM');
 	$check_box = [];
-	if (isset($_POST['SO415'])) $check_box[]="SO415";
+	if (isset($_POST['SO145'])) $check_box[]="SO145";
 	if (isset($_POST['AI313'])) $check_box[]="AI313";
 	if (isset($_POST['CY296'])) $check_box[]="CY296";
 	foreach ($check_box as $x) {
         $check_box_result = mysqli_real_escape_string($connection, $x);
         $sql_valid_box[] = "'$check_box_result'";
     }
-	if (!empty($valid_box)) {
-        $checked = implode(', ', $valid_box);
+	if (!empty($sql_valid_box)) {
+        $checked = implode(', ', $sql_valid_box);
 		$check_sql = "job_reference_number in $checked";
     } else {
         $check_sql = "1";
     }
+	if(isset($_GET["searchq"])){
 	$_SESSION["searchq"] = $_GET["searchq"];
-	$_SESSION["check_sql"] = $check_sql;
-	if (isset($_GET['searchq']) || isset($_POST['SO415']) || isset($_POST['AI313']) || isset($_POST['CY296'])){
+	}
+	if (isset($_GET['searchq']) || isset($_POST['SO145']) || isset($_POST['AI313']) || isset($_POST['CY296']) && !empty($_GET['searchq'])){
+		$_SESSION["check_sql"] = $check_sql;
 		$search = $_GET['searchq'];
 		$search_result = mysqli_real_escape_string($connection, $search);
     	$sql3 = "SELECT * FROM eoi WHERE (
-										job_reference_number LIKE '%$search_result%' and 
-										firstname LIKE '%$search_result%' or
-										lastname LIKE '%$search_result%'
+										job_reference_number LIKE '%$search_result%' or 
+										first_name LIKE '%$search_result%' or
+										last_name LIKE '%$search_result%'
 										) and
-										$check_sql
-										ORDER BY firstname"; 
+										($check_sql)
+										ORDER BY eoi_number"; 
 		$_SESSION['search_sql'] = $sql3;
 		mysqli_close($connection);
-	} else echo header("Location:manage.php")
+		echo header("Location:manage.php");
+	} else {
+		mysqli_close($connection);
+		echo header("Location:manage.php");
+	}
 ?>
 
 </body>
