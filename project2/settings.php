@@ -1,7 +1,7 @@
 <?php
 $host="localhost";
-$user="root";
-$pwd="";
+$user="Memmis";
+$pwd="Memmis676905#:3";
 $sql_db=""; //Add name later
 
 $conn=mysqli_connect($host, $user, $pwd, $sql_db);

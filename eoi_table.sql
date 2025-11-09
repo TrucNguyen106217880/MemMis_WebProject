@@ -6,6 +6,10 @@
 -- Generation Time: Oct 29, 2025 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
+-- User and password:
+CREATE USER IF NOT EXISTS 'Memmis'@'localhost' IDENTIFIED BY 'Memmis676905#:3';
+GRANT ALL PRIVILEGES ON jobs.* TO 'Memmis'@'localhost';
+FLUSH PRIVILEGES;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
