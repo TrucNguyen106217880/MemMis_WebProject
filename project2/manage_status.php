@@ -12,13 +12,7 @@
 <body>
     <?php
     require_once 'settings.php';
-    // if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
         session_start();
-        $connection = mysqli_connect($host, $user, $pwd, "jobs");
-        if (!$connection) {
-        die("Connection failed: " . mysqli_connect_error());
-        }
-	// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi
@@ -29,10 +23,10 @@
     }
     $id=$_GET["id"];
     $status=$_GET["status"];
-    $valid_status=mysqli_real_escape_string($connection,$status);
+    $valid_status=mysqli_real_escape_string($conn,$status);
     $sql2 = status_manage($id,$valid_status);
-    mysqli_query($connection,$sql2);
-    mysqli_close($connection);
+    mysqli_query($conn,$sql2);
+    mysqli_close($conn);
     echo header("Location: manage.php")
     ?>
 </body>

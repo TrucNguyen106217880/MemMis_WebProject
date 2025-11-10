@@ -11,27 +11,21 @@
 <body>
 <?php
 	require_once 'settings.php';
-	if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
-		session_start();
-		$connection = mysqli_connect($host, $user, $pwd, "jobs");
-		if (!$connection) {
-		die("Connection failed: " . mysqli_connect_error());
-		}
-	} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM');
+	session_start();
 	$check_sql = $_SESSION['check_sql'];
 	$search = $_SESSION['searchq'];
     if(isset($_POST['delete_button'])) {
-        $search_result = mysqli_real_escape_string($connection, $search);
+        $search_result = mysqli_real_escape_string($conn, $search);
         $sql1 = "DELETE FROM eoi WHERE
-									(job_reference_number = '$search_result') and
+									(reference_number = '$search_result') and
 									$check_sql
         ";
-        $result = mysqli_query($connection, $sql1);
+        $result = mysqli_query($conn, $sql1);
 		unset($_SESSION['searchq']);
-		mysqli_close($connection);
+		mysqli_close($conn);
         echo header('Location:manage.php');
     } else {
-		mysqli_close($connection);
+		mysqli_close($conn);
 		echo header('Location:manage.php');
 	}
 ?>

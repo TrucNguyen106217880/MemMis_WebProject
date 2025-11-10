@@ -49,10 +49,6 @@
 							<th>ID</th>
 							<th>Job RefN.</th>
 							<th>Name</th>
-							<th>DoB</th>
-							<th>Gender</th>
-							<th>Address</th>
-							<th>Postcode</th>
 							<th>Email</th>
 							<th>Phone</th>
 							<th>Skills</th>
@@ -64,12 +60,8 @@
 		if (mysqli_num_rows($result) > 0) {
 			while($row = mysqli_fetch_assoc($result)) {
 				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
-				echo "<td>" . $row["job_reference_number"] . "</td>" ;
+				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
-				echo "<td>" . $row["date_of_birth"] . "</td>" ;
-				echo "<td>" . $row["gender"] . "</td>" ;
-				echo "<td>" . $row["street_address"] . ", " . $row["suburb_town"] . ", " . $row["state"] . "</td>" ;
-				echo "<td>" . $row["postcode"] . "</td>" ;
 				echo "<td>" . $row["email_address"]. "</td>" ;
 				echo "<td>" . $row["phone_number"] . "</td>" ;
 				echo "<td>" ;
@@ -118,17 +110,16 @@
 			</table>";
 			mysqli_close($conn);
 		} else {
-			echo "<td colspan='12'>No record</td>";
+			echo "<td colspan='8' align='center'>No record found</td>";
 			echo "</tbody>
 			</table>";
 			mysqli_close($conn);
 		}
-		if (isset($_SESSION['searchq'])){
+		if (isset($_SESSION['searchq']) && mysqli_num_rows($result) > 0){
 		?>
-		<!-- I will make a confirmation page for this -->
-		<form method="post" action="manage_delete.php">
-		<label for="delete_button">Please check all results BEFORE deleting:</label>
-		<input type="submit" id="delete_button" name="delete_button" value="Delete">
+		<form method="post" action="delete_confirm.php">
+		<label for="delete_confirm_button">Please check all results BEFORE deleting:</label>
+		<input type="submit" id="delete_confirm_button" name="delete_confirm" value="Delete Confirmation">
 		</form>
 		<?php
 		}
