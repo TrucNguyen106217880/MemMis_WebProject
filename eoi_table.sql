@@ -83,7 +83,7 @@ CREATE TABLE `eoi` (
   `skill_10` VARCHAR(50) DEFAULT NULL,
   `other_skills` TEXT DEFAULT NULL,
   `eoi_status` ENUM('New','Current','Final') DEFAULT 'New',
-  PRIMARY KEY (`eoi_number`),
+  PRIMARY KEY (`eoi_number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 COMMIT;
