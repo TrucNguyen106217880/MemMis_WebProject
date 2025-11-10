@@ -24,22 +24,22 @@
 
 	// Collecting data from apply.php, and "cleaning" them to prevent sql injections
        // "?? "" " after $_POST[] means if nothing was input then it's considered an empty string, this is to prevent crashes
-$job_reference_number = sanitize($_POST["reference_number"] ?? "");
+$job_reference_number = sanitize($_POST["reference_number"]);
 $first_name = sanitize($_POST["first_name"]);
-$last_name = sanitize($_POST["last_name"] ?? "");
-$date_of_birth = sanitize($_POST["date_of_birth"] ?? "");
+$last_name = sanitize($_POST["last_name"]);
+$date_of_birth = sanitize($_POST["date_of_birth"]);
 $gender = sanitize($_POST["gender"] ?? "");
-$street_address = sanitize($_POST["street_address"] ?? "");
-$suburb_town = sanitize($_POST["suburb_town"] ?? "");
-$state = sanitize($_POST["state"] ?? "");
-$postcode = sanitize($_POST["postcode"] ?? "");
-$email_address = sanitize($_POST["email"] ?? "");
-$phone_number = preg_replace("/[^\d]/", "", sanitize($_POST["phone_number"] ?? ""));
+$street_address = sanitize($_POST["street_address"]);
+$suburb_town = sanitize($_POST["suburb_town"]);
+$state = sanitize($_POST["state"]);
+$postcode = sanitize($_POST["postcode"]);
+$email_address = sanitize($_POST["email"]);
+$phone_number = preg_replace("/[^\d]/", "", sanitize($_POST["phone_number"]));
 $other_skills = sanitize($_POST["other_skills"] ?? "");
 
 // Extract up to skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
 $skills = $_POST[$job_reference_number] ?? [];
-
+//Using ?? null ensures that we do not receive automated warning when reference_number is not selected, or when there are unchecked boxes even when reference_number was selected. This is for the sake of creating a user-friendly error page
 // Remember, index starts from 0 in PHP
 $skill_1 = $skills[0] ?? null;
 $skill_2 = $skills[1] ?? null;
@@ -58,30 +58,30 @@ $skill_10 = $skills[9] ?? null;
 
 // Creates a table if eoi table is missing
 $createTableSQL = "CREATE TABLE IF NOT EXISTS eoi (
-   `eoi_number` INT NOT NULL AUTO_INCREMENT,
-  `job_reference_number` VARCHAR(20) NOT NULL,
-  `first_name` VARCHAR(50) NOT NULL,
-  `last_name` VARCHAR(50) NOT NULL,
-  `gender` ENUM('Male','Female','Other') NOT NULL,
-  `date_of_birth` DATE NOT NULL,
-  `street_address` VARCHAR(100) NOT NULL,
-  `suburb_town` VARCHAR(50) NOT NULL,
-  `state` VARCHAR(3) NOT NULL,
-  `postcode` VARCHAR(4) NOT NULL,
-  `email_address` VARCHAR(100) NOT NULL,
-  `phone_number` VARCHAR(20) NOT NULL,
-  `skill_1` VARCHAR(50) DEFAULT NULL,
-  `skill_2` VARCHAR(50) DEFAULT NULL,
-  `skill_3` VARCHAR(50) DEFAULT NULL,
-  `skill_4` VARCHAR(50) DEFAULT NULL,
-  `skill_5` VARCHAR(50) DEFAULT NULL,
-  `skill_6` VARCHAR(50) DEFAULT NULL,
-  `skill_7` VARCHAR(50) DEFAULT NULL,
-  `skill_8` VARCHAR(50) DEFAULT NULL,
-  `skill_9` VARCHAR(50) DEFAULT NULL,
-  `skill_10` VARCHAR(50) DEFAULT NULL,
-  `other_skills` TEXT DEFAULT NULL,
-  `eoi_status` ENUM('New','Current','Final') DEFAULT 'New',
+  `eoi_number` int(11) NOT NULL AUTO_INCREMENT,
+  `reference_number` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `gender` enum('Male','Female','Other') NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `street_address` varchar(100) NOT NULL,
+  `suburb_town` varchar(50) NOT NULL,
+  `state` varchar(3) NOT NULL,
+  `postcode` varchar(4) NOT NULL,
+  `email_address` varchar(100) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `skill_1` varchar(50) DEFAULT NULL,
+  `skill_2` varchar(50) DEFAULT NULL,
+  `skill_3` varchar(50) DEFAULT NULL,
+  `skill_4` varchar(50) DEFAULT NULL,
+  `skill_5` varchar(50) DEFAULT NULL,
+  `skill_6` varchar(50) DEFAULT NULL,
+  `skill_7` varchar(50) DEFAULT NULL,
+  `skill_8` varchar(50) DEFAULT NULL,
+  `skill_9` varchar(50) DEFAULT NULL,
+  `skill_10` varchar(50) DEFAULT NULL,
+  `other_skills` text DEFAULT NULL,
+  `eoi_status` enum('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`)
 )";
 mysqli_query($conn, $createTableSQL);
