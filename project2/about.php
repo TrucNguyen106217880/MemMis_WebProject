@@ -30,7 +30,7 @@
 						</ul>
 					</li>
 					<li>Lecturer: Mr. Trung Doan (Wilson)</li>
-					<li id="student_id">Members student IDs:
+					<li>Members student IDs:
 						<ul>
 							<li>Truc Nguyen&ndash;106217880</li>
 							<li>Duy Tran&ndash;106216081</li>
@@ -47,7 +47,7 @@
 			<h2>MemMis Group Photo</h2>
 			<figure>
 				<img src="images/team.jpg"
-						alt="MemMis project team during a lecture on campus">
+					 alt="MemMis project team during a lecture on campus">
 				<figcaption>Photo taken on September 30th, 2025</figcaption>
 			</figure>
 		</section>
@@ -164,7 +164,7 @@
 
 		<section id="members_interests">
 			<h2>What Our Members Enjoy</h2>
-			<table>
+			<table class="table_styles">
 				<caption>Members Interests</caption>
 				<thead>
 					<tr>
@@ -176,7 +176,7 @@
 				<tbody>
 					<!-- The requirements for part 1 asks for multiple rowspan and colspan -->
 					<tr>
-						<td rowspan="2" class="member_name">Truc Nguyen</td>
+						<td rowspan="2" class="row_header">Truc Nguyen</td>
 						<td>Music & Media</td>
 						<td>Pop music, Anime, Fantasy/Sci-fi novels</td>
 					</tr>
@@ -186,7 +186,7 @@
 					</tr>
 
 					<tr>
-						<td rowspan="3" class="member_name">Duy Tran</td>
+						<td rowspan="3" class="row_header">Duy Tran</td>
 						<td colspan="2">Photography</td>
 					</tr>
 					<tr>
@@ -199,7 +199,7 @@
 					</tr>
 
 					<tr>
-						<td rowspan="2" class="member_name">Viet Do</td>
+						<td rowspan="2" class="row_header">Viet Do</td>
 						<td>Creative</td>
 						<td>Art, Music, Coffee</td>
 					</tr>
@@ -209,7 +209,7 @@
 					</tr>
 
 					<tr>
-						<td rowspan="2" class="member_name">Khang Mai</td>
+						<td rowspan="2" class="row_header">Khang Mai</td>
 						<td>Creative & Sports</td>
 						<td>Music making, Art, Athlete</td>
 					</tr>
@@ -218,7 +218,7 @@
 					</tr>
 
 					<tr>
-						<td rowspan="2" class="member_name">Toan Hoang</td>
+						<td rowspan="2" class="row_header">Toan Hoang</td>
 						<td>Music & Media</td>
 						<td>Pop music, Sci-fi movies, Manhwa, Manga</td>
 					</tr>
