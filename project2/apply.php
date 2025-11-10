@@ -269,7 +269,7 @@
 					  placeholder="Enter other skills here..."></textarea>
 			<br>
 
-			<input type="submit" value="Apply" id="submit_button">
+			<input type="submit" value="Apply">
 		</form>
 	</main>
 

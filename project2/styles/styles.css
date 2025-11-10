@@ -106,7 +106,7 @@ table.table_styles td:hover { /* Project part 1 requirement */
 		transition: all 0.5s ease;
 	}
 	main {
-		margin-left: 200px;
+		margin-left: 200px; 
 	}
 	#logo {
 		display: flex;
@@ -577,6 +577,10 @@ table.table_styles td:hover { /* Project part 1 requirement */
 }
 
 /*-------------------- Footer --------------------*/
+main {
+	/* 100vh is 100% of viewport height; 135.938px is the footer height */
+	min-height: calc(100vh - 135.938px); 
+}
 footer {
 	position: relative;
     background-color: #030d30;
