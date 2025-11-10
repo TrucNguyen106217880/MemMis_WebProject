@@ -25,7 +25,7 @@
 	// Collecting data from apply.php, and "cleaning" them to prevent sql injections
        // "?? "" " after $_POST[] means if nothing was input then it's considered an empty string, this is to prevent crashes
 $job_reference_number = sanitize($_POST["reference_number"] ?? "");
-$first_name = sanitize($_POST["first_name"] ?? "");
+$first_name = sanitize($_POST["first_name"]);
 $last_name = sanitize($_POST["last_name"] ?? "");
 $date_of_birth = sanitize($_POST["date_of_birth"] ?? "");
 $gender = sanitize($_POST["gender"] ?? "");
@@ -87,9 +87,39 @@ $createTableSQL = "CREATE TABLE IF NOT EXISTS eoi (
 mysqli_query($conn, $createTableSQL);
 
 
-$query = "INSERT INTO eoi (job_reference_number, first_name, last_name, gender, date_of_birth, street_address, suburb_town, state, postcode, email_address, phone_number, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, skill_9, skill_10, other_skills) VALUES ('$job_reference_number', '$first_name', '$last_name', '$gender', '$date_of_birth', '$street_address', '$suburb_town', '$state', '$postcode', '$email_address', '$phone_number', '$skill_1', '$skill_2', '$skill_3', '$skill_4', '$skill_5', '$skill_6', '$skill_7', '$skill_8', '$skill_9', '$skill_10', '$other_skills')";
+$query = "INSERT INTO eoi (reference_number, first_name, last_name, gender, date_of_birth, street_address, suburb_town, state, postcode, email_address, phone_number, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, skill_9, skill_10, other_skills) VALUES ('$job_reference_number', '$first_name', '$last_name', '$gender', '$date_of_birth', '$street_address', '$suburb_town', '$state', '$postcode', '$email_address', '$phone_number', '$skill_1', '$skill_2', '$skill_3', '$skill_4', '$skill_5', '$skill_6', '$skill_7', '$skill_8', '$skill_9', '$skill_10', '$other_skills')";
 $result = mysqli_query($conn, $query);
 
+
+// This part with validate the collected data to match requirements
+// This starts an empty error array that collects error messages as we go through validation
+$errors = [];
+// PHP has different regular expressions, I am using // as the delimiter
+if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
+if (!preg_match("/^[a-zA-Z]{1,20}^/", $first_name)) $errors[] = "First name must be 1-20 alphabetic characters.";
+if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1-20 alphabetic characters.";
+if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) $errors[] = "Date of birth must be in dd/mm/yyyy format.";
+// eoi_table  has 'other', but apply.php doesn't have it for gender 
+if (!in_array($gender, ['male', 'female'])) $errors[] = "Gender must be selected.";
+if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address must be 1-40 characters.";
+if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1-40 characters.";
+if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
+if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Invalid postcode.";
+if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
+if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8-12 digits or spaces.";
+// If errors is not empty, it will display all error messsages for failed validations
+if (!empty($errors)) {
+	// Creates an unordered list and list each errors as collected in the array
+    echo "<h2>Application unsuccessful, please try again</h2><ul>";
+	// Each error message is looped through in the collected array
+    foreach ($errors as $error) {
+        echo "<li>$error</li>";
+    }
+    echo "</ul>";
+	// Ends the script immediately
+    exit;
+}
+    // It is reccomended to still sanitize even radio or dropdown input
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
@@ -100,38 +130,6 @@ if ($result) {
 } else {
     die("SQL Error: " . mysqli_error($conn));
 }
-
-
-// This part with validate the collected data to match requirements
-// This starts an empty error array that collects error messages as we go through validation
-$errors = [];
-// PHP has different regular expressions, I am using // as the delimiter
-if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
-if (!preg_match("/^[a-zA-Z]{1,20}$/", $first_name)) $errors[] = "First name must be 1–20 alphabetic characters.";
-if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1–20 alphabetic characters.";
-if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) $errors[] = "Date of birth must be in dd/mm/yyyy format.";
-// eoi_table  has 'other', but apply.php doesn't have it for gender 
-if (!in_array($gender, ['male', 'female'])) $errors[] = "Gender must be selected.";
-if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address must be 1–40 characters.";
-if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1–40 characters.";
-if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
-if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Invalid postcode.";
-if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
-if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8–12 digits or spaces.";
-// If errors is not empty, it will display all error messsages for failed validations
-if (!empty($errors)) {
-	// Creates an unordered list and list each errors as collected in the array
-    echo "<h2>Validation Errors:</h2><ul>";
-	// Each error message is looped through in the collected array
-    foreach ($errors as $error) {
-        echo "<li>$error</li>";
-    }
-    echo "</ul>";
-	// Ends the script immediately
-    exit;
-}
-    // It is reccomended to still sanitize even radio or dropdown input
-
 
 		?>
 <!DOCTYPE html>
