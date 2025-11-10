@@ -166,97 +166,97 @@
 				<fieldset class="inputs_group">
 					<legend>SO415</legend>
 					<span>
-						<input type="checkbox" id="skill_1" name="SO145[]" value="skill_1">
+						<input type="checkbox" id="skill_1" name="SO145[]" value="skill 1">
 						<label for="skill_1">Bachelor's Degree in Software Engineering or related field.</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_2" name="SO145[]" value="skill_2">
+						<input type="checkbox" id="skill_2" name="SO145[]" value="skill 2">
 						<label for="skill_2">1+ years of software developing experience.</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_3" name="SO145[]" value="skill_3">
+						<input type="checkbox" id="skill_3" name="SO145[]" value="skill 3">
 						<label for="skill_3">Familiarity with Agile development methodology.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_4" name="SO145[]" value="skill_4">
+						<input type="checkbox" id="skill_4" name="SO145[]" value="skill 4">
 						<label for="skill_4">Ability to define and solve logical problems for highly technical applications.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_5" name="SO145[]" value="skill_5">
+						<input type="checkbox" id="skill_5" name="SO145[]" value="skill 5">
 						<label for="skill_5">Proven experience in software development (e.g., internships, projects, or professional roles).</label>
 					</span>
 					<span>
-						<input type="checkbox" id="skill_6" name="SO145[]" value="skill_6">
+						<input type="checkbox" id="skill_6" name="SO145[]" value="skill 6">
 						<label for="skill_6">Proficiency in one or more programming languages (e.g., Java, Python, C#, JavaScript).</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_7" name="SO145[]" value="skill_7">
+						<input type="checkbox" id="skill_7" name="SO145[]" value="skill 7">
 						<label for="skill_7">Attention to details.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_8" name="SO145[]" value="skill_8">
+						<input type="checkbox" id="skill_8" name="SO145[]" value="skill 8">
 						<label for="skill_8">Excellent communication skill.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_9" name="SO145[]" value="skill_9">
+						<input type="checkbox" id="skill_9" name="SO145[]" value="skill 9">
 						<label for="skill_9">Keep up to date with new technology</label>						
 					</span>
 				</fieldset>
 				<fieldset class="inputs_group">
 					<legend>AI313</legend>
 					<span>
-						<input type="checkbox" id="skill_10" name="AI313[]" value="skill_10">
+						<input type="checkbox" id="skill_10" name="AI313[]" value="skill 10">
 						<label for="skill_10">Bachelor's or Master's degree in Computer Science, Artificial Intelligence, Data Science, or related field.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_11" name="AI313[]" value="skill_11">
+						<input type="checkbox" id="skill_11" name="AI313[]" value="skill 11">
 						<label for="skill_11">1+ years of experience as an AI engineer.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_12" name="AI313[]" value="skill_12">
+						<input type="checkbox" id="skill_12" name="AI313[]" value="skill 12">
 						<label for="skill_12">Strong programming skills in Python and experience with ML libraries such as TensorFlow, PyTorch, Scikit-learn.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_13" name="AI313[]" value="skill_13">
+						<input type="checkbox" id="skill_13" name="AI313[]" value="skill 13">
 						<label for="skill_13">Familiarity with cloud platforms (e.g., AWS, Azure, GCP) and containerization tools (e.g., Docker, Kubernetes).</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_14" name="AI313[]" value="skill_14">
+						<input type="checkbox" id="skill_14" name="AI313[]" value="skill 14">
 						<label for="skill_14">Experience with data preprocessing, feature engineering, and model evaluation.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_15" name="AI313[]" value="skill_15">
+						<input type="checkbox" id="skill_15" name="AI313[]" value="skill 15">
 						<label for="skill_15">Familarity with Agile development method</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_16" name="AI313[]" value="skill_16">
+						<input type="checkbox" id="skill_16" name="AI313[]" value="skill 16">
 						<label for="skill_16">Attention to details.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_17" name="AI313[]" value="skill_17">
+						<input type="checkbox" id="skill_17" name="AI313[]" value="skill 17">
 						<label for="skill_17">Keep up to date with new technology</label>						
 					</span>
 				</fieldset>
 				<fieldset class="inputs_group">
 					<legend>CY296</legend>
 					<span>
-						<input type="checkbox" id="skill_18" name="CY296[]" value="skill_18">
+						<input type="checkbox" id="skill_18" name="CY296[]" value="skill 18">
 						<label for="skill_18">Bachelor's or Master's degree in cybersecurity or related field.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_19" name="CY296[]" value="skill_19">
+						<input type="checkbox" id="skill_19" name="CY296[]" value="skill 19">
 						<label for="skill_19">2+ years of experience in cybersecurity or IT security roles.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_20" name="CY296[]" value="skill_20">
+						<input type="checkbox" id="skill_20" name="CY296[]" value="skill 20">
 						<label for="skill_20">Knowledge of security frameworks and standards (e.g., NIST, ISO 27001, CIS).</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_21" name="CY296[]" value="skill_21">
+						<input type="checkbox" id="skill_21" name="CY296[]" value="skill 21">
 						<label for="skill_21">Strong understanding of network protocols, operating systems, and security tools.</label>						
 					</span>
 					<span>
-						<input type="checkbox" id="skill_22" name="CY296[]" value="skill_22">
+						<input type="checkbox" id="skill_22" name="CY296[]" value="skill 22">
 						<label for="skill_22">Able to work both independently and on a team.</label>						
 					</span>
 				</fieldset>
