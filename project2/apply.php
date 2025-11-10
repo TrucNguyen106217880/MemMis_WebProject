@@ -166,7 +166,7 @@
 				<fieldset class="inputs_group">
 					<legend>SO415</legend>
 					<span>
-						<input type="checkbox" id="skill_1" name="SO145[]" value="skill_1" checked required>
+						<input type="checkbox" id="skill_1" name="SO145[]" value="skill_1">
 						<label for="skill_1">Bachelor's Degree in Software Engineering or related field.</label>
 					</span>
 					<span>
@@ -205,7 +205,7 @@
 				<fieldset class="inputs_group">
 					<legend>AI313</legend>
 					<span>
-						<input type="checkbox" id="skill_10" name="AI313[]" value="skill_10" checked>
+						<input type="checkbox" id="skill_10" name="AI313[]" value="skill_10">
 						<label for="skill_10">Bachelor's or Master's degree in Computer Science, Artificial Intelligence, Data Science, or related field.</label>						
 					</span>
 					<span>
@@ -240,7 +240,7 @@
 				<fieldset class="inputs_group">
 					<legend>CY296</legend>
 					<span>
-						<input type="checkbox" id="skill_18" name="CY296[]" value="skill_18" checked>
+						<input type="checkbox" id="skill_18" name="CY296[]" value="skill_18">
 						<label for="skill_18">Bachelor's or Master's degree in cybersecurity or related field.</label>						
 					</span>
 					<span>
