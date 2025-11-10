@@ -391,6 +391,34 @@ table.table_styles td:hover { /* Project part 1 requirement */
 }
 
 /*-------------------- jobs.php --------------------*/
+#jobs_page aside {
+	float: right;
+	width: 25%;
+	height: fit-content;
+	border: 3px solid #0d4080;
+	border-radius: 20px;
+	padding: 20px;
+	margin: 20px;
+	text-align: center;
+}
+#jobs_page article {
+	margin: 0 5%;
+	padding-top: 20px;
+	padding-bottom: 50px;
+}
+#jobs_page h1 {
+	text-align: center;
+}
+#jobs_page h2 {
+	margin-top: 15px;
+}
+#jobs_page p {
+	float: none;
+	text-indent: 32px;
+}
+#jobs_page ul {
+	margin-left: 32px;
+}
 
 /*-------------------- apply.php --------------------*/
 #apply_h1 {
