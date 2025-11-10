@@ -14,19 +14,17 @@
 		include 'menu.inc';
 		include 'header.inc';
 		require_once 'settings.php';
-		if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
+		// if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
 			session_start();
 			$connection = mysqli_connect($host, $user, $pwd, "jobs");
 			if (!$connection) {
 				die("Connection failed: " . mysqli_connect_error());
 			}
-		} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+		// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
 	?>
 	<form method="get" action="manage_search.php">
 		<input type="text" id="search" name="searchq" placeholder="Search...">
-		<input type="submit" placeholder="Search">
-	</form>
-	<form method="post">
+		<input type="submit" placeholder="Search"> <br>
 		<input type="checkbox" name="SO145" value="SO145">
 		<label for="SO145">SO145</label>
 		<input type="checkbox" name="AI313" value="AI313">

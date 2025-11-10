@@ -12,13 +12,13 @@
 <body>
     <?php
     require_once 'settings.php';
-    if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
+    // if ($user == "Memmis" && $pwd == password_verify("Memmis676905#:3")){
         session_start();
         $connection = mysqli_connect($host, $user, $pwd, "jobs");
         if (!$connection) {
         die("Connection failed: " . mysqli_connect_error());
         }
-	} else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
+	// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi
