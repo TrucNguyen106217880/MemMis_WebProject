@@ -22,11 +22,11 @@
     if(isset($_POST['delete_button'])) {
         $search_result = mysqli_real_escape_string($conn, $search);
         $sql1 = "DELETE FROM eoi WHERE
-									(reference_number = '%$search_result%') or
+									(reference_number LIKE '%$search_result%') or
 									($check_sql)
         ";
         $result = mysqli_query($conn, $sql1);
-		unset($_SESSION['searchq'], $_SESSION['check_sql']);
+		unset($_SESSION['searchq'], $_SESSION['check_sql'], $_SESSION['search_sql']);
 		mysqli_close($conn);
         echo header('Location:manage.php');
     } else {

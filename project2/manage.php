@@ -73,7 +73,7 @@
 				echo implode(", ", $checked_skills) . ".";
 				echo"</td>" ;
 				echo "<td>" . $row["other_skills"] . "</td>" ;
-				echo "<td><form>";
+				echo "<td align='center'><form>";
 				if ($row['eoi_status']=="New") {
 					echo "
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
