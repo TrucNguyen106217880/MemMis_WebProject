@@ -22,7 +22,10 @@
     if(isset($_POST['delete_button'])) {
         $search_result = mysqli_real_escape_string($conn, $search);
         $sql1 = "DELETE FROM eoi WHERE
-									(reference_number LIKE '%$search_result%') or
+									(reference_number LIKE '%$search_result%' or
+									first_name LIKE '%$search_result%' or
+									last_name LIKE '%$search_result%'
+									) and
 									($check_sql)
         ";
         $result = mysqli_query($conn, $sql1);
