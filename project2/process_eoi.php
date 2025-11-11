@@ -25,39 +25,27 @@
 	// Collecting data from apply.php, and "cleaning" them to prevent sql injections
        // "?? "" " after $_POST[] means if nothing was input then it's considered an empty string, this is to prevent crashes
 $job_reference_number = sanitize($_POST["reference_number"]);
-$first_name = sanitize($_POST["first_name"]);
-$last_name = sanitize($_POST["last_name"]);
-$date_of_birth = sanitize($_POST["date_of_birth"]);
-$gender = sanitize($_POST["gender"] ?? "");
-$street_address = sanitize($_POST["street_address"]);
-$suburb_town = sanitize($_POST["suburb_town"]);
-$state = sanitize($_POST["state"]);
-$postcode = sanitize($_POST["postcode"]);
-$email_address = sanitize($_POST["email"]);
-$phone_number = preg_replace("/[^\d]/", "", sanitize($_POST["phone_number"]));
+$first_name = sanitize($_POST["first_name"] ?? "");
+$last_name = sanitize($_POST["last_name"] ?? "");
+$date_of_birth = sanitize($_POST["date_of_birth"] ?? "");
+$gender = (sanitize($_POST["gender"] ?? "")); // This is to absolute make sure only the first letter is capitalized
+$street_address = sanitize($_POST["street_address"] ?? "");
+$suburb_town = sanitize($_POST["suburb_town"] ?? "");
+$state = sanitize($_POST["state"] ?? "");
+$postcode = sanitize($_POST["postcode"] ?? "");
+$email_address = sanitize($_POST["email"] ?? "");
+$phone_number = preg_replace("/[^\d]/", "", sanitize($_POST["phone_number"] ?? ""));
 $other_skills = sanitize($_POST["other_skills"] ?? "");
 
-// Extract up to skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
+// Extract skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
 $skills = $_POST[$job_reference_number] ?? [];
+
 //Using ?? null ensures that we do not receive automated warning when reference_number is not selected, or when there are unchecked boxes even when reference_number was selected. This is for the sake of creating a user-friendly error page
-// Remember, index starts from 0 in PHP
-$skill_1 = $skills[0] ?? null;
-$skill_2 = $skills[1] ?? null;
-$skill_3 = $skills[2] ?? null;
-$skill_4 = $skills[3] ?? null;
-$skill_5 = $skills[4] ?? null;
-$skill_6 = $skills[5] ?? null;
-$skill_7 = $skills[6] ?? null;
-$skill_8 = $skills[7] ?? null;
-$skill_9 = $skills[8] ?? null;
-$skill_10 = $skills[9] ?? null;
-// Basically, when job_reference_number is selected
-// it will only select the technical skills with that job reference number name
-// So, if I chose SO415, then only skills from SO415 would show up in the table, even if I did choose skills outside SO415
-// I wonder if there is a shorter way to do this?
+
+    
 
 // Creates a table if eoi table is missing
-$createTableSQL = "CREATE TABLE IF NOT EXISTS eoi (
+$create_eoi_sql = "CREATE TABLE IF NOT EXISTS eoi (
   `eoi_number` int(11) NOT NULL AUTO_INCREMENT,
   `reference_number` varchar(20) NOT NULL,
   `first_name` varchar(50) NOT NULL,
@@ -70,33 +58,31 @@ $createTableSQL = "CREATE TABLE IF NOT EXISTS eoi (
   `postcode` varchar(4) NOT NULL,
   `email_address` varchar(100) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
-  `skill_1` varchar(50) DEFAULT NULL,
-  `skill_2` varchar(50) DEFAULT NULL,
-  `skill_3` varchar(50) DEFAULT NULL,
-  `skill_4` varchar(50) DEFAULT NULL,
-  `skill_5` varchar(50) DEFAULT NULL,
-  `skill_6` varchar(50) DEFAULT NULL,
-  `skill_7` varchar(50) DEFAULT NULL,
-  `skill_8` varchar(50) DEFAULT NULL,
-  `skill_9` varchar(50) DEFAULT NULL,
-  `skill_10` varchar(50) DEFAULT NULL,
   `other_skills` text DEFAULT NULL,
   `eoi_status` enum('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`)
 )";
-mysqli_query($conn, $createTableSQL);
+mysqli_query($conn, $create_eoi_sql);
 
 
-$query = "INSERT INTO eoi (reference_number, first_name, last_name, gender, date_of_birth, street_address, suburb_town, state, postcode, email_address, phone_number, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, skill_9, skill_10, other_skills) VALUES ('$job_reference_number', '$first_name', '$last_name', '$gender', '$date_of_birth', '$street_address', '$suburb_town', '$state', '$postcode', '$email_address', '$phone_number', '$skill_1', '$skill_2', '$skill_3', '$skill_4', '$skill_5', '$skill_6', '$skill_7', '$skill_8', '$skill_9', '$skill_10', '$other_skills')";
-$result = mysqli_query($conn, $query);
+// Prepares data and insert into eoi table
 
+$create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
+  `eoi_number` int(11) NOT NULL,
+  `skills_id` int(11) NOT NULL,
+  PRIMARY KEY (`eoi_number`, `skills_id`),
+  CONSTRAINT `fk_eoi` FOREIGN KEY (`eoi_number`) REFERENCES `eoi` (`eoi_number`) ON DELETE CASCADE,
+  CONSTRAINT `fk_skill` FOREIGN KEY (`skills_id`) REFERENCES `skills` (`skills_id`) ON DELETE CASCADE
+)";
+
+mysqli_query($conn, $create_skills_sql);
 
 // This part with validate the collected data to match requirements
 // This starts an empty error array that collects error messages as we go through validation
 $errors = [];
 // PHP has different regular expressions, I am using // as the delimiter
 if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
-if (!preg_match("/^[a-zA-Z]{1,20}^/", $first_name)) $errors[] = "First name must be 1-20 alphabetic characters.";
+if (!preg_match("/^[a-zA-Z]{1,20}$/", $first_name)) $errors[] = "First name must be 1-20 alphabetic characters.";
 if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1-20 alphabetic characters.";
 if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) $errors[] = "Date of birth must be in dd/mm/yyyy format.";
 // eoi_table  has 'other', but apply.php doesn't have it for gender 
@@ -119,30 +105,38 @@ if (!empty($errors)) {
 	// Ends the script immediately
     exit;
 }
+
+// Prepare the SQL statement
+$stmt = $conn->prepare("INSERT INTO eoi (
+  reference_number, first_name, last_name, gender, date_of_birth,
+  street_address, suburb_town, state, postcode, email_address, phone_number,
+  other_skills
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+// 
+$stmt->bind_param("ssssssssssss", // There are 12 strings in total
+  $job_reference_number, $first_name, $last_name, $gender, $date_of_birth,
+  $street_address, $suburb_town, $state, $postcode, $email_address, $phone_number,
+  $other_skills
+);
+
+$result = $stmt->execute();
+
+
+
+
     // It is reccomended to still sanitize even radio or dropdown input
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
+
 	// This will display the EOI number
     echo "<h2>Application sent succesfully!</h2>";
 	// EOI number is displayed and emphasized
     echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
-} else {
+}  else {
     die("SQL Error: " . mysqli_error($conn));
+
 }
 
 		?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<title></title>
-	</head>
-	<body>
-	
-	</body>
-</html>
