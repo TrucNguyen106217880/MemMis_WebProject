@@ -17,7 +17,7 @@
 	<main id="jobs_page">
 		<?php
 			include_once ('settings.php');
-
+						
 			$sql="SELECT * FROM `jobs`";
 			$result=mysqli_query($conn, $sql);
 			if (mysqli_num_rows($result) > 0) {
