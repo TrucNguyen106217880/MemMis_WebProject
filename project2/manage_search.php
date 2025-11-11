@@ -21,18 +21,18 @@
         $check_box_result = mysqli_real_escape_string($conn, $x);
         $sql_valid_box[] = "reference_number = '$check_box_result'";
     }
-	if (empty($sql_valid_box)) $check_sql = "0";
+	if (empty($sql_valid_box)) $check_sql = "1";
     else $check_sql = implode('and ', $sql_valid_box);
 	if(isset($_GET["searchq"])){
 	$_SESSION["searchq"] = $_GET["searchq"];
-	}
-	if (isset($_GET['searchq']) || isset($_GET['SO145']) || isset($_GET['AI313']) || isset($_GET['CY296']) && !empty($_GET['searchq'])){
+	} else $_SESSION["searchq"] = "1";
+	if (isset($_GET['searchq']) || isset($_GET['SO145']) || isset($_GET['AI313']) || isset($_GET['CY296'])){
 		$_SESSION["check_sql"] = $check_sql;
 		$search = $_GET['searchq'];
 		$search_result = mysqli_real_escape_string($conn, $search);
-    	$sql3 = "SELECT * FROM eoi WHERE ( 
-										first_name LIKE '$search_result%' or
-										last_name LIKE '$search_result%'
+    	$sql3 = "SELECT * FROM eoi WHERE ( reference_number LIKE '%$search_result%' or
+										first_name LIKE '%$search_result%' or
+										last_name LIKE '%$search_result%'
 										) and
 										($check_sql) 
 										ORDER BY eoi_number"; 

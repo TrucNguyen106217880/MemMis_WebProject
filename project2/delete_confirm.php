@@ -12,8 +12,10 @@
 
 <body>
     <h1>Delete Confirmation</h1>
-<?php
+	<main>
+		<?php
         require_once 'settings.php';
+		session_start();
 		$sql4 = $_SESSION["search_sql"];
 		$result = mysqli_query($conn, $sql4);
 		echo "<table class='table_styles'>

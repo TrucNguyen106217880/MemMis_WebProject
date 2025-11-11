@@ -16,7 +16,7 @@
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi
-                    SET eoi_status = $status
+                    SET eoi_status = '$status'
                     WHERE eoi_number = $id
             ";
         }

@@ -23,7 +23,7 @@
 		?>
 		<form method="get" action="manage_search.php">
 			<input type="text" id="search" name="searchq" placeholder="Search...">
-			<input type="submit" placeholder="Search">
+			<input type="submit" placeholder="Search" value="Search">
 			<br>
 
 			<span>Job filter:</span>
@@ -97,7 +97,7 @@
 				if ($row['eoi_status']=="Final") {
 					echo "  
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-						<label for='new_box><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></lable>
+						<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
 						<input type='checkbox' name='checkbox_status' id='current_box' disabled>
 						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 						<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
@@ -115,7 +115,7 @@
 			</table>";
 			mysqli_close($conn);
 		}
-		if (isset($_SESSION['searchq']) && mysqli_num_rows($result) > 0){
+		if ((isset($_SESSION['searchq']) || isset($_SESSION['check_sql'])) && (mysqli_num_rows($result) > 0)){
 		?>
 		<form method="post" action="delete_confirm.php">
 		<label for="delete_confirm_button">Please check all results BEFORE deleting:</label>
