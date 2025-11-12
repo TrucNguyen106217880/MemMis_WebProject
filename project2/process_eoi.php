@@ -91,6 +91,33 @@ if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address mus
 if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1-40 characters.";
 if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
 if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Invalid postcode.";
+// This whole comment section is Duy and Khang's suggestion for postcode:
+// function sanitize($data){
+//     return htmlspecialchars(trim(stripslashes($data)));
+// }
+
+// function is_valid_postcode($state, $postcode){
+//     $postcode = (int)$postcode;
+//     $ranges = [
+//         'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
+//         'ACT' => [[0200, 0299], [2600, 2618], [2900, 2920]],
+//         'VIC' => [[3000, 3999], [8000, 8999]],
+//         'QLD' => [[4000, 4999], [9000, 9999]],
+//         'SA'  => [[5000, 5799], [5800, 5999]],
+//         'WA'  => [[6000, 6797], [6800, 6999]],
+//         'TAS' => [[7000, 7799], [7800, 7999]],
+//         'NT'  => [[0800, 0899], [0900, 0999]],
+//     ];
+//     foreach ($ranges[$state] ?? [] as [$min, $max]) {
+//         if ($postcode >= $min && $postcode <= $max) return true;
+//     }
+//     return false;
+// }
+
+// $errors = [];
+// if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
+// if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
+// if (!is_valid_postcode($state, $postcode)) $errors[] = "Invalid postcode.";
 if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
 if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8-12 digits or spaces.";
 // If errors is not empty, it will display all error messsages for failed validations
