@@ -94,6 +94,55 @@ if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Inv
 if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
 if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8-12 digits or spaces.";
 // If errors is not empty, it will display all error messsages for failed validations
+ function is_valid_postcode($state, $postcode){
+
+// This is Duy and Khang's experimental state specific postcode input validation
+// They will be given credit while I make sure this works
+  $postcode = (int)$postcode;
+
+
+    $ranges = [
+
+
+       'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
+
+
+        'ACT' => [[0200, 0299], [2600, 2618], [2900, 2920]],
+
+
+      'VIC' => [[3000, 3999], [8000, 8999]],
+
+
+      'QLD' => [[4000, 4999], [9000, 9999]],
+
+      'SA'  => [[5000, 5799], [5800, 5999]],
+
+
+      'WA'  => [[6000, 6797], [6800, 6999]],
+
+
+       'TAS' => [[7000, 7799], [7800, 7999]],
+
+
+      'NT'  => [[0800, 0899], [0900, 0999]],
+
+
+   ];
+
+
+  foreach ($ranges[$state] ?? [] as [$min, $max]) {
+
+
+       if ($postcode >= $min && $postcode <= $max) return true;
+
+
+   }
+
+
+   return false;
+
+
+ }
 if (!empty($errors)) {
 	// Creates an unordered list and list each errors as collected in the array
     echo "<h2>Application unsuccessful, please try again</h2><ul>";
@@ -121,14 +170,34 @@ $stmt->bind_param("ssssssssssss", // There are 12 strings in total
 );
 
 $result = $stmt->execute();
-
-
-
-
-    // It is reccomended to still sanitize even radio or dropdown input
+// It is reccomended to still sanitize even radio or dropdown input
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
+    // Currently, this is experimental and needs further testing, research
+        if (!empty($skills)) {
+    $valid_skills = [];
+
+    foreach ($skills as $id) {
+        $check = mysqli_query($conn, "SELECT 1 FROM skills WHERE skills_id = $id");
+        if ($check && mysqli_num_rows($check) > 0) {
+            $valid_skills[] = $id;
+        } else {
+        }
+    }
+
+    if (!empty($valid_skills)) {
+        $values = array_map(function($id) use ($eoi_number) {
+            return "($eoi_number, $id)";
+        }, $valid_skills);
+        $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
+        if (!mysqli_query($conn, $sql)) {
+            die("Skill insert failed: " . mysqli_error($conn));
+        }
+    } else {
+        echo "<p>No valid skills selected or found in database.</p>";
+    }
+}
 
 	// This will display the EOI number
     echo "<h2>Application sent succesfully!</h2>";
