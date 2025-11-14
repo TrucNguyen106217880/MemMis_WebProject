@@ -49,10 +49,7 @@
 							<th>ID</th>
 							<th>Job RefN.</th>
 							<th>Name</th>
-							<th>Email</th>
-							<th>Phone</th>
-							<th>Skills</th>
-							<th>Other</th>
+							<th>DoB</th>
 							<th> </th>
 						</tr>
 					</thead>
@@ -62,17 +59,7 @@
 				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
-				echo "<td>" . $row["email_address"]. "</td>" ;
-				echo "<td>" . $row["phone_number"] . "</td>" ;
-				echo "<td>" ;
-				$skill_row = [
-					$row["skill_1"], $row["skill_2"], $row["skill_3"], $row["skill_4"], $row["skill_5"],
-					$row["skill_6"], $row["skill_7"], $row["skill_8"], $row["skill_9"], $row["skill_10"]
-				];
-				$checked_skills = array_filter($skill_row);
-				echo implode(", ", $checked_skills) . ".";
-				echo"</td>" ;
-				echo "<td>" . $row["other_skills"] . "</td>" ;
+				echo "<td>" . $row["date_of_birth"] . "</td>" ;
 				echo "<td align='center'><form>";
 				if ($row['eoi_status']=="New") {
 					echo "
