@@ -59,7 +59,7 @@
 				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
-				echo "<td>" . $row["date_of_birth"]. "</td>" ;
+				echo "<td>" . $row["date_of_birth"] . "</td>" ;
 				echo "<td align='center'><form>";
 				if ($row['eoi_status']=="New") {
 					echo "
