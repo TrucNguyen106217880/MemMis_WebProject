@@ -96,7 +96,8 @@
 			<?php
 				if (!empty($_SESSION['user_id'])) {
 					echo "<div class='notification_error'>";
-					echo "You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a>";
+					echo "<p>You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a></p>";
+					echo "<p><a href='manage.php' class='internal_link'>Go to Management page</a></p>";
 					echo "</div>";
 					exit;
 				}
