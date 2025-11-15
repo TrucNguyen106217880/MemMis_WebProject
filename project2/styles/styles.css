@@ -650,6 +650,22 @@ main#manager_pages {
 	outline: none;
 }
 
+#enhancements_list {
+	padding: 20px;
+}
+#enhancements_list dt {
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 16px;
+	padding-bottom: 10px;
+}
+#enhancements_list dd {
+	margin-left: 16px;
+}
+#enhancements_list li {
+	margin-left: 32px;
+}
+
 /*-------------------- Footer --------------------*/
 main {
 	/* 100vh is 100% of viewport height; 174.312px is the footer height */
