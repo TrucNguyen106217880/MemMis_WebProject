@@ -22,7 +22,7 @@
         $sql_valid_box[] = "reference_number = '$check_box_result'";
     }
 	if (empty($sql_valid_box)) $check_sql = "1";
-    else $check_sql = implode('and ', $sql_valid_box);
+    else $check_sql = implode('or ', $sql_valid_box);
 	if(isset($_GET["searchq"])){
 	$_SESSION["searchq"] = $_GET["searchq"];
 	} else $_SESSION["searchq"] = "1";
