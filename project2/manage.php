@@ -61,9 +61,11 @@
 						</tr>
 					</thead>
 					<tbody>";
+		$_SESSION["delete_ids"] = [];
 		if (mysqli_num_rows($result) > 0) {
 			while($row = mysqli_fetch_assoc($result)) {
-				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
+				$_SESSION['delete_ids'][] = $row["eoi_number"];
+				echo "<tr><td><a class='internal_link' href='info.php?id=". $row["eoi_number"] ."'>" . $row["eoi_number"]. "</a></td>" ;
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
 				echo "<td>" . $row["date_of_birth"] . "</td>" ;
