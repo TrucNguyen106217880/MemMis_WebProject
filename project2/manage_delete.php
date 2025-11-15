@@ -19,24 +19,17 @@
 	$search = $_SESSION['searchq'];
 	} else $search='1';
 	// mysqli_use_result($conn);
-	$delete_ids = [];
-	$_SESSION["delete_ids"];
     if(isset($_POST['delete_button'])) {
         $search_result = mysqli_real_escape_string($conn, $search);
 		foreach($_SESSION["delete_ids"] as $delete_id){
 			$sql7 = "DELETE FROM eoi_skills WHERE eoi_number = $delete_id";
-			mysqli_query($conn, $sql7);
+			mysqli_query($conn, $sql7);	
+			$sql1 = "DELETE FROM eoi WHERE
+										eoi_number = $delete_id
+			";
+        	mysqli_query($conn, $sql1);
 		}
-		mysqli_query($conn, $sql7);	
-        $sql1 = "DELETE FROM eoi WHERE
-									(reference_number LIKE '%$search_result%' or
-									first_name LIKE '%$search_result%' or
-									last_name LIKE '%$search_result%'
-									) and
-									($check_sql)
-        ";
-        mysqli_query($conn, $sql1);
-		unset($_SESSION['searchq'], $_SESSION['check_sql'], $_SESSION['search_sql']);
+		unset($_SESSION['searchq'], $_SESSION['check_sql'], $_SESSION['search_sql'], $_SESSION["delete_ids"]);
 		mysqli_close($conn);
         echo header('Location:manage.php');
     } else {
