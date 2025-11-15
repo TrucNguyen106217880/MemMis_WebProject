@@ -22,7 +22,7 @@
 <body>
 	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
 
-	<main>
+	<main id="manager_pages">
 		<div class="notification_success">
 			<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php" class="internal_link">Log out?</a></p>
 		</div>
