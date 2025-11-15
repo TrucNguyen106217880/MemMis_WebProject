@@ -81,8 +81,9 @@
 		<main>
 			<?php
 				if (!empty($_SESSION['user_id'])) {
-					echo "You are currently logged in.";
-					echo "Want to log out? <a href='logout.php' class='internal_link'>log in</a>";
+					echo "<div class='notification_error'>";
+					echo "You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a>";
+					echo "</div>";
 					exit;
 				}
 			?>
