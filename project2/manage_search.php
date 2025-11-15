@@ -13,11 +13,10 @@
 	<?php
 	require_once 'settings.php';
 	session_start();
-	if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-		mysqli_close($conn);
-		header("Location: manage.php");
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: login.php");
 		exit();
-	}
+	}	
 	$check_box = [];
 	if (isset($_GET['SO145'])) $check_box[]="SO145";
 	if (isset($_GET['AI313'])) $check_box[]="AI313";

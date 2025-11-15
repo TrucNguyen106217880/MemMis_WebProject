@@ -54,8 +54,10 @@
 			}
 			else {
 				echo "
+				<article>
 				<h1>Positions unavailable</h1>
-				<p>We will update this with available positions when they are open. Thank you for your support</p>";
+				<p>We will update this with available positions when they are open. Thank you for your support</p>
+				<article>";
 			}
 
 			function list_breaks($text, $ordered=false) {

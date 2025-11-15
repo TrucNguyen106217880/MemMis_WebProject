@@ -12,12 +12,11 @@
 <body>
     <?php
     require_once 'settings.php';
-        session_start();
-	if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-		mysqli_close($conn);
-		header("Location: manage.php");
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: login.php");
 		exit();
-	}
+	}	
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi
