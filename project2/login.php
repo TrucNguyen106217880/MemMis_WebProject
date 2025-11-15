@@ -4,6 +4,17 @@
 
 	$errors = [];
 
+	$create_table="CREATE TABLE IF NOT EXISTS users (
+		id INT AUTO_INCREMENT,
+		username VARCHAR(100) NOT NULL UNIQUE,
+		password_hash VARCHAR(255) NOT NULL,
+		created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		failed_attempts INT NOT NULL DEFAULT 0,
+		lockout_until DATETIME DEFAULT NULL,
+		PRIMARY KEY (`id`)
+	  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+	mysqli_query($conn, $create_table);
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$username = trim($_POST['username'] ?? '');
 		$password = $_POST['password'] ?? '';
@@ -32,6 +43,7 @@
 						$update = $conn->prepare('UPDATE users SET failed_attempts = 0, lockout_until = NULL WHERE id = ?');
 						$update->bind_param('i', $user['id']);
 						$update->execute();
+						$update->close();
 
 						// Log user in
 						$_SESSION['user_id'] = $user['id'];
@@ -58,9 +70,11 @@
 						$upd = $conn->prepare('UPDATE users SET failed_attempts = ?, lockout_until = ? WHERE id = ?');
 						$upd->bind_param('isi', $failed, $lockout_until, $user['id']);
 						$upd->execute();
+						$upd->close();
 					}
 				}
 			}
+			$stmt->close();
 		}
 	}
 ?>
