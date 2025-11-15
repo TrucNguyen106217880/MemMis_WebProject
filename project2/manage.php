@@ -23,8 +23,9 @@
 	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
 
 	<main>
-		<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php" class="internal_link">Log out?</a></p>
-		<br>
+		<div class="notification_success">
+			<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php" class="internal_link">Log out?</a></p>
+		</div>
 
 		<form method="get" action="manage_search.php">
 			<input type="text" id="search" name="searchq" placeholder="Search...">

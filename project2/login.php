@@ -4,11 +4,6 @@
 
 	$errors = [];
 
-	function is_locked_out(array $user): bool {
-		if (empty($user['lockout_until'])) return false;
-		return strtotime($user['lockout_until']) > time();
-	}
-
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$username = trim($_POST['username'] ?? '');
 		$password = $_POST['password'] ?? '';
@@ -18,22 +13,25 @@
 		} 
 		else {
 			$stmt = $conn->prepare('SELECT * FROM users WHERE username = ?');
-			$stmt->execute([$username]);
-			$user = $stmt->fetch();
+			$stmt->bind_param('s', $username);
+			$stmt->execute();
+			$result = $stmt->get_result();
+			$user = $result->fetch_assoc();
 
 			if (!$user) {
 				// avoid revealing whether username exists to help security, still we update nothing
 				$errors[] = 'Invalid credentials.';
 			} 
 			else {
-				if (is_locked_out($user)) {
+				if (!empty($user['lockout_until'])?strtotime($user['lockout_until']) > time():false) {
 					$errors[] = 'Account locked. Please try again later.';
 				} 
 				else {
 					if (password_verify($password, $user['password_hash'])) {
 						// Successful login: reset failed attempts
 						$update = $conn->prepare('UPDATE users SET failed_attempts = 0, lockout_until = NULL WHERE id = ?');
-						$update->execute([$user['id']]);
+						$update->bind_param('i', $user['id']);
+						$update->execute();
 
 						// Log user in
 						$_SESSION['user_id'] = $user['id'];
@@ -43,7 +41,7 @@
 						exit;
 					} 
 					else {
-						// Failed login: increment counter
+						// Failed login: increment total failed attempts counter
 						$failed = $user['failed_attempts'] + 1;
 						$lockout_until = null;
 						$max_failures = 3;
@@ -58,7 +56,8 @@
 						}
 
 						$upd = $conn->prepare('UPDATE users SET failed_attempts = ?, lockout_until = ? WHERE id = ?');
-						$upd->execute([$failed, $lockout_until, $user['id']]);
+						$upd->bind_param('isi', $failed, $lockout_until, $user['id']);
+						$upd->execute();
 					}
 				}
 			}
@@ -89,7 +88,11 @@
 			?>
 
 			<?php if ($errors): ?>
-				<div class="error"><ul><?php foreach ($errors as $e) echo '<li>'.htmlspecialchars($e).'</li>'; ?></ul></div>
+				<div class="notification_error">
+					<ul>
+						<?php foreach ($errors as $e) echo '<li>'.htmlspecialchars($e).'</li>'; ?>
+					</ul>
+				</div>
 			<?php endif; ?>
 
 			<form method="post" action="">
