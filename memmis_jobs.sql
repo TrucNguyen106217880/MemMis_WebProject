@@ -27,6 +27,7 @@ DROP TABLE IF EXISTS `eoi_skills`;
 DROP TABLE IF EXISTS `skills`;
 DROP TABLE IF EXISTS `eoi`;
 DROP TABLE IF EXISTS `jobs`;
+DROP TABLE IF EXISTS `users`;
 
 -- --------------------------------------------------------
 

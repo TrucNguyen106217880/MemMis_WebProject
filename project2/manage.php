@@ -23,7 +23,7 @@
 	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
 
 	<main>
-		<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php">Log out?</a></p>
+		<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php" class="internal_link">Log out?</a></p>
 		<br>
 
 		<form method="get" action="manage_search.php">
