@@ -96,7 +96,8 @@
 			<?php
 				if (!empty($_SESSION['user_id'])) {
 					echo "<div class='notification_error'>";
-					echo "You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a>";
+					echo "<p>You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a></p>";
+					echo "<p><a href='manage.php' class='internal_link'>Go to Management page</a></p>";
 					echo "</div>";
 					exit;
 				}
@@ -111,11 +112,11 @@
 			<?php endif; ?>
 
 			<form method="post" action="">
-				<label>Username</label>
-				<input type="text" name="username" required>
+			<label for="username">Username</label>
+				<input type="text" id="username" name="username" required>
 				<br>
-				<label>Password</label>
-				<input type="password" name="password" required>
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" required>
 				<br>
 				<input type="submit" value="Login"></input>
 			</form>

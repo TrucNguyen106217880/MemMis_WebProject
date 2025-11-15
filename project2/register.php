@@ -105,14 +105,14 @@
 			<?php endif; ?>
 
 			<form method="post" action="">
-				<label>Username</label>
-				<input type="text" name="username" value="<?=htmlspecialchars($username ?? '')?>" required>
+				<label for="username">Username</label>
+				<input type="text" id="username" name="username" value="<?=htmlspecialchars($username ?? '')?>" required>
 				<br>
-				<label>Password</label>
-				<input type="password" name="password" required>
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" required>
 				<br>
-				<label>Confirm Password</label>
-				<input type="password" name="confirm" required>
+				<label for="conf_password">Confirm Password</label>
+				<input type="password" id="conf_password" name="confirm" required>
 				<br>
 				<input type="submit" value="Register"></input>
 			</form>

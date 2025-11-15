@@ -28,16 +28,17 @@
 		</div>
 
 		<form method="get" action="manage_search.php">
-			<input type="text" id="search" name="searchq" placeholder="Search...">
+			<label for="search">Search:</label>
+			<input type="text" id="search" name="searchq" placeholder="Search for reference number and names">
 			<input type="submit" placeholder="Search" value="Search">
 			<br>
 
 			<span>Job filter:</span>
-			<input type="checkbox" name="SO145" value="SO145">
+			<input type="checkbox" id="SO145" name="SO145" value="SO145">
 			<label for="SO145">SO145</label>
-			<input type="checkbox" name="AI313" value="AI313">
+			<input type="checkbox" id="AI313" name="AI313" value="AI313">
 			<label for="AI313">AI313</label>
-			<input type="checkbox" name="CY296" value="CY296">
+			<input type="checkbox" id="CY296" name="CY296" value="CY296">
 			<label for="CY296">CY296</label>
 		</form>
 
