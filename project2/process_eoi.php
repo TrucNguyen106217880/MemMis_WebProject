@@ -1,10 +1,4 @@
-	<!-- Development content checklist
-		 Make apply.php send data to EOI table. Fundamentally finished
-		 Validate input and output error screen if input is incorrect. Fundamentally finished
-		 Show EOI number in a webpage when application is successful. Fundamentally finished
-		 Basic security and input trimming. Fundamentally finished  -->
-	
-	<?php
+<?php
 	
 
 	// This is to prevent accessing proccess_eoi.php directly through url
@@ -28,7 +22,7 @@ $job_reference_number = sanitize($_POST["reference_number"]);
 $first_name = sanitize($_POST["first_name"] ?? "");
 $last_name = sanitize($_POST["last_name"] ?? "");
 $date_of_birth = sanitize($_POST["date_of_birth"] ?? "");
-$gender = ucfirst(strtolower(sanitize($_POST["gender"] ?? ""))); // This is to absolute make sure only the first letter is capitalized
+$gender = ucfirst(strtolower(sanitize($_POST["gender"] ?? "")));
 $street_address = sanitize($_POST["street_address"] ?? "");
 $suburb_town = sanitize($_POST["suburb_town"] ?? "");
 $state = sanitize($_POST["state"] ?? "");
@@ -39,7 +33,6 @@ $other_skills = sanitize($_POST["other_skills"] ?? "");
 
 // Extract skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
 $skills = $_POST[$job_reference_number] ?? [];
-
 //Using ?? null ensures that we do not receive automated warning when reference_number is not selected, or when there are unchecked boxes even when reference_number was selected. This is for the sake of creating a user-friendly error page
 
     
@@ -77,99 +70,49 @@ $create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
 
 mysqli_query($conn, $create_skills_sql);
 
-// This part with validate the collected data to match requirements
+// This part with validate the collected data to match requirements, as well as changing specific inputs if needed
 // This starts an empty error array that collects error messages as we go through validation
 $errors = [];
 // PHP has different regular expressions, I am using // as the delimiter
 if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
 if (!preg_match("/^[a-zA-Z]{1,20}$/", $first_name)) $errors[] = "First name must be 1-20 alphabetic characters.";
 if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1-20 alphabetic characters.";
-if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) $errors[] = "Date of birth must be in dd/mm/yyyy format.";
+if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) {$errors[] = "Date of birth must be in dd/mm/yyyy format.";
+} else {
+    // This is to convert the dob to yyyy-mm-dd for successful sql insertion
+    $seperate_dob = explode('/', $date_of_birth); // [dd, mm, yyyy]
+    $date_of_birth = "{$seperate_dob[2]}-{$seperate_dob[1]}-{$seperate_dob[0]}";
+}
 // eoi_table  has 'other', but apply.php doesn't have it for gender 
-if (!in_array($gender, ['male', 'female'])) $errors[] = "Gender must be selected.";
+if (!in_array($gender, ['Male', 'Female'])) $errors[] = "Gender must be selected.";
 if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address must be 1-40 characters.";
 if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1-40 characters.";
 if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
 if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Invalid postcode.";
-// This whole comment section is Duy and Khang's suggestion for postcode:
-// function sanitize($data){
-//     return htmlspecialchars(trim(stripslashes($data)));
-// }
-
-// function is_valid_postcode($state, $postcode){
-//     $postcode = (int)$postcode;
-//     $ranges = [
-//         'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
-//         'ACT' => [[0200, 0299], [2600, 2618], [2900, 2920]],
-//         'VIC' => [[3000, 3999], [8000, 8999]],
-//         'QLD' => [[4000, 4999], [9000, 9999]],
-//         'SA'  => [[5000, 5799], [5800, 5999]],
-//         'WA'  => [[6000, 6797], [6800, 6999]],
-//         'TAS' => [[7000, 7799], [7800, 7999]],
-//         'NT'  => [[0800, 0899], [0900, 0999]],
-//     ];
-//     foreach ($ranges[$state] ?? [] as [$min, $max]) {
-//         if ($postcode >= $min && $postcode <= $max) return true;
-//     }
-//     return false;
-// }
-
-// $errors = [];
-// if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
-// if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
-// if (!is_valid_postcode($state, $postcode)) $errors[] = "Invalid postcode.";
 if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
 if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8-12 digits or spaces.";
-// If errors is not empty, it will display all error messsages for failed validations
- function is_valid_postcode($state, $postcode){
-
-// This is Duy and Khang's experimental state specific postcode input validation
-// They will be given credit while I make sure this works
-  $postcode = (int)$postcode;
-
-
+// This is the state-specific postcode validation that was developed by Duy and Khang 
+function is_valid_postcode($state, $postcode) {
+    $postcode = (int)$postcode;
     $ranges = [
-
-
-       'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
-
-
-    	'ACT' => [[200, 299], [2600, 2618], [2900, 2920]],
-
-
-      'VIC' => [[3000, 3999], [8000, 8999]],
-
-
-      'QLD' => [[4000, 4999], [9000, 9999]],
-
-      'SA'  => [[5000, 5799], [5800, 5999]],
-
-
-      'WA'  => [[6000, 6797], [6800, 6999]],
-
-
-       'TAS' => [[7000, 7799], [7800, 7999]],
-
-
-      'NT'  => [[800, 899], [900, 999]],
-
-
-   ];
-
-
-  foreach ($ranges[$state] ?? [] as [$min, $max]) {
-
-
-       if ($postcode >= $min && $postcode <= $max) return true;
-
-
-   }
-
-
-   return false;
-
-
- }
+        'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
+        'ACT' => [[200, 299], [2600, 2618], [2900, 2920]],
+        'VIC' => [[3000, 3999], [8000, 8999]],
+        'QLD' => [[4000, 4999], [9000, 9999]],
+        'SA'  => [[5000, 5799], [5800, 5999]],
+        'WA'  => [[6000, 6797], [6800, 6999]],
+        'TAS' => [[7000, 7799], [7800, 7999]],
+        'NT'  => [[800, 899], [900, 999]],
+    ];
+    foreach ($ranges[$state] ?? [] as [$min, $max]) {
+        if ($postcode >= $min && $postcode <= $max) return true;
+    }
+    return false;
+}
+if (!is_valid_postcode($state, $postcode)) {
+    $errors[] = "Postcode does not match the selected state.";
+}
+// If errors is not empty, it will display all error messsages for failed validations
 if (!empty($errors)) {
 	// Creates an unordered list and list each errors as collected in the array
     echo "<h2>Application unsuccessful, please try again</h2><ul>";
@@ -197,12 +140,15 @@ $stmt->bind_param("ssssssssssss", // There are 12 strings in total
 );
 
 $result = $stmt->execute();
-// It is reccomended to still sanitize even radio or dropdown input
+
+
+
+
+    // It is reccomended to still sanitize even radio or dropdown input
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
-    // Currently, this is experimental and needs further testing, research
-        if (!empty($skills)) {
+    if (!empty($skills)) {
     $valid_skills = [];
 
     foreach ($skills as $id) {
