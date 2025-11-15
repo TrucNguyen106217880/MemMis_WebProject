@@ -52,7 +52,7 @@
 				$result = $stmt->get_result();
 				$dupe = $result->fetch_assoc();
 				if (!empty($dupe)) {
-					$errors[] = 'Username already exists. Choose another.';
+					$errors[] = 'Username already exists. Please choose another.';
 				} 
 				else {
 					$hash = password_hash($password, PASSWORD_DEFAULT);
