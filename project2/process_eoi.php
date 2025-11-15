@@ -24,11 +24,11 @@
 
 	// Collecting data from apply.php, and "cleaning" them to prevent sql injections
        // "?? "" " after $_POST[] means if nothing was input then it's considered an empty string, this is to prevent crashes
-$job_reference_number = sanitize($_POST["reference_number"] ?? "");
+$job_reference_number = sanitize($_POST["reference_number"]);
 $first_name = sanitize($_POST["first_name"] ?? "");
 $last_name = sanitize($_POST["last_name"] ?? "");
 $date_of_birth = sanitize($_POST["date_of_birth"] ?? "");
-$gender = sanitize($_POST["gender"] ?? "");
+$gender = ucfirst(strtolower(sanitize($_POST["gender"] ?? ""))); // This is to absolute make sure only the first letter is capitalized
 $street_address = sanitize($_POST["street_address"] ?? "");
 $suburb_town = sanitize($_POST["suburb_town"] ?? "");
 $state = sanitize($_POST["state"] ?? "");
@@ -37,91 +37,142 @@ $email_address = sanitize($_POST["email"] ?? "");
 $phone_number = preg_replace("/[^\d]/", "", sanitize($_POST["phone_number"] ?? ""));
 $other_skills = sanitize($_POST["other_skills"] ?? "");
 
-// Extract up to skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
+// Extract skills based on selected job reference value, this means if either value for refnum or techskills is wrong, this won't work
 $skills = $_POST[$job_reference_number] ?? [];
 
-// Remember, index starts from 0 in PHP
-$skill_1 = $skills[0] ?? null;
-$skill_2 = $skills[1] ?? null;
-$skill_3 = $skills[2] ?? null;
-$skill_4 = $skills[3] ?? null;
-$skill_5 = $skills[4] ?? null;
-$skill_6 = $skills[5] ?? null;
-$skill_7 = $skills[6] ?? null;
-$skill_8 = $skills[7] ?? null;
-$skill_9 = $skills[8] ?? null;
-$skill_10 = $skills[9] ?? null;
-// Basically, when job_reference_number is selected
-// it will only select the technical skills with that job reference number name
-// So, if I chose SO415, then only skills from SO415 would show up in the table, even if I did choose skills outside SO415
-// I wonder if there is a shorter way to do this?
+//Using ?? null ensures that we do not receive automated warning when reference_number is not selected, or when there are unchecked boxes even when reference_number was selected. This is for the sake of creating a user-friendly error page
+
+    
 
 // Creates a table if eoi table is missing
-$createTableSQL = "CREATE TABLE IF NOT EXISTS eoi (
-   `eoi_number` INT NOT NULL AUTO_INCREMENT,
-  `job_reference_number` VARCHAR(20) NOT NULL,
-  `first_name` VARCHAR(50) NOT NULL,
-  `last_name` VARCHAR(50) NOT NULL,
-  `gender` ENUM('Male','Female','Other') NOT NULL,
-  `date_of_birth` DATE NOT NULL,
-  `street_address` VARCHAR(100) NOT NULL,
-  `suburb_town` VARCHAR(50) NOT NULL,
-  `state` VARCHAR(3) NOT NULL,
-  `postcode` VARCHAR(4) NOT NULL,
-  `email_address` VARCHAR(100) NOT NULL,
-  `phone_number` VARCHAR(20) NOT NULL,
-  `skill_1` VARCHAR(50) DEFAULT NULL,
-  `skill_2` VARCHAR(50) DEFAULT NULL,
-  `skill_3` VARCHAR(50) DEFAULT NULL,
-  `skill_4` VARCHAR(50) DEFAULT NULL,
-  `skill_5` VARCHAR(50) DEFAULT NULL,
-  `skill_6` VARCHAR(50) DEFAULT NULL,
-  `skill_7` VARCHAR(50) DEFAULT NULL,
-  `skill_8` VARCHAR(50) DEFAULT NULL,
-  `skill_9` VARCHAR(50) DEFAULT NULL,
-  `skill_10` VARCHAR(50) DEFAULT NULL,
-  `other_skills` TEXT DEFAULT NULL,
-  `eoi_status` ENUM('New','Current','Final') DEFAULT 'New',
+$create_eoi_sql = "CREATE TABLE IF NOT EXISTS eoi (
+  `eoi_number` int(11) NOT NULL AUTO_INCREMENT,
+  `reference_number` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `gender` enum('Male','Female','Other') NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `street_address` varchar(100) NOT NULL,
+  `suburb_town` varchar(50) NOT NULL,
+  `state` varchar(3) NOT NULL,
+  `postcode` varchar(4) NOT NULL,
+  `email_address` varchar(100) NOT NULL,
+  `phone_number` varchar(20) NOT NULL,
+  `other_skills` text DEFAULT NULL,
+  `eoi_status` enum('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`)
 )";
-mysqli_query($conn, $createTableSQL);
+mysqli_query($conn, $create_eoi_sql);
 
 
-$query = "INSERT INTO eoi (job_reference_number, first_name, last_name, gender, date_of_birth, street_address, suburb_town, state, postcode, email_address, phone_number, skill_1, skill_2, skill_3, skill_4, skill_5, skill_6, skill_7, skill_8, skill_9, skill_10, other_skills) VALUES ('$job_reference_number', '$first_name', '$last_name', '$gender', '$date_of_birth', '$street_address', '$suburb_town', '$state', '$postcode', '$email_address', '$phone_number', '$skill_1', '$skill_2', '$skill_3', '$skill_4', '$skill_5', '$skill_6', '$skill_7', '$skill_8', '$skill_9', '$skill_10', '$other_skills')";
-$result = mysqli_query($conn, $query);
+// Prepares data and insert into eoi table
 
-// If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
-if ($result) {
-    $eoi_number = mysqli_insert_id($conn);
-	// This will display the EOI number
-    echo "<h2>Application sent succesfully!</h2>";
-	// EOI number is displayed and emphasized
-    echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
-} else {
-    die("SQL Error: " . mysqli_error($conn));
-}
+$create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
+  `eoi_number` int(11) NOT NULL,
+  `skills_id` int(11) NOT NULL,
+  PRIMARY KEY (`eoi_number`, `skills_id`),
+  CONSTRAINT `fk_eoi` FOREIGN KEY (`eoi_number`) REFERENCES `eoi` (`eoi_number`) ON DELETE CASCADE,
+  CONSTRAINT `fk_skill` FOREIGN KEY (`skills_id`) REFERENCES `skills` (`skills_id`) ON DELETE CASCADE
+)";
 
+mysqli_query($conn, $create_skills_sql);
 
 // This part with validate the collected data to match requirements
 // This starts an empty error array that collects error messages as we go through validation
 $errors = [];
 // PHP has different regular expressions, I am using // as the delimiter
 if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
-if (!preg_match("/^[a-zA-Z]{1,20}$/", $first_name)) $errors[] = "First name must be 1–20 alphabetic characters.";
-if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1–20 alphabetic characters.";
+if (!preg_match("/^[a-zA-Z]{1,20}$/", $first_name)) $errors[] = "First name must be 1-20 alphabetic characters.";
+if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must be 1-20 alphabetic characters.";
 if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) $errors[] = "Date of birth must be in dd/mm/yyyy format.";
 // eoi_table  has 'other', but apply.php doesn't have it for gender 
 if (!in_array($gender, ['male', 'female'])) $errors[] = "Gender must be selected.";
-if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address must be 1–40 characters.";
-if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1–40 characters.";
+if (!preg_match("/^.{1,40}$/", $street_address)) $errors[] = "Street address must be 1-40 characters.";
+if (!preg_match("/^.{1,40}$/", $suburb_town)) $errors[] = "Suburb/town must be 1-40 characters.";
 if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
 if (!preg_match("/^0[2-9][0-9]{2}|[1-9][0-9]{3}$/", $postcode)) $errors[] = "Invalid postcode.";
+// This whole comment section is Duy and Khang's suggestion for postcode:
+// function sanitize($data){
+//     return htmlspecialchars(trim(stripslashes($data)));
+// }
+
+// function is_valid_postcode($state, $postcode){
+//     $postcode = (int)$postcode;
+//     $ranges = [
+//         'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
+//         'ACT' => [[0200, 0299], [2600, 2618], [2900, 2920]],
+//         'VIC' => [[3000, 3999], [8000, 8999]],
+//         'QLD' => [[4000, 4999], [9000, 9999]],
+//         'SA'  => [[5000, 5799], [5800, 5999]],
+//         'WA'  => [[6000, 6797], [6800, 6999]],
+//         'TAS' => [[7000, 7799], [7800, 7999]],
+//         'NT'  => [[0800, 0899], [0900, 0999]],
+//     ];
+//     foreach ($ranges[$state] ?? [] as [$min, $max]) {
+//         if ($postcode >= $min && $postcode <= $max) return true;
+//     }
+//     return false;
+// }
+
+// $errors = [];
+// if (empty($job_reference_number)) $errors[] = "Job reference number is required.";
+// if (!in_array($state, ['NSW','ACT','VIC','QLD','SA','WA','TAS','NT'])) $errors[] = "Invalid state.";
+// if (!is_valid_postcode($state, $postcode)) $errors[] = "Invalid postcode.";
 if (!filter_var($email_address, FILTER_VALIDATE_EMAIL)) $errors[] = "Invalid email address.";
-if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8–12 digits or spaces.";
+if (!preg_match("/^[\d\s]{8,12}$/", $phone_number)) $errors[] = "Phone number must be 8-12 digits or spaces.";
 // If errors is not empty, it will display all error messsages for failed validations
+ function is_valid_postcode($state, $postcode){
+
+// This is Duy and Khang's experimental state specific postcode input validation
+// They will be given credit while I make sure this works
+  $postcode = (int)$postcode;
+
+
+    $ranges = [
+
+
+       'NSW' => [[1000, 1999], [2000, 2599], [2619, 2899], [2921, 2999]],
+
+
+        'ACT' => [[0200, 0299], [2600, 2618], [2900, 2920]],
+
+
+      'VIC' => [[3000, 3999], [8000, 8999]],
+
+
+      'QLD' => [[4000, 4999], [9000, 9999]],
+
+      'SA'  => [[5000, 5799], [5800, 5999]],
+
+
+      'WA'  => [[6000, 6797], [6800, 6999]],
+
+
+       'TAS' => [[7000, 7799], [7800, 7999]],
+
+
+      'NT'  => [[0800, 0899], [0900, 0999]],
+
+
+   ];
+
+
+  foreach ($ranges[$state] ?? [] as [$min, $max]) {
+
+
+       if ($postcode >= $min && $postcode <= $max) return true;
+
+
+   }
+
+
+   return false;
+
+
+ }
 if (!empty($errors)) {
 	// Creates an unordered list and list each errors as collected in the array
-    echo "<h2>Validation Errors:</h2><ul>";
+    echo "<h2>Application unsuccessful, please try again</h2><ul>";
 	// Each error message is looped through in the collected array
     foreach ($errors as $error) {
         echo "<li>$error</li>";
@@ -130,21 +181,58 @@ if (!empty($errors)) {
 	// Ends the script immediately
     exit;
 }
-    // It is reccomended to still sanitize even radio or dropdown input
 
+// Prepare the SQL statement
+$stmt = $conn->prepare("INSERT INTO eoi (
+  reference_number, first_name, last_name, gender, date_of_birth,
+  street_address, suburb_town, state, postcode, email_address, phone_number,
+  other_skills
+) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+// 
+$stmt->bind_param("ssssssssssss", // There are 12 strings in total
+  $job_reference_number, $first_name, $last_name, $gender, $date_of_birth,
+  $street_address, $suburb_town, $state, $postcode, $email_address, $phone_number,
+  $other_skills
+);
+
+$result = $stmt->execute();
+// It is reccomended to still sanitize even radio or dropdown input
+// If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
+if ($result) {
+    $eoi_number = mysqli_insert_id($conn);
+    // Currently, this is experimental and needs further testing, research
+        if (!empty($skills)) {
+    $valid_skills = [];
+
+    foreach ($skills as $id) {
+        $check = mysqli_query($conn, "SELECT 1 FROM skills WHERE skills_id = $id");
+        if ($check && mysqli_num_rows($check) > 0) {
+            $valid_skills[] = $id;
+        } else {
+        }
+    }
+
+    if (!empty($valid_skills)) {
+        $values = array_map(function($id) use ($eoi_number) {
+            return "($eoi_number, $id)";
+        }, $valid_skills);
+        $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
+        if (!mysqli_query($conn, $sql)) {
+            die("Skill insert failed: " . mysqli_error($conn));
+        }
+    } else {
+        echo "<p>No valid skills selected or found in database.</p>";
+    }
+}
+
+	// This will display the EOI number
+    echo "<h2>Application sent succesfully!</h2>";
+	// EOI number is displayed and emphasized
+    echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
+}  else {
+    die("SQL Error: " . mysqli_error($conn));
+
+}
 
 		?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<title></title>
-	</head>
-	<body>
-	
-	</body>
-</html>

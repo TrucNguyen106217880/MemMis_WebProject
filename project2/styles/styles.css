@@ -57,6 +57,26 @@ table.table_styles td:hover { /* Project part 1 requirement */
 	background-color: #445c7a;
 	cursor: default;
 }
+.notification_error,
+.notification_success {
+	
+	border-radius: 20px;
+	margin-top: 20px;
+	padding: 10px;
+	font-weight: bold;
+}
+.notification_error {
+	background-color: #502b24;
+	border: 3px solid #720d0d;
+}
+.notification_success {
+	background-color: #0d1c1a;
+	border: 3px solid #10720d;
+}
+.notification_error ul,
+.notification_success ul {
+	list-style-type: none;
+}
 
 /*-------------------- Header (Logo & Menu) --------------------*/
 #menu_toggle_label {

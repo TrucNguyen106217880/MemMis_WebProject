@@ -1,3 +1,12 @@
+<?php
+	$conn = require_once __DIR__ . '/settings.php';
+	session_start();
+
+	if (empty($_SESSION['user_id'])) {
+		header('Location: login.php');
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +23,13 @@
 	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
 
 	<main>
-		<?php
-			session_start();
-			require_once 'settings.php';
-			// if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
-				
-			// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
-		?>
+		<div class="notification_success">
+			<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php" class="internal_link">Log out?</a></p>
+		</div>
+
 		<form method="get" action="manage_search.php">
 			<input type="text" id="search" name="searchq" placeholder="Search...">
-			<input type="submit" placeholder="Search">
+			<input type="submit" placeholder="Search" value="Search">
 			<br>
 
 			<span>Job filter:</span>
@@ -50,38 +56,17 @@
 							<th>Job RefN.</th>
 							<th>Name</th>
 							<th>DoB</th>
-							<th>Gender</th>
-							<th>Address</th>
-							<th>Postcode</th>
-							<th>Email</th>
-							<th>Phone</th>
-							<th>Skills</th>
-							<th>Other</th>
-							<th> </th>
+							<th>Status</th>
 						</tr>
 					</thead>
 					<tbody>";
 		if (mysqli_num_rows($result) > 0) {
 			while($row = mysqli_fetch_assoc($result)) {
 				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
-				echo "<td>" . $row["job_reference_number"] . "</td>" ;
+				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
 				echo "<td>" . $row["date_of_birth"] . "</td>" ;
-				echo "<td>" . $row["gender"] . "</td>" ;
-				echo "<td>" . $row["street_address"] . ", " . $row["suburb_town"] . ", " . $row["state"] . "</td>" ;
-				echo "<td>" . $row["postcode"] . "</td>" ;
-				echo "<td>" . $row["email_address"]. "</td>" ;
-				echo "<td>" . $row["phone_number"] . "</td>" ;
-				echo "<td>" ;
-				$skill_row = [
-					$row["skill_1"], $row["skill_2"], $row["skill_3"], $row["skill_4"], $row["skill_5"],
-					$row["skill_6"], $row["skill_7"], $row["skill_8"], $row["skill_9"], $row["skill_10"]
-				];
-				$checked_skills = array_filter($skill_row);
-				echo implode(", ", $checked_skills) . ".";
-				echo"</td>" ;
-				echo "<td>" . $row["other_skills"] . "</td>" ;
-				echo "<td><form>";
+				echo "<td align='center'><form>";
 				if ($row['eoi_status']=="New") {
 					echo "
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
@@ -105,7 +90,7 @@
 				if ($row['eoi_status']=="Final") {
 					echo "  
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled>
-						<label for='new_box><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></lable>
+						<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
 						<input type='checkbox' name='checkbox_status' id='current_box' disabled>
 						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 						<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
@@ -118,17 +103,16 @@
 			</table>";
 			mysqli_close($conn);
 		} else {
-			echo "<td colspan='12'>No record</td>";
+			echo "<td colspan='5' align='center'>No record found</td>";
 			echo "</tbody>
 			</table>";
 			mysqli_close($conn);
 		}
-		if (isset($_SESSION['searchq'])){
+		if ((isset($_SESSION['searchq']) || isset($_SESSION['check_sql'])) && (mysqli_num_rows($result) > 0)){
 		?>
-		<!-- I will make a confirmation page for this -->
-		<form method="post" action="manage_delete.php">
-		<label for="delete_button">Please check all results BEFORE deleting:</label>
-		<input type="submit" id="delete_button" name="delete_button" value="Delete">
+		<form method="post" action="delete_confirm.php">
+		<label for="delete_confirm_button">Please check all results BEFORE deleting:</label>
+		<input type="submit" id="delete_confirm_button" name="delete_confirm" value="Delete Confirmation">
 		</form>
 		<?php
 		}
