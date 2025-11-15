@@ -92,7 +92,7 @@
 	<body>
 		<?php include 'header.inc'; $current_page='register.php'; include 'menu.inc'; ?>			
 
-		<main>
+		<main id="manager_pages">
 			<?php
 				if (!empty($_SESSION['user_id'])) {
 					echo "<div class='notification_error'>";

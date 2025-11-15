@@ -5,7 +5,7 @@
 
     date created: September 21st, 2025
 
-    date modified (project part 2): November 11th, 2025
+    date modified (project part 2): November 15th, 2025
 	*Highly altered comparing to part 1 project
 
     description: CSS stylesheet for MemMis website
@@ -59,9 +59,9 @@ table.table_styles td:hover { /* Project part 1 requirement */
 }
 .notification_error,
 .notification_success {
-	
 	border-radius: 20px;
-	margin-top: 20px;
+	margin: 20px;
+	margin-top: 10px;
 	padding: 10px;
 	font-weight: bold;
 }
@@ -469,9 +469,6 @@ table.table_styles td:hover { /* Project part 1 requirement */
 	line-height: 1.5;
 	transition: border-color 0.3s ease;
 }
-#apply_form input[type="submit"] {
-	width: fit-content; /* Overrides the width set above */
-}
 #apply_form label,
 #apply_form fieldset legend {
 	color: #c0c0c0;
@@ -622,6 +619,31 @@ table.table_styles td:hover { /* Project part 1 requirement */
 #members_interests {
 	clear: both;
 	padding: 0 5%;
+}
+
+/*-------------------- Manage, Register & Login --------------------*/
+main#manager_pages {
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+#manager_pages input[type="text"],
+#manager_pages input[type="password"],
+#manager_pages input[type="submit"]{
+	background-color: #1a1f2b;
+	margin-bottom: 8px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	color: #fff;
+	font-family: system-ui, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+	line-height: 1.5;
+	transition: border-color 0.3s ease;
+}
+#manager_pages input:focus {
+	border-color: #00aaff;
+	outline: none;
 }
 
 /*-------------------- Footer --------------------*/
