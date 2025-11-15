@@ -112,8 +112,7 @@
 		if ((isset($_SESSION['searchq']) || isset($_SESSION['check_sql'])) && (mysqli_num_rows($result) > 0)){
 		?>
 		<form method="post" action="delete_confirm.php">
-		<label for="delete_confirm_button">Please check all results BEFORE deleting:</label>
-		<input type="submit" id="delete_confirm_button" name="delete_confirm" value="Delete Confirmation">
+		<input type="submit" id="delete_confirm_button" name="delete_confirm" value="Delete all shown records">
 		</form>
 		<?php
 		}

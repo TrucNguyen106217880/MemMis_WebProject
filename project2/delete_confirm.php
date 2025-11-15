@@ -16,6 +16,11 @@
 		<?php
         require_once 'settings.php';
 		session_start();
+		if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+			mysqli_close($conn);
+			header("Location: manage.php");
+			exit();
+		}
 		$sql4 = $_SESSION["search_sql"];
 		$result = mysqli_query($conn, $sql4);
 		echo "<table class='table_styles'>

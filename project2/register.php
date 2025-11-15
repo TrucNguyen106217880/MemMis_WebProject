@@ -22,7 +22,7 @@
 	$count_stmt->bind_result($manager_count);
 	$count_stmt->fetch();
 	$count_stmt->close();
-
+	$limit = "";
 	if ($manager_count >= 2) {
 		$limit = "<p>Registration limit reached. Only 2 manager accounts are allowed.</p>";
 	}

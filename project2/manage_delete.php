@@ -12,6 +12,11 @@
 <?php
 	require_once 'settings.php';
 	session_start();
+	if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+		mysqli_close($conn);
+		header("Location: manage.php");
+		exit();
+	}
 	if (!empty($_SESSION['check_sql'])){
 	$check_sql = $_SESSION['check_sql'];
 	} else $check_sql='0';
