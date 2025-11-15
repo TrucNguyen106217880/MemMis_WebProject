@@ -134,6 +134,22 @@ INSERT INTO `skills` (`skills_id`, `reference_number`, `skills`) VALUES
 (21, 'CY296', 'Strong understanding of network protocols, operating systems, and security tools'),
 (22, 'CY296', 'Able to work both independently and on a team');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  failed_attempts INT NOT NULL DEFAULT 0,
+  lockout_until DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Constraints for dumped tables
 --

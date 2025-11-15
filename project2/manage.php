@@ -1,3 +1,12 @@
+<?php
+	$conn = require_once __DIR__ . '/settings.php';
+	session_start();
+
+	if (empty($_SESSION['user_id'])) {
+		header('Location: login.php');
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,13 +23,9 @@
 	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
 
 	<main>
-		<?php
-			session_start();
-			require_once 'settings.php';
-			// if ($user == "Memmis" && $pwd == "Memmis676905#:3"){
-				
-			// } else echo header(header:'Location: https://www.youtube.com/watch?v=l60MnDJklnM'); 
-		?>
+		<p>Welcome, <?=htmlspecialchars($_SESSION['username'])?>. <a href="logout.php">Log out?</a></p>
+		<br>
+
 		<form method="get" action="manage_search.php">
 			<input type="text" id="search" name="searchq" placeholder="Search...">
 			<input type="submit" placeholder="Search" value="Search">
