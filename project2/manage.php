@@ -54,10 +54,10 @@
 						</tr>
 					</thead>
 					<tbody>";
-		$delete_ids = [];
+		$_SESSION["delete_ids"] = [];
 		if (mysqli_num_rows($result) > 0) {
 			while($row = mysqli_fetch_assoc($result)) {
-				$delete_ids = $row["eoi_number"];
+				$_SESSION['delete_ids'][] = $row["eoi_number"];
 				echo "<tr><td><a class='internal_link' href='info.php?id=". $row["eoi_number"] ."'>" . $row["eoi_number"]. "</a></td>" ;
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
@@ -105,7 +105,6 @@
 			mysqli_close($conn);
 		}
 		if ((isset($_SESSION['searchq']) || isset($_SESSION['check_sql'])) && (mysqli_num_rows($result) > 0)){
-		$_SESSION["delete_ids"] = $delete_ids;
 		?>
 		<form method="post" action="delete_confirm.php">
 		<label for="delete_confirm_button">Please check all results BEFORE deleting:</label>
