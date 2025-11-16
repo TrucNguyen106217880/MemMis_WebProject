@@ -80,7 +80,7 @@ if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must b
 if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) {$errors[] = "Date of birth must be in dd/mm/yyyy format.";
 } else {
     // This is to convert the dob to yyyy-mm-dd for successful sql insertion
-    $seperate_dob = explode('/', $date_of_birth); // [dd, mm, yyyy]
+    $seperate_dob = explode('/', $date_of_birth); // Breaks dob in to dd, mm,, yyyy seperately. This is the opposite of implode()!
     $date_of_birth = "{$seperate_dob[2]}-{$seperate_dob[1]}-{$seperate_dob[0]}";
 }
 // eoi_table  has 'other', but apply.php doesn't have it for gender 
@@ -118,9 +118,9 @@ if (!empty($errors)) {
     echo "<h2>Application unsuccessful, please try again</h2><ul>";
 	// Each error message is looped through in the collected array
     foreach ($errors as $error) {
-        echo "<li>$error</li>";
+        echo "<li class=\"notification_error\">$error</li>";
     }
-    echo "</ul>";
+    echo "</ul>" ;
 	// Ends the script immediately
     exit;
 }
@@ -148,34 +148,41 @@ $result = $stmt->execute();
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
-    if (!empty($skills)) {
-    $valid_skills = [];
-
     foreach ($skills as $id) {
-        $check = mysqli_query($conn, "SELECT 1 FROM skills WHERE skills_id = $id");
-        if ($check && mysqli_num_rows($check) > 0) {
-            $valid_skills[] = $id;
-        } else {
-        }
-    }
+        // This will check if the skill from apply.php exists in eoi_skill
+     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
+     $stmt->bind_param("i", $id);
+     $stmt->execute();
+     $result = $stmt->get_result();
 
-    if (!empty($valid_skills)) {
-        $values = array_map(function($id) use ($eoi_number) {
-            return "($eoi_number, $id)";
-        }, $valid_skills);
-        $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
-        if (!mysqli_query($conn, $sql)) {
-            die("Skill insert failed: " . mysqli_error($conn));
+     if ($result && $result->num_rows > 0) {
+    $valid_skills[] = $id;
         }
-    } else {
-        echo "<p>No valid skills selected or found in database.</p>";
-    }
-}
+            }
+            // 
+        if (!empty($valid_skills)) {
+            $values = [];
+            foreach ($valid_skills as $skill_id) {
+                $values[] = "($eoi_number, $skill_id)";
+            }
+        
+            $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
+            $insert_skills = mysqli_query($conn, $sql);
+
+            if (!$insert_skills) {
+                die("Skill insert failed: " . mysqli_error($conn));
+            }
+        } else {
+            echo "<p>No valid skills selected or found in database.</p>";
+        }
+    
+
+
 
 	// This will display the EOI number
-    echo "<h2>Application sent succesfully!</h2>";
+    echo "<h2 class=\"notification_success\">Application sent succesfully!</h2>";
 	// EOI number is displayed and emphasized
-    echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
+    echo "<p class=\"notification_success\">Your EOI number is: <strong>$eoi_number</strong></p>";
 }  else {
     die("SQL Error: " . mysqli_error($conn));
 
