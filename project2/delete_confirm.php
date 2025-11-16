@@ -11,11 +11,21 @@
 </head>
 
 <body>
-    <h1>Delete Confirmation</h1>
-	<main>
+	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
+	<main id=manager_pages>
+		<h1>Delete Confirmation</h1>
 		<?php
         require_once 'settings.php';
 		session_start();
+		if (!isset($_SESSION['user_id'])) {
+			header("Location: login.php");
+			exit();
+		}		
+		if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+			mysqli_close($conn);
+			header("Location: manage.php");
+			exit();
+		}
 		$sql4 = $_SESSION["search_sql"];
 		$result = mysqli_query($conn, $sql4);
 		echo "<table class='table_styles'>
@@ -36,14 +46,23 @@
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
 				echo "<td>" . $row["email_address"]. "</td>" ;
-				echo "<td>" ;
-				$skill_row = [
-					$row["skill_1"], $row["skill_2"], $row["skill_3"], $row["skill_4"], $row["skill_5"],
-					$row["skill_6"], $row["skill_7"], $row["skill_8"], $row["skill_9"], $row["skill_10"]
-				];
-				$checked_skills = array_filter($skill_row);
-				echo implode(", ", $checked_skills) . ".";
-				echo"</td>" ;
+				echo "<td><ul>";
+				$id = $row["eoi_number"];
+				$sql6 = "SELECT skills_id FROM eoi_skills WHERE eoi_number = $id";
+				$skill_result = mysqli_query($conn, $sql6);
+				$skill_desc = [];
+				while($skill_row = mysqli_fetch_assoc($skill_result)){
+					$skill_id = $skill_row['skills_id'];
+					$skill_sql = mysqli_query($conn, "SELECT skills FROM skills WHERE skills_id = $skill_id");
+					$skill_data = mysqli_fetch_assoc($skill_sql);
+					if($skill_data){
+						$skill_desc[]= $skill_data['skills'];
+					}
+				}
+				foreach($skill_desc as $f){
+					echo "<li>" . htmlspecialchars($f) . "</li>" ;
+				}
+				echo "</ul></td>";
 				echo "<td>" . $row["other_skills"] . "</td>" ;
 			}
 			echo "</tbody>
@@ -54,12 +73,13 @@
 		<input type="submit" id="delete_button" name="delete_button" value="Delete">
 		</form>
         <form action="manage.php">
-            <button type="submit">Quit</button>
+            <input type="submit" value="Quit"></input>
         </form>
 		<?php
 		}
 			
 		?>
 	</main>
+	<footer><?php include 'footer.inc'; ?></footer>
 </body>
 </html>

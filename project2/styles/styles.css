@@ -623,7 +623,7 @@ table.table_styles td:hover { /* Project part 1 requirement */
 
 /*-------------------- Manage, Register & Login --------------------*/
 main#manager_pages {
-	padding-left: 20px;
+	padding-left: 30px;
 	padding-right: 20px;
 	padding-top: 20px;
 }
@@ -649,7 +649,23 @@ main#manager_pages {
 	border-color: #00aaff;
 	outline: none;
 }
+#manager_pages ul {
+	padding-left: 20px;
+}
+#id_col {
+	width: 70px;
+}
+#jobref_col {
+	width: 130px;
+}
+#DoB_col {
+	max-width: 150px;
+}
+#status_col {
+	max-width: 250px;
+}
 
+/*-------------------- Enhancements --------------------*/
 #enhancements_list {
 	padding: 20px;
 }

@@ -20,20 +20,31 @@
 					a new account (move the user to register.php).<br>
 					The maximum amount of manager account available is 2. If there are already 2 or more 
 					accounts, an error will be displayed and the user will be asked to login instead.<br>
+					<div class="notification_error">
+						<?= $limit="<p>Registration limit reached. Only 2 manager accounts are allowed.</p>" ?>
+						<?= "<p>Please <a href='login.php' class='internal_link'>login</a></p>" ?>
+					</div>
 				</dd>
 				<dt>Control access to manage.php by checking username and password.</dt>
 				<dd>After logging in successfully, a the session user_id will be recorded.<br>
 					Login.php and manage.php will check for this user_id: <br>
 					<ul>
-						<li>If it is empty:
+						<li>If it is NOT empty:
 							<ul>
 								<li>Login.php will display an error message and ask the user to either logout or
 									go to management page.</li>
+								<div class='notification_error'>
+									<p>You are currently logged in. <a href='logout.php' class='internal_link'>Log out?</a></p>
+									<p><a href='manage.php' class='internal_link'>Go to Management page</a></p>
+								</div>
 								<li>Manage.php will display the user's username along with the option to log out
 									on the top of the page.</li>
+								<div class="notification_success">
+									<p>Welcome, exampleuser. <a href="logout.php" class="internal_link">Log out?</a></p>
+								</div>
 							</ul>
 						</li>
-						<li>If it is NOT empty:
+						<li>If it is empty:
 							<ul>
 								<li>Login.php will display the username and password inputs as normal.</li>
 								<li>Manage.php will immediately move the user to login.php.</li>
@@ -45,6 +56,9 @@
 				<dd>A failed_attempts count will be record for each account.<br>
 					The count will be increased by 1 after each invalid login attempt. <br>
 					The account will be login locked for 30 minutes if failed_attempts >= 3.<br>
+					<div class='notification_error'>
+						<p>Too many failed attempts. Account locked for 30 minutes.</p>
+					</div>
 					The login failure count will only be reset (failed_attempts = 0) after a successful login of that account.<br>
 				</dd>
 			</dl>

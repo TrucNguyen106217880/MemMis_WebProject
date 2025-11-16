@@ -22,7 +22,7 @@
 	$count_stmt->bind_result($manager_count);
 	$count_stmt->fetch();
 	$count_stmt->close();
-
+	$limit = "";
 	if ($manager_count >= 2) {
 		$limit = "<p>Registration limit reached. Only 2 manager accounts are allowed.</p>";
 	}
@@ -52,7 +52,7 @@
 				$result = $stmt->get_result();
 				$dupe = $result->fetch_assoc();
 				if (!empty($dupe)) {
-					$errors[] = 'Username already exists. Choose another.';
+					$errors[] = 'Username already exists. Please choose another.';
 				} 
 				else {
 					$hash = password_hash($password, PASSWORD_DEFAULT);
@@ -106,10 +106,13 @@
 
 			<form method="post" action="">
 				<label for="username">Username</label>
+				<!-- Keeping the previous username input -->
 				<input type="text" id="username" name="username" value="<?=htmlspecialchars($username ?? '')?>" required>
 				<br>
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" required>
+				<input type="password" id="password" name="password" 
+					   title="Password must be at least 8 characters. 
+Must contain at least one uppercase, one lowercase and one number." required>
 				<br>
 				<label for="conf_password">Confirm Password</label>
 				<input type="password" id="conf_password" name="confirm" required>
