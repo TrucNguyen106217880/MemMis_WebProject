@@ -653,10 +653,10 @@ main#manager_pages {
 	padding-left: 20px;
 }
 #id_col {
-	max-width: 100px;
+	width: 70px;
 }
 #jobref_col {
-	width: 100px;
+	width: 130px;
 }
 #DoB_col {
 	max-width: 150px;

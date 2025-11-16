@@ -11,8 +11,9 @@
 </head>
 
 <body>
-    <h1>Delete Confirmation</h1>
-	<main>
+	<?php include 'header.inc'; $current_page='manage.php'; include 'menu.inc'; ?>
+	<main id=manager_pages>
+		<h1>Delete Confirmation</h1>
 		<?php
         require_once 'settings.php';
 		session_start();
@@ -72,12 +73,13 @@
 		<input type="submit" id="delete_button" name="delete_button" value="Delete">
 		</form>
         <form action="manage.php">
-            <button type="submit">Quit</button>
+            <input type="submit" value="Quit"></input>
         </form>
 		<?php
 		}
 			
 		?>
 	</main>
+	<footer><?php include 'footer.inc'; ?></footer>
 </body>
 </html>

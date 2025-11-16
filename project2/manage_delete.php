@@ -21,12 +21,6 @@
 		header("Location: manage.php");
 		exit();
 	}
-	if (!empty($_SESSION['check_sql'])){
-	$check_sql = $_SESSION['check_sql'];
-	} else $check_sql='1';
-	if (!empty($_SESSION['searchq'])){
-	$search = $_SESSION['searchq'];
-	} else $search='1';
 	// mysqli_use_result($conn);
     if(isset($_POST['delete_button'])) {
         $search_result = mysqli_real_escape_string($conn, $search);
@@ -38,7 +32,7 @@
 			";
         	mysqli_query($conn, $sql1);
 		}
-		unset($_SESSION['searchq'], $_SESSION['check_sql'], $_SESSION['search_sql'], $_SESSION["delete_ids"]);
+		unset($_SESSION['search_sql'], $_SESSION["delete_ids"]);
 		mysqli_close($conn);
         echo header('Location:manage.php');
     } else {
