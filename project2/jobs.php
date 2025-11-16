@@ -17,7 +17,7 @@
 	<main id="jobs_page">
 		<?php
 			include_once ('settings.php');
-
+						
 			$sql="SELECT * FROM `jobs`";
 			$result=mysqli_query($conn, $sql);
 			if (mysqli_num_rows($result) > 0) {
@@ -54,8 +54,10 @@
 			}
 			else {
 				echo "
+				<article>
 				<h1>Positions unavailable</h1>
-				<p>We will update this with available positions when they are open. Thank you for your support</p>";
+				<p>We will update this with available positions when they are open. Thank you for your support</p>
+				<article>";
 			}
 
 			function list_breaks($text, $ordered=false) {

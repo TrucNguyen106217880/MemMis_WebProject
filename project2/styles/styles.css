@@ -5,7 +5,7 @@
 
     date created: September 21st, 2025
 
-    date modified (project part 2): November 8th, 2025
+    date modified (project part 2): November 15th, 2025
 	*Highly altered comparing to part 1 project
 
     description: CSS stylesheet for MemMis website
@@ -56,6 +56,26 @@ table.table_styles th:hover,
 table.table_styles td:hover { /* Project part 1 requirement */
 	background-color: #445c7a;
 	cursor: default;
+}
+.notification_error,
+.notification_success {
+	border-radius: 20px;
+	margin: 20px;
+	margin-top: 10px;
+	padding: 10px;
+	font-weight: bold;
+}
+.notification_error {
+	background-color: #502b24;
+	border: 3px solid #720d0d;
+}
+.notification_success {
+	background-color: #0d1c1a;
+	border: 3px solid #10720d;
+}
+.notification_error ul,
+.notification_success ul {
+	list-style-type: none;
 }
 
 /*-------------------- Header (Logo & Menu) --------------------*/
@@ -449,9 +469,6 @@ table.table_styles td:hover { /* Project part 1 requirement */
 	line-height: 1.5;
 	transition: border-color 0.3s ease;
 }
-#apply_form input[type="submit"] {
-	width: fit-content; /* Overrides the width set above */
-}
 #apply_form label,
 #apply_form fieldset legend {
 	color: #c0c0c0;
@@ -604,10 +621,95 @@ table.table_styles td:hover { /* Project part 1 requirement */
 	padding: 0 5%;
 }
 
+/*-------------------- Manage, Register & Login --------------------*/
+main#manager_pages {
+	padding-left: 30px;
+	padding-right: 20px;
+	padding-top: 20px;
+}
+#manager_pages label {
+	color: #c0c0c0;
+	font-weight: 500;
+}
+#manager_pages input[type="text"],
+#manager_pages input[type="password"],
+#manager_pages input[type="submit"]{
+	background-color: #1a1f2b;
+	margin-bottom: 8px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	padding: 10px;
+	width: 100%;
+	color: #fff;
+	font-family: system-ui, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+	line-height: 1.5;
+	transition: border-color 0.3s ease;
+}
+#manager_pages input:focus {
+	border-color: #00aaff;
+	outline: none;
+}
+#manager_pages input[type="checkbox"]:focus,
+#manager_pages input[type="radio"]:focus { /* Overrides the :focus set above */
+	outline: 2px solid #00aaff;
+	outline-offset: 2px;
+}
+#manager_pages ul {
+	padding-left: 20px;
+}
+#id_col {
+	width: 70px;
+}
+#jobref_col {
+	width: 130px;
+}
+#DoB_col {
+	max-width: 150px;
+}
+#status_col {
+	max-width: 250px;
+}
+#status_new,
+#status_current,
+#status_final {
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: underline;
+}
+#status_new {
+	color: #0f868a;
+}
+#status_current {
+	color: #698a0f;
+}
+#status_final {
+	color: #14b314;
+}
+#manager_pages table input[type="checkbox"] {
+	appearance: none;
+}
+
+/*-------------------- Enhancements --------------------*/
+#enhancements_list {
+	padding: 20px;
+}
+#enhancements_list dt {
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 16px;
+	padding-bottom: 10px;
+}
+#enhancements_list dd {
+	margin-left: 16px;
+}
+#enhancements_list li {
+	margin-left: 32px;
+}
+
 /*-------------------- Footer --------------------*/
 main {
-	/* 100vh is 100% of viewport height; 135.938px is the footer height */
-	min-height: calc(100vh - 135.938px); 
+	/* 100vh is 100% of viewport height; 174.312px is the footer height */
+	min-height: calc(100vh - 174.312px); 
 }
 footer {
 	position: relative;
