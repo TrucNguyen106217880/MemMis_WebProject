@@ -649,6 +649,11 @@ main#manager_pages {
 	border-color: #00aaff;
 	outline: none;
 }
+#manager_pages input[type="checkbox"]:focus,
+#manager_pages input[type="radio"]:focus { /* Overrides the :focus set above */
+	outline: 2px solid #00aaff;
+	outline-offset: 2px;
+}
 #manager_pages ul {
 	padding-left: 20px;
 }
@@ -663,6 +668,25 @@ main#manager_pages {
 }
 #status_col {
 	max-width: 250px;
+}
+#status_new,
+#status_current,
+#status_final {
+	font-weight: bold;
+	font-size: 18px;
+	text-decoration: underline;
+}
+#status_new {
+	color: #0f868a;
+}
+#status_current {
+	color: #698a0f;
+}
+#status_final {
+	color: #14b314;
+}
+#manager_pages table input[type="checkbox"] {
+	appearance: none;
 }
 
 /*-------------------- Enhancements --------------------*/
