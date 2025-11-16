@@ -18,6 +18,17 @@
 					username and a password rule, and store this information in a table. </dt>
 				<dd>When the user is on the login page (login.php), there will be an option to register
 					a new account (move the user to register.php).<br>
+					A simple password check is done to ensure it is at least 8 characters long with at least one uppercase,
+					one lowercase and one number; along with a confirm password input. If any requirement is not met, an 
+					corresponding error message will be displayed.<br>
+					<div class="notification_error">
+						<ul>
+							<li>Password and confirmation do not match.</li>
+							<li>Password must be at least 8 characters.</li>
+							<li>Password must contain at least one uppercase letter.</li>
+							<li>Password must contain at least one number.</li>					
+						</ul>
+					</div>
 					The maximum amount of manager account available is 2. If there are already 2 or more 
 					accounts, an error will be displayed and the user will be asked to login instead.<br>
 					<div class="notification_error">
@@ -60,6 +71,12 @@
 						<p>Too many failed attempts. Account locked for 30 minutes.</p>
 					</div>
 					The login failure count will only be reset (failed_attempts = 0) after a successful login of that account.<br>
+				</dd>
+				<dt>Provide the manager with the ability to select the field on which to sort the order in
+					which the EOI records are displayed.</dt>
+				<dd>Using the same method that method="get" would do for forms, an anchor tag is used with modified href endings
+					through the header_link() function, which identify the field that is chosen to be sorted.<br>
+					By default, eoi_number will be sorted in ascending if no specific field is chosen for sorting.
 				</dd>
 			</dl>
 		</main>
