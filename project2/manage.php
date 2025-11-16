@@ -30,9 +30,7 @@
 		<form method="get" action="manage_search.php">
 			<label for="search">Search:</label>
 			<input type="text" id="search" name="searchq" placeholder="Search for reference number and names">
-			<input type="submit" placeholder="Search" value="Search">
 			<br>
-
 			<span>Job filter:</span>
 			<input type="checkbox" id="SO145" name="SO145" value="SO145">
 			<label for="SO145">SO145</label>
@@ -40,11 +38,13 @@
 			<label for="AI313">AI313</label>
 			<input type="checkbox" id="CY296" name="CY296" value="CY296">
 			<label for="CY296">CY296</label>
+			<input type="submit" placeholder="Search" value="Search">
+			<br>
 		</form>
 
 		<?php
 		if (!isset($_SESSION["search_sql"])){
-			$sql0 = "SELECT * FROM eoi";
+			$sql0 = "SELECT eoi_number,reference_number,first_name,last_name,date_of_birth,eoi_status FROM eoi";
 		} else {
 			$sql0 = $_SESSION["search_sql"];
 		}
@@ -53,11 +53,11 @@
 		echo "<table class='table_styles'>
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>Job RefN.</th>
+							<th id='id_col'>ID</th>
+							<th id='jobref_col'>Job RefN.</th>
 							<th>Name</th>
-							<th>DoB</th>
-							<th>Status</th>
+							<th id='DoB_col'>DoB</th>
+							<th id='status_col'>Status</th>
 						</tr>
 					</thead>
 					<tbody>";
@@ -113,6 +113,7 @@
 		}
 		if ((isset($_SESSION['searchq']) || isset($_SESSION['check_sql'])) && (mysqli_num_rows($result) > 0)){
 		?>
+		<br>
 		<form method="post" action="delete_confirm.php">
 		<input type="submit" id="delete_confirm_button" name="delete_confirm" value="Delete all shown records">
 		</form>

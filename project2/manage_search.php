@@ -34,12 +34,13 @@
 		$_SESSION["check_sql"] = $check_sql;
 		$search = $_GET['searchq'];
 		$search_result = mysqli_real_escape_string($conn, $search);
-    	$sql3 = "SELECT * FROM eoi WHERE ( reference_number LIKE '%$search_result%' or
-										first_name LIKE '%$search_result%' or
-										last_name LIKE '%$search_result%'
-										) and
-										($check_sql) 
-										ORDER BY eoi_number"; 
+    	$sql3 = "SELECT eoi_number,reference_number,first_name,last_name,date_of_birth,eoi_status
+				 FROM eoi WHERE ( reference_number LIKE '%$search_result%' or
+								first_name LIKE '%$search_result%' or
+								last_name LIKE '%$search_result%'
+								) and
+								($check_sql) 
+								ORDER BY eoi_number"; 
 		$_SESSION['search_sql'] = $sql3;
 		mysqli_close($conn);
 		echo header("Location:manage.php");
