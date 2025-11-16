@@ -12,7 +12,11 @@
 <body>
     <?php
     require_once 'settings.php';
-        session_start();
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: login.php");
+		exit();
+	}	
     function status_manage($id, $status){
         if($status=="New" || $status=="Current" || $status=="Final"){
             return  "UPDATE eoi

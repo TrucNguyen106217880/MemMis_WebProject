@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2025 at 06:10 AM
+-- Generation Time: Nov 11, 2025 at 01:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,9 +20,14 @@ SET time_zone = "+00:00";
 --
 -- Database: `memmis_jobs`
 --
-DROP DATABASE IF EXISTS `memmis_jobs`;
 CREATE DATABASE IF NOT EXISTS `memmis_jobs` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `memmis_jobs`;
+
+DROP TABLE IF EXISTS `eoi_skills`;
+DROP TABLE IF EXISTS `skills`;
+DROP TABLE IF EXISTS `eoi`;
+DROP TABLE IF EXISTS `jobs`;
+DROP TABLE IF EXISTS `users`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +35,6 @@ USE `memmis_jobs`;
 -- Table structure for table `eoi`
 --
 
-DROP TABLE IF EXISTS `eoi`;
 CREATE TABLE IF NOT EXISTS `eoi` (
   `eoi_number` int(11) NOT NULL AUTO_INCREMENT,
   `reference_number` varchar(20) NOT NULL,
@@ -44,16 +48,6 @@ CREATE TABLE IF NOT EXISTS `eoi` (
   `postcode` varchar(4) NOT NULL,
   `email_address` varchar(100) NOT NULL,
   `phone_number` varchar(20) NOT NULL,
-  `skill_1` varchar(50) DEFAULT NULL,
-  `skill_2` varchar(50) DEFAULT NULL,
-  `skill_3` varchar(50) DEFAULT NULL,
-  `skill_4` varchar(50) DEFAULT NULL,
-  `skill_5` varchar(50) DEFAULT NULL,
-  `skill_6` varchar(50) DEFAULT NULL,
-  `skill_7` varchar(50) DEFAULT NULL,
-  `skill_8` varchar(50) DEFAULT NULL,
-  `skill_9` varchar(50) DEFAULT NULL,
-  `skill_10` varchar(50) DEFAULT NULL,
   `other_skills` text DEFAULT NULL,
   `eoi_status` enum('New','Current','Final') DEFAULT 'New',
   PRIMARY KEY (`eoi_number`)
@@ -62,10 +56,22 @@ CREATE TABLE IF NOT EXISTS `eoi` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `eoi_skills`
+--
+
+CREATE TABLE IF NOT EXISTS `eoi_skills` (
+  `eoi_number` int(11) NOT NULL,
+  `skills_id` int(11) NOT NULL,
+  KEY `eoi_number` (`eoi_number`),
+  KEY `skills_id` (`skills_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `jobs`
 --
 
-DROP TABLE IF EXISTS `jobs`;
 CREATE TABLE IF NOT EXISTS `jobs` (
   `reference_number` varchar(255) NOT NULL,
   `job_name` varchar(255) NOT NULL,
@@ -93,9 +99,8 @@ INSERT INTO `jobs` (`reference_number`, `job_name`, `aside_info`, `about_the_rol
 -- Table structure for table `skills`
 --
 
-DROP TABLE IF EXISTS `skills`;
 CREATE TABLE IF NOT EXISTS `skills` (
-  `skills_id` int(255) NOT NULL AUTO_INCREMENT,
+  `skills_id` int(11) NOT NULL AUTO_INCREMENT,
   `reference_number` varchar(255) NOT NULL,
   `skills` text NOT NULL,
   PRIMARY KEY (`skills_id`),
@@ -130,15 +135,38 @@ INSERT INTO `skills` (`skills_id`, `reference_number`, `skills`) VALUES
 (21, 'CY296', 'Strong understanding of network protocols, operating systems, and security tools'),
 (22, 'CY296', 'Able to work both independently and on a team');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `skills`
+--
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT,
+  username VARCHAR(100) NOT NULL UNIQUE,
+  password_hash VARCHAR(255) NOT NULL,
+  created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  failed_attempts INT NOT NULL DEFAULT 0,
+  lockout_until DATETIME DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `eoi_skills`
+--
+ALTER TABLE `eoi_skills`
+  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`eoi_number`) REFERENCES `eoi` (`eoi_number`),
+  ADD CONSTRAINT `skills_ibfk_2` FOREIGN KEY (`skills_id`) REFERENCES `skills` (`skills_id`);
+
+--
 -- Constraints for table `skills`
 --
 ALTER TABLE `skills`
-  ADD CONSTRAINT `skills_ibfk_1` FOREIGN KEY (`reference_number`) REFERENCES `jobs` (`reference_number`);
+  ADD CONSTRAINT `skills_ibfk_3` FOREIGN KEY (`reference_number`) REFERENCES `jobs` (`reference_number`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,11 +6,23 @@
 	<meta name="description" content="Group Project 2">
 	<meta name="keywords" content="Management Site, MemMis, GroupProject">
 	<meta name="author" content="Hoang Trong Toan">
+	<link rel="stylesheet" href="styles/styles.css">
 	<title>Management</title>
 </head>
 <body>
+<?php include 'header.inc'; $current_page='index.php'; include 'menu.inc'; ?>
+<main id=manager_pages>
 <?php
 	require_once 'settings.php';
+	session_start();
+	if (!isset($_SESSION['user_id'])) {
+		header("Location: login.php");
+		exit();
+	}
+	if (!isset($_GET['id'])) {
+		header("Location: manage.php");
+		exit();
+	}	
     $id=$_GET['id'];
     $sql5 = "SELECT * FROM eoi WHERE eoi_number = $id";
 	$info_result = mysqli_query($conn, $sql5);
@@ -24,9 +36,9 @@
 	echo "<li>Address: " . $info_detail["street_address"] . "," . $info_detail["suburb_town"]. "," . $info_detail["state"] . "</li>" ;
 	echo "<li>Postcode: " . $info_detail["postcode"] . "</li>" ;
 	echo "<li>Phone Number:" . $info_detail["phone_number"] . "</li>
-		  </ul>" ;
+		  </ul><br>" ;
+	echo "<h3>Applying for: " . $info_detail["reference_number"] . "</h3><br>";
 	echo "<h3>Skills:</h3>";
-	echo "Position: " . $info_detail["reference_number"] ;
 	$sql6 = "SELECT skills_id FROM eoi_skills WHERE eoi_number = $id";
 	$skill_result = mysqli_query($conn, $sql6);
 	$skill_desc = [];
@@ -38,17 +50,19 @@
 			$skill_desc[]= $skill_data['skills'];
 		}
 	}
-	echo "<ol>";
+	echo "<ul>";
 	foreach($skill_desc as $f){
 		echo "<li>" . htmlspecialchars($f) . "</li>" ;
 	}
 	if(!empty($info_detail["other_skills"])){
 	echo "<ul><li>Other skills: " . htmlspecialchars($info_detail["other_skills"]) . "</li></ul>" ;
 	}
-	echo "</ol>";
+	echo "</ul><br>";
 ?>
 	<form action="manage.php">
-		<button type="submit">Return</button>
+		<input type="submit" value="Return"></input>
 	</form>
+</main>
+<footer><?php include 'footer.inc'; ?></footer>
 </body>
 </html>
