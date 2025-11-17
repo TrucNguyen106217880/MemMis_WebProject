@@ -41,7 +41,6 @@
 		$param .= " and (" . implode(' or ', $parts) . ")";
 	}	
 	$sql = $select . $param . " ORDER BY $order";
-	echo $sql;
 	$result = mysqli_query($conn, $sql);
 	
 	function header_link($colKey, $currentSort, $currentDir) {
