@@ -57,9 +57,6 @@ $create_eoi_sql = "CREATE TABLE IF NOT EXISTS eoi (
 )";
 mysqli_query($conn, $create_eoi_sql);
 
-
-// Prepares data and insert into eoi table
-
 $create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
   `eoi_number` int(11) NOT NULL,
   `skills_id` int(11) NOT NULL,
@@ -165,18 +162,23 @@ $result = $stmt->execute();
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
+    $valid_skills = [];
     foreach ($skills as $id) {
-        // This will check if the skill from apply.php exists in eoi_skill
      $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
      $stmt->bind_param("i", $id);
      $stmt->execute();
-     $result = $stmt->get_result();
-
-     if ($result && $result->num_rows > 0) {
+   $skill_check = $stmt->get_result();
+if ($skill_check && $skill_check->num_rows > 0) {
     $valid_skills[] = $id;
-        }
+}
             }
-            // 
+         if (empty($valid_skills)) {
+		echo "<div class=\"notification_error\">";
+        echo "<p>No valid skills were selected or found in the database.</p>";
+		echo "<br><br><a href='apply.php' class='internal_link'>Back to application form</a>";
+		echo "</div>";
+        exit;
+    }
         if (!empty($valid_skills)) {
             $values = [];
             foreach ($valid_skills as $skill_id) {
@@ -189,9 +191,7 @@ if ($result) {
             if (!$insert_skills) {
                 die("Skill insert failed: " . mysqli_error($conn));
             }
-        } else {
-            echo "<p>No valid skills selected or found in database.</p>";
-        }
+        } 
     
 
 
