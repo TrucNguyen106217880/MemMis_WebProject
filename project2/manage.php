@@ -45,8 +45,7 @@
 		// toggle direction
 		$qs['dir']  = ($currentSort === $colKey && $currentDir === 'asc') ? 'desc' : 'asc';
 		$qs['sort'] = $colKey;
-		// reset page when changing sort
-		if (isset($qs['page'])) unset($qs['page']);
+		
 		return '?' . http_build_query($qs);
 	}
 
