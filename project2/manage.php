@@ -38,19 +38,19 @@
 				and (reference_number LIKE '%$jobsearch%')
 			ORDER BY $order";
 	$result = mysqli_query($conn, $sql);
-
+	
 	function header_link($colKey, $currentSort, $currentDir) {
 		// copy
 		$qs = $_GET;
 		// toggle direction
 		$qs['dir']  = ($currentSort === $colKey && $currentDir === 'asc') ? 'desc' : 'asc';
 		$qs['sort'] = $colKey;
-		// reset page when changing sort (optional)
+		// reset page when changing sort
 		if (isset($qs['page'])) unset($qs['page']);
 		return '?' . http_build_query($qs);
 	}
 
-	function arrow_for($colKey, $currentSort, $currentDir) {
+	function dir_arrow($colKey, $currentSort, $currentDir) {
 		if ($colKey !== $currentSort) return '';
 		return $currentDir === 'asc' ? ' ▲' : ' ▼';
 	}
@@ -96,27 +96,27 @@
 				<tr>
 					<th id='id_col'>
 						<a href="<?php echo header_link('id', $sort, $dir); ?>">
-							ID<?php echo arrow_for('id', $sort, $dir); ?></span>
+							ID<?php echo dir_arrow('id', $sort, $dir); ?></span>
 						</a>
 					</th>
 					<th id='jobref_col'>
 						<a href="<?php echo header_link('job', $sort, $dir); ?>">
-							Job RefN.<?php echo arrow_for('job', $sort, $dir); ?></span>
+							Job RefN.<?php echo dir_arrow('job', $sort, $dir); ?></span>
 						</a>
 					</th>
 					<th>
 						<a href="<?php echo header_link('name', $sort, $dir); ?>">
-							Name<?php echo arrow_for('name', $sort, $dir); ?></span>
+							Name<?php echo dir_arrow('name', $sort, $dir); ?></span>
 						</a>
 					</th>
 					<th id='DoB_col'>
 						<a href="<?php echo header_link('dob', $sort, $dir); ?>">
-							DoB<?php echo arrow_for('dob', $sort, $dir); ?></span>
+							DoB<?php echo dir_arrow('dob', $sort, $dir); ?></span>
 						</a>
 					</th>
 					<th id='status_col'>
 						<a href="<?php echo header_link('status', $sort, $dir); ?>">
-							Status<?php echo arrow_for('status', $sort, $dir); ?></span>
+							Status<?php echo dir_arrow('status', $sort, $dir); ?></span>
 						</a>
 					</th>			
 				</tr>
@@ -131,11 +131,11 @@
 				echo "<td>" . $row["reference_number"] . "</td>" ;
 				echo "<td>" . htmlspecialchars($row["first_name"]) . " " . htmlspecialchars($row["last_name"]) . "</td>" ;
 				echo "<td>" . $row["date_of_birth"] . "</td>" ;
-				echo "<td align='center'><form>";
+				echo "<td align='center'>";
 				if ($row['eoi_status']=="New") {
 					echo "
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled checked>
-						<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
+						<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New' id='status_new'>New</a></label>
 						<input type='checkbox' name='checkbox_status' id='current_box' disabled>
 						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 						<input type='checkbox' name='checkbox_status' id='final_box' disabled>
@@ -147,7 +147,7 @@
 						<input type='checkbox' name='checkbox_status' id='new_box' disabled>
 						<label for='new_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=New'>New</a></label>
 						<input type='checkbox' name='checkbox_status' id='current_box' disabled checked>
-						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
+						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current' id='status_current'>Current</a></label>
 						<input type='checkbox' name='checkbox_status' id='final_box' disabled>
 						<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
 						" ;
@@ -159,10 +159,10 @@
 						<input type='checkbox' name='checkbox_status' id='current_box' disabled>
 						<label for='current_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Current'>Current</a></label>
 						<input type='checkbox' name='checkbox_status' id='final_box' disabled checked>
-						<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final'>Final</a></label>			
+						<label for='final_box'><a href='manage_status.php?id=". $row["eoi_number"] . "&status=Final' id='status_final'>Final</a></label>			
 						" ;
 				}
-				echo "</form></td>";
+				echo "</td>";
 			}
 			echo "</tbody>
 			</table>";
