@@ -110,7 +110,6 @@ if (!is_valid_postcode($state, $postcode)) {
     $errors[] = "Postcode does not match the selected state.";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -136,11 +135,31 @@ if (!empty($errors)) {
         echo "<li>$error</li>";
     }
     echo "</ul>" ;
-	echo "<br><br><a href='apply.php' class='internal_link'>Back to application form</a>";
+	// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+	echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>"; 
 	echo "</div>";
 	// Ends the script immediately
     exit;
 }
+// skill validation, making sure that the skill input exists in database
+$valid_skills = [];
+    foreach ($skills as $id) {
+     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
+     $stmt->bind_param("i", $id);
+     $stmt->execute();
+     $skill_check = $stmt->get_result();
+    if ($skill_check && $skill_check->num_rows > 0) {
+         $valid_skills[] = $id;
+}
+            }
+         if (empty($valid_skills)) {
+		echo "<div class=\"notification_error\">";
+        echo "<p>No valid skills were selected</p>";
+		// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+		echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>";
+		echo "</div>";
+        exit;
+    }
 
 // Prepare the SQL statement
 $stmt = $conn->prepare("INSERT INTO eoi (
@@ -159,26 +178,10 @@ $stmt->bind_param("ssssssssssss", // There are 12 strings in total
 $result = $stmt->execute();
 
     // It is reccomended to still sanitize even radio or dropdown input
-// If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
-if ($result) {
-    $eoi_number = mysqli_insert_id($conn);
-    $valid_skills = [];
-    foreach ($skills as $id) {
-     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
-     $stmt->bind_param("i", $id);
-     $stmt->execute();
-   $skill_check = $stmt->get_result();
-if ($skill_check && $skill_check->num_rows > 0) {
-    $valid_skills[] = $id;
-}
-            }
-         if (empty($valid_skills)) {
-		echo "<div class=\"notification_error\">";
-        echo "<p>No valid skills were selected or found in the database.</p>";
-		echo "<br><br><a href='apply.php' class='internal_link'>Back to application form</a>";
-		echo "</div>";
-        exit;
-    }
+// If result works successfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
+        if ($result) {
+        $eoi_number = mysqli_insert_id($conn);
+    
         if (!empty($valid_skills)) {
             $values = [];
             foreach ($valid_skills as $skill_id) {
@@ -191,18 +194,15 @@ if ($skill_check && $skill_check->num_rows > 0) {
             if (!$insert_skills) {
                 die("Skill insert failed: " . mysqli_error($conn));
             }
-        } 
-    
-
-
-	echo "<div class=\"notification_success\">";
+        }
 	// This will display the EOI number
-    echo "<h2>Application sent succesfully!</h2>";
+	echo "<div class=\"notification_success\">";
+    echo "<h2>Application sent successfully!</h2>";
 	// EOI number is displayed and emphasized
-    echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
-	echo "<br><br><a href='apply.php' class='internal_link'>Back to application form</a>";
+    echo "<p>Your EOI number is: $eoi_number</p>";
+	// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+	echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>"; 
 	echo "</div>";
-	
 }  else {
     die("SQL Error: " . mysqli_error($conn));
 
