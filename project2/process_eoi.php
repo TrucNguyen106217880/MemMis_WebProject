@@ -57,9 +57,6 @@ $create_eoi_sql = "CREATE TABLE IF NOT EXISTS eoi (
 )";
 mysqli_query($conn, $create_eoi_sql);
 
-
-// Prepares data and insert into eoi table
-
 $create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
   `eoi_number` int(11) NOT NULL,
   `skills_id` int(11) NOT NULL,
@@ -112,6 +109,22 @@ function is_valid_postcode($state, $postcode) {
 if (!is_valid_postcode($state, $postcode)) {
     $errors[] = "Postcode does not match the selected state.";
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="Viet Do">
+		<link rel="stylesheet" href="styles/styles.css">
+		<title>Processing Form</title>
+	</head>
+	<body>
+		<?php include 'header.inc'; $current_page='register.php'; include 'menu.inc'; ?>
+		<main>
+		<?php
 // If errors is not empty, it will display all error messsages for failed validations
 if (!empty($errors)) {
 	// Creates an unordered list and list each errors as collected in the array
@@ -148,6 +161,7 @@ $result = $stmt->execute();
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
+<<<<<<< Updated upstream
     foreach ($skills as $id) {
         // This will check if the skill from apply.php exists in eoi_skill
      $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
@@ -160,6 +174,22 @@ if ($result) {
         }
             }
             // 
+=======
+    $valid_skills = [];
+    foreach ($skills as $id) {
+     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
+     $stmt->bind_param("i", $id);
+     $stmt->execute();
+   $skill_check = $stmt->get_result();
+if ($skill_check && $skill_check->num_rows > 0) {
+    $valid_skills[] = $id;
+}
+            }
+         if (empty($valid_skills)) {
+        echo "<p class=\"notification_error\">No valid skills were selected or found in the database.</p>";
+        exit;
+    }
+>>>>>>> Stashed changes
         if (!empty($valid_skills)) {
             $values = [];
             foreach ($valid_skills as $skill_id) {
@@ -168,6 +198,7 @@ if ($result) {
         
             $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
             $insert_skills = mysqli_query($conn, $sql);
+<<<<<<< Updated upstream
 
             if (!$insert_skills) {
                 die("Skill insert failed: " . mysqli_error($conn));
@@ -178,7 +209,13 @@ if ($result) {
     
 
 
+=======
+>>>>>>> Stashed changes
 
+            if (!$insert_skills) {
+                die("Skill insert failed: " . mysqli_error($conn));
+            }
+        }
 	// This will display the EOI number
     echo "<h2 class=\"notification_success\">Application sent succesfully!</h2>";
 	// EOI number is displayed and emphasized
@@ -189,3 +226,7 @@ if ($result) {
 }
 
 		?>
+		</main>
+		<footer><?php include 'footer.inc'; ?></footer>
+	</body>
+</html>
