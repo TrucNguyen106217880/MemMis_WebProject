@@ -119,8 +119,8 @@
 			while($row = mysqli_fetch_assoc($result)) {
 				echo "<tr><td>" . $row["eoi_number"]. "</td>" ;
 				echo "<td>" . $row["reference_number"] . "</td>" ;
-				echo "<td>" . $row["first_name"] . " " . $row["last_name"] . "</td>" ;
-				echo "<td>" . $row["email_address"]. "</td>" ;
+				echo "<td>" . htmlspecialchars($row["first_name"]) . " " . htmlspecialchars($row["last_name"]) . "</td>" ;
+				echo "<td>" . htmlspecialchars($row["email_address"]). "</td>" ;
 				echo "<td><ul>";
 				$id = $row["eoi_number"];
 				$sql6 = "SELECT skills_id FROM eoi_skills WHERE eoi_number = $id";
@@ -138,7 +138,7 @@
 					echo "<li>" . htmlspecialchars($f) . "</li>" ;
 				}
 				echo "</ul></td>";
-				echo "<td>" . $row["other_skills"] . "</td>" ;
+				echo "<td>" . htmlspecialchars($row["other_skills"]) . "</td>" ;
 			}
 			echo "</tbody>
 			</table>";

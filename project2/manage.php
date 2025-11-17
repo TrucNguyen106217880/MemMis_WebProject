@@ -19,24 +19,28 @@
 	$sort = isset($_GET['sort']) ? $_GET['sort'] : 'id'; 
 	$dir = isset($_GET['dir'])  ? strtolower($_GET['dir']) : 'asc';
 	$searchq = isset($_GET['searchq']) ? $_GET['searchq'] : '';
-	$jobsearch = isset($_GET['jobsearch']) ? $_GET['jobsearch'] : '';
+	$jobsearch = isset($_GET['jobsearch']) ? $_GET['jobsearch'] : [];
 	// avoiding injection through URL
 	if (!array_key_exists($sort, $columns)) {
 		$sort = 'id';
 	}
-	if (!in_array($jobsearch, $jobfilter)) {
-		$jobsearch = '';
-	}
+	$matches = array_values(array_intersect($jobsearch, $jobfilter));
 	$dir = ($dir === 'desc') ? 'desc' : 'asc';
 	
 	$order = $columns[$sort] . ' ' . $dir;
-	$sql = "SELECT eoi_number,reference_number,first_name,last_name,date_of_birth,eoi_status
-			FROM eoi WHERE 
+	$select = "SELECT eoi_number,reference_number,first_name,last_name,date_of_birth,eoi_status ";
+	$param = "FROM eoi WHERE 
 			  	(reference_number LIKE '%$searchq%' or
 				first_name LIKE '%$searchq%' or
-				last_name LIKE '%$searchq%')
-				and (reference_number LIKE '%$jobsearch%')
-			ORDER BY $order";
+				last_name LIKE '%$searchq%')";
+	if (count($matches) > 0) {
+		$parts = [];
+		foreach ($matches as $item) {
+			$parts[] = "reference_number LIKE '$item'";
+		}
+		$param .= " and (" . implode(' or ', $parts) . ")";
+	}	
+	$sql = $select . $param . " ORDER BY $order";
 	$result = mysqli_query($conn, $sql);
 	
 	function header_link($colKey, $currentSort, $currentDir) {
@@ -45,8 +49,7 @@
 		// toggle direction
 		$qs['dir']  = ($currentSort === $colKey && $currentDir === 'asc') ? 'desc' : 'asc';
 		$qs['sort'] = $colKey;
-		// reset page when changing sort
-		if (isset($qs['page'])) unset($qs['page']);
+		
 		return '?' . http_build_query($qs);
 	}
 
@@ -77,15 +80,15 @@
 		</div>
 
 		<form method="get">
-			<label for="search">Search in reference number and names:</label>
+			<label for="search">Search in reference number and name:</label>
 			<input type="text" id="search" name="searchq" placeholder="Search...">
 			<br>
 			<span>Job filter:</span>
-			<input type="radio" id="SO145" name="jobsearch" value="SO145">
+			<input type="checkbox" id="SO145" name="jobsearch[]" value="SO145">
 			<label for="SO145">SO145</label>
-			<input type="radio" id="AI313" name="jobsearch" value="AI313">
+			<input type="checkbox" id="AI313" name="jobsearch[]" value="AI313">
 			<label for="AI313">AI313</label>
-			<input type="radio" id="CY296" name="jobsearch" value="CY296">
+			<input type="checkbox" id="CY296" name="jobsearch[]" value="CY296">
 			<label for="CY296">CY296</label>
 			<input type="submit" placeholder="Search" value="Search">
 			<br>
@@ -175,14 +178,7 @@
 		}
 		
 		if ((isset($searchq) || isset($jobsearch)) && (mysqli_num_rows($result) > 0)){
-			$_SESSION["search_sql"]="
-			SELECT *
-			FROM eoi WHERE 
-			  	(reference_number LIKE '%$searchq%' or
-				first_name LIKE '%$searchq%' or
-				last_name LIKE '%$searchq%')
-				and (reference_number LIKE '%$jobsearch%')
-			ORDER BY eoi_number";
+			$_SESSION["search_sql"]="SELECT * ".$param;
 			echo "
 			<br>
 			<form method='post' action='delete_confirm.php'>
