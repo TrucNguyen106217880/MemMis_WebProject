@@ -161,20 +161,6 @@ $result = $stmt->execute();
 // If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
 if ($result) {
     $eoi_number = mysqli_insert_id($conn);
-<<<<<<< Updated upstream
-    foreach ($skills as $id) {
-        // This will check if the skill from apply.php exists in eoi_skill
-     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
-     $stmt->bind_param("i", $id);
-     $stmt->execute();
-     $result = $stmt->get_result();
-
-     if ($result && $result->num_rows > 0) {
-    $valid_skills[] = $id;
-        }
-            }
-            // 
-=======
     $valid_skills = [];
     foreach ($skills as $id) {
      $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
@@ -189,7 +175,6 @@ if ($skill_check && $skill_check->num_rows > 0) {
         echo "<p class=\"notification_error\">No valid skills were selected or found in the database.</p>";
         exit;
     }
->>>>>>> Stashed changes
         if (!empty($valid_skills)) {
             $values = [];
             foreach ($valid_skills as $skill_id) {
@@ -198,19 +183,6 @@ if ($skill_check && $skill_check->num_rows > 0) {
         
             $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
             $insert_skills = mysqli_query($conn, $sql);
-<<<<<<< Updated upstream
-
-            if (!$insert_skills) {
-                die("Skill insert failed: " . mysqli_error($conn));
-            }
-        } else {
-            echo "<p>No valid skills selected or found in database.</p>";
-        }
-    
-
-
-=======
->>>>>>> Stashed changes
 
             if (!$insert_skills) {
                 die("Skill insert failed: " . mysqli_error($conn));
