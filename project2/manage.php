@@ -81,11 +81,11 @@
 			<input type="text" id="search" name="searchq" placeholder="Search...">
 			<br>
 			<span>Job filter:</span>
-			<input type="checkbox" id="SO145" name="jobsearch" value="SO145">
+			<input type="radio" id="SO145" name="jobsearch" value="SO145">
 			<label for="SO145">SO145</label>
-			<input type="checkbox" id="AI313" name="jobsearch" value="AI313">
+			<input type="radio" id="AI313" name="jobsearch" value="AI313">
 			<label for="AI313">AI313</label>
-			<input type="checkbox" id="CY296" name="jobsearch" value="CY296">
+			<input type="radio" id="CY296" name="jobsearch" value="CY296">
 			<label for="CY296">CY296</label>
 			<input type="submit" placeholder="Search" value="Search">
 			<br>
