@@ -1,4 +1,4 @@
-<?php
+	<?php
 	
 
 	// This is to prevent accessing proccess_eoi.php directly through url
@@ -57,9 +57,6 @@ $create_eoi_sql = "CREATE TABLE IF NOT EXISTS eoi (
 )";
 mysqli_query($conn, $create_eoi_sql);
 
-
-// Prepares data and insert into eoi table
-
 $create_skills_sql = "CREATE TABLE IF NOT EXISTS `eoi_skills` (
   `eoi_number` int(11) NOT NULL,
   `skills_id` int(11) NOT NULL,
@@ -80,7 +77,7 @@ if (!preg_match("/^[a-zA-Z]{1,20}$/", $last_name)) $errors[] = "Last name must b
 if (!preg_match("/^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/\d{4}$/", $date_of_birth)) {$errors[] = "Date of birth must be in dd/mm/yyyy format.";
 } else {
     // This is to convert the dob to yyyy-mm-dd for successful sql insertion
-    $seperate_dob = explode('/', $date_of_birth); // [dd, mm, yyyy]
+    $seperate_dob = explode('/', $date_of_birth); // Breaks dob in to dd, mm,, yyyy seperately. This is the opposite of implode()!
     $date_of_birth = "{$seperate_dob[2]}-{$seperate_dob[1]}-{$seperate_dob[0]}";
 }
 // eoi_table  has 'other', but apply.php doesn't have it for gender 
@@ -112,18 +109,57 @@ function is_valid_postcode($state, $postcode) {
 if (!is_valid_postcode($state, $postcode)) {
     $errors[] = "Postcode does not match the selected state.";
 }
+?>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="author" content="Viet Do">
+		<link rel="stylesheet" href="styles/styles.css">
+		<title>Processing Form</title>
+	</head>
+	<body>
+		<?php include 'header.inc'; $current_page='register.php'; include 'menu.inc'; ?>
+		<main>
+		<?php
 // If errors is not empty, it will display all error messsages for failed validations
 if (!empty($errors)) {
 	// Creates an unordered list and list each errors as collected in the array
-    echo "<h2>Application unsuccessful, please try again</h2><ul>";
+	echo "<div class=\"notification_error\">";
+    echo "<h2>Application unsuccessful, please try again</h2><br><ul>";
 	// Each error message is looped through in the collected array
     foreach ($errors as $error) {
         echo "<li>$error</li>";
     }
-    echo "</ul>";
+    echo "</ul>" ;
+	// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+	echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>"; 
+	echo "</div>";
 	// Ends the script immediately
     exit;
 }
+// skill validation, making sure that the skill input exists in database
+$valid_skills = [];
+    foreach ($skills as $id) {
+     $stmt = $conn->prepare("SELECT 1 FROM skills WHERE skills_id = ?");
+     $stmt->bind_param("i", $id);
+     $stmt->execute();
+     $skill_check = $stmt->get_result();
+    if ($skill_check && $skill_check->num_rows > 0) {
+         $valid_skills[] = $id;
+}
+            }
+         if (empty($valid_skills)) {
+		echo "<div class=\"notification_error\">";
+        echo "<p>No valid skills were selected</p>";
+		// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+		echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>";
+		echo "</div>";
+        exit;
+    }
 
 // Prepare the SQL statement
 $stmt = $conn->prepare("INSERT INTO eoi (
@@ -141,44 +177,39 @@ $stmt->bind_param("ssssssssssss", // There are 12 strings in total
 
 $result = $stmt->execute();
 
-
-
-
     // It is reccomended to still sanitize even radio or dropdown input
-// If result works succesfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
-if ($result) {
-    $eoi_number = mysqli_insert_id($conn);
-    if (!empty($skills)) {
-    $valid_skills = [];
+// If result works successfully, retrieve eoi number with mysqli_insert_id(record the ID auto incremented from the last insert)
+        if ($result) {
+        $eoi_number = mysqli_insert_id($conn);
+    
+        if (!empty($valid_skills)) {
+            $values = [];
+            foreach ($valid_skills as $skill_id) {
+                $values[] = "($eoi_number, $skill_id)";
+            }
+        
+            $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
+            $insert_skills = mysqli_query($conn, $sql);
 
-    foreach ($skills as $id) {
-        $check = mysqli_query($conn, "SELECT 1 FROM skills WHERE skills_id = $id");
-        if ($check && mysqli_num_rows($check) > 0) {
-            $valid_skills[] = $id;
-        } else {
+            if (!$insert_skills) {
+                die("Skill insert failed: " . mysqli_error($conn));
+            }
         }
-    }
-
-    if (!empty($valid_skills)) {
-        $values = array_map(function($id) use ($eoi_number) {
-            return "($eoi_number, $id)";
-        }, $valid_skills);
-        $sql = "INSERT INTO eoi_skills (eoi_number, skills_id) VALUES " . implode(", ", $values);
-        if (!mysqli_query($conn, $sql)) {
-            die("Skill insert failed: " . mysqli_error($conn));
-        }
-    } else {
-        echo "<p>No valid skills selected or found in database.</p>";
-    }
-}
-
 	// This will display the EOI number
-    echo "<h2>Application sent succesfully!</h2>";
+	echo "<div class=\"notification_success\">";
+    echo "<h2>Application sent successfully!</h2>";
 	// EOI number is displayed and emphasized
-    echo "<p>Your EOI number is: <strong>$eoi_number</strong></p>";
+    echo "<p>Your EOI number is: $eoi_number</p>";
+	// Truc: Although this does route the user back to apply.php, they lose all of their form progress...
+	echo "<br><br><a href='apply.php' class='internal_link'>Reset form and back to application page</a>"; 
+	echo "</div>";
 }  else {
     die("SQL Error: " . mysqli_error($conn));
 
 }
 
 		?>
+		</main>
+		<footer><?php include 'footer.inc'; ?></footer>
+	</body>
+</html>
